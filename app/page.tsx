@@ -1,18 +1,60 @@
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import { Navbar } from "@/components/ui/navbar"
 
-export default function Page() {
+export default function Home() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <div>
+
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Main content */}
+      <div className="flex flex-col gap-6 p-6">
+
+        {/* Buttons section */}
+        <div className="flex gap-4">
+          <Button variant="primary">Primary</Button>
+          <Button variant="yellow">Yellow</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
+
+        {/* Card section */}
+        <Card className="w-80">
+          <CardContent>
+            <CardTitle>Goa Trip</CardTitle>
+            <p>3 Days / 2 Nights</p>
+
+            {/* Button inside card */}
+            <Button variant="primary" className="mt-4">
+              View Details
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Input test */}
+        <div className="w-80">
+          <Input placeholder="Enter your email" />
         </div>
+
+        {/* OTP Inputs */}
+        <div className="flex gap-2 w-80">
+          <Input maxLength={1} />
+          <Input maxLength={1} />
+          <Input maxLength={1} />
+          <Input maxLength={1} />
+        </div>
+
+        {/* Badge test */}
+        <div className="flex gap-3">
+          <Badge status="confirmed" />
+          <Badge status="pending" />
+          <Badge status="cancelled" />
+        </div>
+
       </div>
     </div>
   )

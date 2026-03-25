@@ -6,7 +6,7 @@ import { Navbar } from "@/components/ui/navbar"
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-transparent">
 
       {/* Navbar */}
       <Navbar />
@@ -15,10 +15,12 @@ export default function Home() {
       <div className="flex flex-col gap-6 p-6">
 
         {/* Buttons section */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <Button variant="primary">Primary</Button>
-          <Button variant="yellow">Yellow</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="inverted">Inverted</Button>
           <Button variant="outline">Outline</Button>
+          <Button variant="yellow">Yellow</Button>
           <Button variant="ghost">Ghost</Button>
         </div>
 

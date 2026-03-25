@@ -42,14 +42,6 @@ export default function Home() {
           <Input placeholder="Enter your email" />
         </div>
 
-        {/* OTP Inputs */}
-        <div className="flex gap-2 w-80">
-          <Input maxLength={1} />
-          <Input maxLength={1} />
-          <Input maxLength={1} />
-          <Input maxLength={1} />
-        </div>
-
         {/* Badge test */}
         <div className="flex gap-3">
           <Badge status="confirmed" />

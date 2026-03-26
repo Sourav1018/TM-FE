@@ -145,7 +145,7 @@ export default function Page() {
               </h1>
 
               {/* SEARCH BAR */}
-              <div className="bg-surface-container-lowest p-2 rounded-full shadow-2xl flex flex-col md:flex-row items-center gap-2">
+              <div className="bg-surface-container-lowest p-2 rounded-full shadow-xl flex flex-col md:flex-row items-center gap-2">
                 {/* WHERE TO */}
                 <div className="flex-1 flex items-center px-6 gap-3 w-full border-b md:border-b-0 md:border-r border-surface-container">
                   <MapPin size={20} className="text-primary flex-shrink-0" />
@@ -163,10 +163,14 @@ export default function Page() {
                 {/* WHEN */}
                 <div className="flex-1 flex items-center px-6 gap-3 w-full border-b md:border-b-0 md:border-r border-surface-container">
                   <Calendar size={20} className="text-primary flex-shrink-0" />
-                  <div className="flex flex-col py-2">
+                  <div className="flex flex-col py-2 flex-1">
                     <span className="text-[10px] uppercase font-bold text-outline tracking-widest">When?</span>
                     <input
-                      placeholder="Add dates" type="text" title="Check-in and Check-out dates" className="bg-transparent border-none p-0 focus:ring-0 text-on-surface font-medium placeholder:text-outline-variant outline-none" />
+                      placeholder="Add dates"
+                      type="text"
+                      title="Check-in and Check-out dates"
+                      className="bg-transparent border-none p-0 focus:ring-0 text-on-surface font-medium placeholder:text-outline-variant w-full outline-none"
+                    />
                   </div>
                 </div>
 
@@ -175,12 +179,17 @@ export default function Page() {
                   <Users size={20} className="text-primary flex-shrink-0" />
                   <div className="flex flex-col py-2 flex-1">
                     <span className="text-[10px] uppercase font-bold text-outline tracking-widest">Who?</span>
-                    <input placeholder="Add guests" type="text" title="Number of guests" className="bg-transparent border-none p-0 focus:ring-0 text-on-surface font-medium placeholder:text-outline-variant outline-none" />
+                    <input
+                      placeholder="Add guests"
+                      type="text"
+                      title="Number of guests"
+                      className="bg-transparent border-none p-0 focus:ring-0 text-on-surface font-medium placeholder:text-outline-variant w-full outline-none"
+                    />
                   </div>
                 </div>
 
                 {/* SEARCH BUTTON */}
-                <button className="bg-secondary-container text-on-secondary-container px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform active:scale-95 shadow-md whitespace-nowrap">
+                <button className="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform active:scale-95 shadow-md whitespace-nowrap">
                   Search
                 </button>
               </div>

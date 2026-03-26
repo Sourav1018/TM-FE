@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { ArrowRight, HelpCircle, Mail, Smartphone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,16 +14,8 @@ import React from "react"
 export default function SignupPage() {
   const router = useRouter()
 
-  const handleSignup = (e: React.MouseEvent | React.FormEvent) => {
-    e.preventDefault()
-    console.log("Signup attempt")
-    try {
-      router.push("/auth/verify-otp")
-      console.log("router.push successful")
-    } catch (error) {
-      console.error("router.push failed", error)
-      window.location.href = "/auth/verify-otp"
-    }
+  const handleSignup = () => {
+    router.push("/auth/verify-otp")
   }
 
   return (
@@ -96,7 +89,7 @@ export default function SignupPage() {
           <form className="space-y-6">
             {/* Email Address */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-foreground">Email Address</label>
+              <Label className="text-sm font-semibold text-foreground">Email Address</Label>
               <div className="relative group">
                 <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
                 <Input
@@ -109,7 +102,7 @@ export default function SignupPage() {
 
             {/* Phone Number */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-foreground">Phone Number</label>
+              <Label className="text-sm font-semibold text-foreground">Phone Number</Label>
               <div className="relative group">
                 <Smartphone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
                 <Input
@@ -123,9 +116,9 @@ export default function SignupPage() {
             {/* Terms & Privacy */}
             <div className="flex items-start lg:items-center gap-2">
               <Checkbox id="terms" className="h-5 w-5 border-slate-300 accent-primary" />
-              <label htmlFor="terms" className="text-sm text-slate-500">
+              <Label htmlFor="terms" className="text-sm text-slate-500">
                 I agree to the <Link href="#" className="font-semibold text-primary underline-offset-4 hover:underline">Terms of Service</Link> and <Link href="#" className="font-semibold text-primary underline-offset-4 hover:underline">Privacy Policy</Link>.
-              </label>
+              </Label>
             </div>
 
             {/* Submit Button */}

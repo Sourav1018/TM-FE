@@ -15,14 +15,7 @@ export default function VerifyOtpPage() {
   const [timer, setTimer] = useState(59)
 
   const handleVerify = () => {
-    console.log("Verify button clicked")
-    try {
-      router.push("/")
-      console.log("router.push successful")
-    } catch (error) {
-      console.error("router.push failed", error)
-      window.location.href = "/"
-    }
+    router.push("/")
   }
 
   useEffect(() => {
@@ -89,7 +82,7 @@ export default function VerifyOtpPage() {
           </Button>
 
           {/* Change Email */}
-          <Link href="#" className="mb-8 flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+          <Link href="/auth/signup" className="mb-8 flex items-center gap-2 text-sm font-bold text-primary hover:underline">
             <AtSign className="h-4 w-4" />
             Change email address
           </Link>

@@ -6,11 +6,24 @@ import { Input } from "@/components/ui/input"
 import { formatTime, handleOtpChange, handleOtpKeyDown } from "@/utils"
 import { ArrowRight, AtSign, Clock, Lock, ShieldCheck } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 export default function VerifyOtpPage() {
+  const router = useRouter()
   const [otp, setOtp] = useState(["", "", "", "", "", ""])
   const [timer, setTimer] = useState(59)
+
+  const handleVerify = () => {
+    console.log("Verify button clicked")
+    try {
+      router.push("/")
+      console.log("router.push successful")
+    } catch (error) {
+      console.error("router.push failed", error)
+      window.location.href = "/"
+    }
+  }
 
   useEffect(() => {
     if (timer > 0) {
@@ -32,7 +45,7 @@ export default function VerifyOtpPage() {
       </div>
 
       {/* Main Card */}
-      <Card className="relative w-full max-w-lg overflow-hidden rounded-[2.5rem] border-none bg-white p-8 shadow-2xl shadow-blue-100/50 md:p-12">
+      <Card className="relative w-full max-w-lg overflow-hidden border-none bg-white p-8 shadow-2xl shadow-blue-100/50 md:p-12">
         <CardContent className="flex flex-col items-center p-0 text-center">
           {/* Shield Icon */}
           <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 text-primary">
@@ -70,7 +83,7 @@ export default function VerifyOtpPage() {
           </div>
 
           {/* Action Button */}
-          <Button className="mb-8 h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90">
+          <Button className="mb-8 h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90" onClick={handleVerify}>
             Verify & Proceed
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

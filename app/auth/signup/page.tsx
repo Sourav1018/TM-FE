@@ -7,13 +7,28 @@ import { Input } from "@/components/ui/input"
 import { ArrowRight, HelpCircle, Mail, Smartphone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import React from "react"
 
 export default function SignupPage() {
+  const router = useRouter()
+
+  const handleSignup = (e: React.MouseEvent | React.FormEvent) => {
+    e.preventDefault()
+    console.log("Signup attempt")
+    try {
+      router.push("/auth/verify-otp")
+      console.log("router.push successful")
+    } catch (error) {
+      console.error("router.push failed", error)
+      window.location.href = "/auth/verify-otp"
+    }
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4 md:p-8">
       {/* Main Container */}
-      <Card className="flex w-full max-w-250 overflow-hidden rounded-[2.5rem] border-none bg-white shadow-2xl shadow-blue-100/50">
+      <Card className="flex w-full max-w-250 overflow-hidden border-none bg-white shadow-2xl shadow-blue-100/50">
         
         {/* Left Side - Image & Branding */}
         <div className="relative hidden w-1/2 md:block">
@@ -78,7 +93,7 @@ export default function SignupPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6">
             {/* Email Address */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-foreground">Email Address</label>
@@ -114,7 +129,7 @@ export default function SignupPage() {
             </div>
 
             {/* Submit Button */}
-            <Button className="h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90">
+            <Button type="button" onClick={handleSignup} className="h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90">
               Create Account
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

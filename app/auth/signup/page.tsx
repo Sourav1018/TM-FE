@@ -1,18 +1,19 @@
 "use client"
 
-import React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Mail, Smartphone, ArrowRight, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { ArrowRight, HelpCircle, Mail, Smartphone } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import React from "react"
 
 export default function SignupPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4 md:p-8">
       {/* Main Container */}
-      <div className="flex w-full max-w-250 overflow-hidden rounded-[2.5rem] bg-white shadow-2xl shadow-blue-100/50">
+      <Card className="flex w-full max-w-250 overflow-hidden rounded-[2.5rem] border-none bg-white shadow-2xl shadow-blue-100/50">
         
         {/* Left Side - Image & Branding */}
         <div className="relative hidden w-1/2 md:block">
@@ -69,7 +70,7 @@ export default function SignupPage() {
         </div>
 
         {/* Right Side - Signup Form */}
-        <div className="flex w-full flex-col p-8 md:w-1/2 md:p-12">
+        <CardContent className="flex w-full flex-col p-8 md:w-1/2 md:p-12">
           {/* Header */}
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">Start Your Journey</h2>
@@ -126,8 +127,8 @@ export default function SignupPage() {
               </Link>
             </p>
           </form>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {/* Floating Help Button */}
       <div className="fixed bottom-8 right-8">

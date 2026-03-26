@@ -26,19 +26,10 @@ export default function VerifyOtpPage() {
   }, [timer])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 md:p-8">
-      {/* Logo */}
-      <div className="mb-12 flex items-center gap-2">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
-          <div className="h-6 w-6 border-2 border-black rounded-full flex items-center justify-center">
-            <div className="h-2 w-2 bg-black rounded-full" />
-          </div>
-        </div>
-        <span className="text-xl md:text-2xl font-bold tracking-tight text-foreground">Horizon Companion</span>
-      </div>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
 
       {/* Main Card */}
-      <Card className="relative w-full max-w-lg overflow-hidden border-none bg-white p-8 shadow-2xl shadow-blue-100/50 md:p-12">
+      <Card className="w-full max-w-lg overflow-hidden border-none bg-white/95  shadow-2xl shadow-blue-100/50 p-8 md:p-12">
         <CardContent className="flex flex-col items-center p-0 text-center">
           {/* Shield Icon */}
           <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 text-primary">
@@ -64,7 +55,7 @@ export default function VerifyOtpPage() {
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value, otp, setOtp)}
                 onKeyDown={(e) => handleOtpKeyDown(index, e.key, otp[index])}
-                className="h-14 w-12 border-none bg-slate-100 text-center text-xl font-bold focus-visible:ring-2 focus-visible:ring-primary/20 md:h-16 md:w-14"
+                className="h-14 w-12 border-none bg-slate-200 text-center text-xl font-bold focus-visible:ring-2 focus-visible:ring-primary/20 md:h-16 md:w-14"
               />
             ))}
           </div>
@@ -82,10 +73,14 @@ export default function VerifyOtpPage() {
           </Button>
 
           {/* Change Email */}
-          <Link href="/auth/signup" className="mb-8 flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="mb-8 flex items-center gap-2 text-sm font-bold text-primary hover:underline cursor-pointer bg-transparent border-none p-0"
+          >
             <AtSign className="h-4 w-4" />
             Change email address
-          </Link>
+          </button>
 
           {/* Help Line */}
           <div className="h-px w-32 bg-slate-100 mb-6"></div>

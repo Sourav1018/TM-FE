@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowRight, Mail } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import React from "react"
@@ -15,26 +14,14 @@ export default function LoginPage() {
 
   const handleLogin = () => {
     // Logic for login can be added here
-    router.push("/")
+    router.push("/auth/verify-otp")
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center p-4">
-      {/* Background Image */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/login-bg.png"
-          alt="Mountain Lake Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Soft overlay to ensure readability if needed, though the image is sunlit */}
-        <div className="absolute inset-0 bg-black/5" />
-      </div>
+    <div className="flex min-h-screen items-center justify-center bg-background p-4">
 
       {/* Login Card */}
-      <Card className="w-full max-w-md overflow-hidden border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-[2.5rem] p-8 md:p-12">
+      <Card className="w-full max-w-md overflow-hidden border-none bg-white/95  shadow-2xl shadow-blue-100/50 p-8 md:p-12">
         <CardContent className="flex flex-col items-center p-0">
           {/* Logo Section */}
           <div className="mb-6 flex flex-col items-center gap-4">
@@ -65,9 +52,9 @@ export default function LoginPage() {
             </div>
 
             {/* Submit Button */}
-            <Button 
-              type="button" 
-              onClick={handleLogin} 
+            <Button
+              type="button"
+              onClick={handleLogin}
               className="h-14 w-full bg-[#00658D] text-lg font-bold rounded-full hover:bg-[#005575] transition-all shadow-lg shadow-blue-900/10"
             >
               Sign In

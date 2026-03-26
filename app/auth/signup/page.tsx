@@ -10,9 +10,9 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 export default function SignupPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F8FAFC] p-4 md:p-8">
+    <div className="flex min-h-screen items-center justify-center bg-background p-4 md:p-8">
       {/* Main Container */}
-      <div className="flex w-full max-w-[1000px] overflow-hidden rounded-[2.5rem] bg-white shadow-2xl shadow-blue-100/50">
+      <div className="flex w-full max-w-250 overflow-hidden rounded-[2.5rem] bg-white shadow-2xl shadow-blue-100/50">
         
         {/* Left Side - Image & Branding */}
         <div className="relative hidden w-1/2 md:block">
@@ -27,7 +27,7 @@ export default function SignupPage() {
           <div className="absolute inset-0 flex flex-col p-12 text-white bg-black/10">
             {/* Logo Section */}
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD700]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
                 <div className="h-6 w-6 border-2 border-black rounded-full flex items-center justify-center">
                   <div className="h-2 w-2 bg-black rounded-full" />
                 </div>
@@ -41,7 +41,7 @@ export default function SignupPage() {
               <div className="space-y-4">
                 <h1 className="text-3xl md:text-4xl font-bold leading-tight text-white">
                   Your path to <br />
-                  <span className="text-[#FFD700]">unforgettable</span> moments.
+                  <span className="text-secondary">unforgettable</span> moments.
                 </h1>
                 <p className="text-base md:text-lg opacity-90 max-w-sm">
                   Join a community of curious explorers and let our sunlit path guide your next great adventure.
@@ -72,7 +72,7 @@ export default function SignupPage() {
         <div className="flex w-full flex-col p-8 md:w-1/2 md:p-12">
           {/* Header */}
           <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1D1B20]">Start Your Journey</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Start Your Journey</h2>
             <p className="mt-2 text-sm md:text-base text-slate-500">Create your free account to unlock exclusive experiences.</p>
           </div>
 
@@ -80,7 +80,7 @@ export default function SignupPage() {
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             {/* Email Address */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#1D1B20]">Email Address</label>
+              <label className="text-sm font-semibold text-foreground">Email Address</label>
               <div className="relative group">
                 <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
                 <Input
@@ -93,7 +93,7 @@ export default function SignupPage() {
 
             {/* Phone Number */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-[#1D1B20]">Phone Number</label>
+              <label className="text-sm font-semibold text-foreground">Phone Number</label>
               <div className="relative group">
                 <Smartphone className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
                 <Input
@@ -113,7 +113,7 @@ export default function SignupPage() {
             </div>
 
             {/* Submit Button */}
-            <Button className="h-14 w-full bg-[#00668F] text-lg font-bold hover:bg-[#005578]">
+            <Button className="h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90">
               Create Account
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -121,7 +121,7 @@ export default function SignupPage() {
             {/* Footer */}
             <p className="text-center text-slate-500">
               Already have an account?{" "}
-              <Link href="#" className="font-bold text-[#00668F] hover:underline">
+              <Link href="#" className="font-bold text-primary hover:underline">
                 Log in
               </Link>
             </p>
@@ -131,7 +131,7 @@ export default function SignupPage() {
 
       {/* Floating Help Button */}
       <div className="fixed bottom-8 right-8">
-        <Button className="h-12 gap-2 bg-[#FFD700] px-6 font-bold text-black shadow-lg shadow-yellow-200 hover:bg-[#FFC800]">
+        <Button className="h-12 gap-2 bg-secondary px-6 font-bold text-black shadow-lg shadow-yellow-200 hover:bg-secondary/90">
           <HelpCircle className="h-5 w-5" />
           Need help?
         </Button>

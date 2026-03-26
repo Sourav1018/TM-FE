@@ -92,7 +92,7 @@ export default function SignupPage() {
                 <Input
                   type="email"
                   placeholder="explorer@horizon.com"
-                  className="h-14 border-none bg-slate-100 pl-12 pr-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20"
+                  className="h-14 border-none bg-slate-100 pl-12 pr-4 text-sm md:text-base focus-visible:ring-2 focus-visible:ring-primary/20"
                 />
               </div>
             </div>
@@ -105,15 +105,15 @@ export default function SignupPage() {
                 <Input
                   type="tel"
                   placeholder="+1 (555) 000-0000"
-                  className="h-14 border-none bg-slate-100 pl-12 pr-4 text-base focus-visible:ring-2 focus-visible:ring-primary/20"
+                  className="h-14 border-none bg-slate-100 pl-12 pr-4 text-sm md:text-base focus-visible:ring-2 focus-visible:ring-primary/20"
                 />
               </div>
             </div>
 
             {/* Terms & Privacy */}
-            <div className="flex items-start lg:items-center gap-2">
-              <Checkbox id="terms" className="h-5 w-5 border-slate-300 accent-primary" />
-              <Label htmlFor="terms" className="text-sm text-slate-500">
+            <div className="flex items-start gap-3">
+              <Checkbox id="terms" className="mt-1 h-5 w-5 border-slate-300 accent-primary" />
+              <Label htmlFor="terms" className="text-sm leading-relaxed flex-wrap text-slate-500">
                 I agree to the <Link href="#" className="font-semibold text-primary underline-offset-4 hover:underline">Terms of Service</Link> and <Link href="#" className="font-semibold text-primary underline-offset-4 hover:underline">Privacy Policy</Link>.
               </Label>
             </div>

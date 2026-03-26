@@ -46,7 +46,7 @@ export default function LoginPage() {
                 <Input
                   type="email"
                   placeholder="name@example.com"
-                  className="h-14 border-none bg-slate-100 pl-14 pr-4 text-base rounded-2xl focus-visible:ring-2 focus-visible:ring-primary/20"
+                  className="h-14 border-none bg-slate-100 pl-14 pr-4 text-sm md:text-base focus-visible:ring-2 focus-visible:ring-primary/20"
                 />
               </div>
             </div>

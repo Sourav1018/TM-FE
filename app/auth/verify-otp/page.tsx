@@ -29,7 +29,7 @@ export default function VerifyOtpPage() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
 
       {/* Main Card */}
-      <Card className="w-full max-w-lg overflow-hidden border-none bg-white/95  shadow-2xl shadow-blue-100/50 p-8 md:p-12">
+      <Card className="w-full max-w-lg overflow-hidden border-none bg-white/95 shadow-2xl shadow-blue-100/50 p-6 md:p-12">
         <CardContent className="flex flex-col items-center p-0 text-center">
           {/* Shield Icon */}
           <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 text-primary">
@@ -55,7 +55,7 @@ export default function VerifyOtpPage() {
                 value={digit}
                 onChange={(e) => handleOtpChange(index, e.target.value, otp, setOtp)}
                 onKeyDown={(e) => handleOtpKeyDown(index, e.key, otp[index])}
-                className="h-14 w-12 border-none bg-slate-200 text-center text-xl font-bold focus-visible:ring-2 focus-visible:ring-primary/20 md:h-16 md:w-14"
+                className="max-[376px]:h-10 max-[376px]:w-8.5 h-12 sm:h-14 w-12 sm:w-14 border-none bg-slate-200 text-center text-sm sm:text-lg font-bold focus-visible:ring-2 focus-visible:ring-primary/20"
               />
             ))}
           </div>

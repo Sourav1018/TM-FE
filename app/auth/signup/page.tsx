@@ -1,5 +1,6 @@
 "use client"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -22,7 +23,7 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-background p-4 md:p-8">
       {/* Main Container */}
       <Card className="flex w-full max-w-250 overflow-hidden border-none bg-white shadow-2xl shadow-blue-100/50">
-        
+
         {/* Left Side - Image & Branding */}
         <div className="relative hidden w-1/2 md:block">
           <Image
@@ -61,14 +62,10 @@ export default function SignupPage() {
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
                   {[1, 2, 3].map((i) => (
-                    <div key={i} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-white bg-slate-200">
-                      <Image
-                        src={`https://i.pravatar.cc/100?u=${i + 10}`}
-                        alt="user"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                    <Avatar key={i} className="h-10 w-10 border-2 border-white">
+                      <AvatarImage src={`https://i.pravatar.cc/100?u=${i + 10}`} alt="user" />
+                      <AvatarFallback>U</AvatarFallback>
+                    </Avatar>
                   ))}
                 </div>
                 <p className="text-sm font-medium opacity-90">Joined by 12k+ travelers</p>

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 function Navbar() {
@@ -7,13 +8,21 @@ function Navbar() {
     <div className="flex items-center justify-between px-6 py-4 border-b bg-background">
 
       {/* Left: Logo */}
-      <h1 className="text-lg font-semibold">Sunlit Travels</h1>
+      <Link href="/" className="text-lg font-semibold">
+        Sunlit Travels
+      </Link>
 
       {/* Middle: Links */}
       <div className="flex gap-6 text-sm font-medium">
-        <span className="cursor-pointer hover:text-primary">Home</span>
-        <span className="cursor-pointer hover:text-primary">Packages</span>
-        <span className="cursor-pointer hover:text-primary">My Bookings</span>
+        <Link href="/" className="cursor-pointer hover:text-primary">
+          Home
+        </Link>
+        <Link href="/packages" className="cursor-pointer hover:text-primary">
+          Packages
+        </Link>
+        <Link href="/bookings" className="cursor-pointer hover:text-primary">
+          My Bookings
+        </Link>
       </div>
 
       {/* Right: Profile / Button */}

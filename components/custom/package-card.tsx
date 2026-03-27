@@ -86,7 +86,7 @@ export function PackageCard({
   return (
     <Card
       className={cn(
-        "group cursor-pointer overflow-hidden border-none bg-[#F7F9F9] shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-[2rem]",
+        "group cursor-pointer overflow-hidden border-none bg-background shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-[2rem]",
         className
       )}
       onClick={onClick}
@@ -107,7 +107,7 @@ export function PackageCard({
             <span
               className={cn(
                 "inline-flex items-center rounded-full px-4 py-2 text-[0.7rem] font-bold uppercase tracking-wider text-white shadow-lg",
-                badgeVariant === "blue" ? "bg-[#00AEEF]" : "bg-[#EA8C21]"
+                badgeVariant === "blue" ? "bg-primary-container" : "bg-tertiary"
               )}
             >
               {badge}
@@ -128,7 +128,7 @@ export function PackageCard({
       <div className="p-5 md:p-6">
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
-            <h3 className="text-lg font-bold tracking-tight text-[#191C1D]">
+            <h3 className="text-lg font-bold tracking-tight text-foreground">
               {title}
             </h3>
             {location && (
@@ -144,8 +144,8 @@ export function PackageCard({
           </div>
 
           {!isSimple && rating && (
-            <div className="flex items-center gap-1.5 font-bold shrink-0 bg-[#EA8C21]/10 text-[#EA8C21] px-2 py-1 rounded-lg">
-              <Star className="h-4 w-4 fill-[#EA8C21]" />
+            <div className="flex items-center gap-1.5 font-bold shrink-0 bg-tertiary/10 text-tertiary px-2 py-1 rounded-lg">
+              <Star className="h-4 w-4 fill-tertiary" />
               <span className="text-sm">{rating}</span>
             </div>
           )}
@@ -153,7 +153,7 @@ export function PackageCard({
 
         {/* Info Icons (Detailed Variant) */}
         {!isSimple && (
-          <div className="mt-3 flex flex-wrap items-center gap-4 text-xs font-semibold text-[#40484C]">
+          <div className="mt-3 flex flex-wrap items-center gap-4 text-xs font-semibold text-muted-foreground">
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5 opacity-70" />
               <span>{duration}</span>
@@ -167,20 +167,20 @@ export function PackageCard({
           </div>
         )}
 
-        {!isSimple && <div className="my-6 h-px w-full bg-[#C0C8CC]/30" />}
+        {!isSimple && <div className="my-6 h-px w-full bg-border/30" />}
 
         {/* Bottom Section: Pricing & Action */}
         <div className={cn("flex items-end justify-between", isSimple ? "mt-6" : "mt-2")}>
           <div className="flex flex-col">
-            <span className="mb-0.5 text-[0.7rem] font-medium text-[#40484C]">
+            <span className="mb-0.5 text-[0.7rem] font-medium text-muted-foreground">
               {priceLabel || (isSimple ? "Starts at" : "Starting from")}
             </span>
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-black text-[#00658D]">
+              <span className="text-2xl font-black text-primary">
                 {price}
               </span>
               {priceSuffix && (
-                <span className="text-[0.7rem] font-bold text-[#40484C]">
+                <span className="text-[0.7rem] font-bold text-muted-foreground">
                   {priceSuffix}
                 </span>
               )}
@@ -192,7 +192,7 @@ export function PackageCard({
               {isSimple && !actionLabel ? (
                 <Button
                   size="icon"
-                  className="h-12 w-12 rounded-full bg-[#E8ECEE] text-[#191C1D] hover:bg-[#DFE3E2]"
+                  className="h-12 w-12 rounded-full bg-muted text-foreground hover:bg-surface-container-highest"
                   onClick={onAction}
                 >
                   {actionIcon || <Plus className="h-6 w-6" />}
@@ -201,7 +201,7 @@ export function PackageCard({
                 <Button
                   className={cn(
                     "h-10 rounded-full font-bold transition-all duration-300 shadow-[0_8px_20px_rgba(0,174,239,0.25)]",
-                    isSimple ? "bg-[#E8ECEE] text-[#191C1D] hover:bg-[#DFE3E2] px-5 shadow-none text-sm" : "bg-[#00AEEF] px-6 text-base text-white hover:bg-[#009ED9]"
+                    isSimple ? "bg-muted text-foreground hover:bg-surface-container-highest px-5 shadow-none text-sm" : "bg-primary-container px-6 text-base text-white hover:bg-primary-container/90"
                   )}
                   onClick={onAction}
                 >

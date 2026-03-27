@@ -111,8 +111,8 @@ export default function SignupPage() {
             </div>
 
             {/* Terms & Privacy */}
-            <div className="flex items-start gap-3">
-              <Checkbox id="terms" className="mt-1 h-5 w-5 border-slate-300 accent-primary" />
+            <div className="flex items-start justify-start gap-3">
+              <Checkbox id="terms" className="my-0.5 h-5 w-5 border-slate-300 accent-primary" />
               <Label htmlFor="terms" className="text-sm leading-relaxed flex-wrap text-slate-500">
                 I agree to the <Link href="#" className="font-semibold text-primary underline-offset-4 hover:underline">Terms of Service</Link> and <Link href="#" className="font-semibold text-primary underline-offset-4 hover:underline">Privacy Policy</Link>.
               </Label>

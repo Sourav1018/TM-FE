@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Navbar } from "@/components/ui/navbar"
+import { Navbar } from "@/components/custom/navbar"
 import { PackageCard } from "@/components/custom/package-card"
 
 export default function ComponentsPage() {

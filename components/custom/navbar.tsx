@@ -1,6 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { CircleUser } from "lucide-react"
+import Link from "next/link"
 
 function Navbar() {
   return (
@@ -16,8 +17,10 @@ function Navbar() {
         <span className="cursor-pointer hover:text-primary">My Bookings</span>
       </div>
 
-      {/* Right: Profile / Button */}
-      <Button variant="primary">Login</Button>
+      {/* Right: Profile / Link */}
+      <Link href="#" className="p-2 rounded-full hover:bg-accent text-muted-foreground hover:text-foreground transition-all duration-200">
+        <CircleUser className="w-6 h-6" />
+      </Link>
 
     </div>
   )

@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/ui/navbar"
+import { Navbar } from "@/components/custom/navbar"
 
 import type { PackageDetailData } from "./data"
 import { PackageBookingSidebar } from "./package-booking-sidebar"

@@ -8,7 +8,7 @@ const tabs = [
 
 export function PackageDetailTabs() {
   return (
-    <div className="sticky top-0 z-40 flex gap-8 overflow-x-auto border-b border-border bg-background/95 backdrop-blur-sm">
+    <div className="sticky top-[73px] z-40 flex gap-8 overflow-x-auto border-b border-border bg-background/95 backdrop-blur-sm">
       {tabs.map((tab, index) => (
         <a
           key={tab.id}

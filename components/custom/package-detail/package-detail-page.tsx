@@ -16,9 +16,11 @@ interface PackageDetailPageProps {
 export function PackageDetailPage({ data }: PackageDetailPageProps) {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <div className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
+        <Navbar />
+      </div>
 
-      <main className="mx-auto max-w-7xl px-4 pb-12 pt-24 md:px-8">
+      <main className="mx-auto max-w-7xl px-4 pb-12 pt-8 md:px-8">
         <PackageDetailHero data={data} />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">

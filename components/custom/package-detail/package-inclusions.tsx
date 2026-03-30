@@ -1,8 +1,8 @@
 import { Check, X } from "lucide-react"
 
-import type { PackageListItem } from "./data"
+import type { PackageListItem } from "./types"
 
-interface PackageInclusionsProps {
+type PackageInclusionsProps = {
   inclusions: PackageListItem[]
   exclusions: PackageListItem[]
 }

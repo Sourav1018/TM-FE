@@ -7,7 +7,7 @@ import {
 } from "@/components/custom/package-detail/data"
 import { PackageDetailPage } from "@/components/custom/package-detail/package-detail-page"
 
-interface PackageDetailRouteProps {
+type PackageDetailRouteProps = {
   params: Promise<{
     slug: string
   }>

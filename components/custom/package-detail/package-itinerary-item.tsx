@@ -2,9 +2,9 @@ import { Check, Circle } from "lucide-react"
 
 import { Card } from "@/components/ui/card"
 
-import type { PackageItineraryDay } from "./data"
+import type { PackageItineraryDay } from "./types"
 
-interface PackageItineraryItemProps {
+type PackageItineraryItemProps = {
   item: PackageItineraryDay
   isLast: boolean
 }

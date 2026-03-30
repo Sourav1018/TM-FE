@@ -8,11 +8,11 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-import type { PackageDetailData } from "./data"
+import type { PackageDetailData } from "./types"
 import { BookingGuestStepper } from "./booking-guest-stepper"
 import { TrustBadge } from "./trust-badge"
 
-interface PackageBookingSidebarProps {
+type PackageBookingSidebarProps = {
   data: PackageDetailData
 }
 

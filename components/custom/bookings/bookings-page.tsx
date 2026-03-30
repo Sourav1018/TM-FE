@@ -1,8 +1,8 @@
-﻿"use client"
+"use client"
 
 import { useMemo, useState } from "react"
 
-import type { BookingCategory, BookingsPageData } from "./data"
+import type { BookingCategory, BookingsPageData } from "./types"
 import { BookingList } from "./booking-list"
 import { BookingsFooter } from "./bookings-footer"
 import { BookingsHeader } from "./bookings-header"
@@ -11,7 +11,7 @@ import { BookingsSidebar } from "./bookings-sidebar"
 import { BookingsTopNav } from "./bookings-top-nav"
 import { MobileBookingsNav } from "./mobile-bookings-nav"
 
-interface BookingsPageProps {
+type BookingsPageProps = {
   data: BookingsPageData
 }
 

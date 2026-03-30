@@ -2,13 +2,14 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { Heart, Star, Clock, Trees, Plus } from "lucide-react"
+import { Heart, Star, Clock, Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 
-interface PackageCardProps {
+type PackageCardProps = {
   title: string
   location?: string
   duration: string
@@ -19,7 +20,7 @@ interface PackageCardProps {
   badge?: string
   badgeVariant?: "blue" | "orange"
   rating?: number
-  category?: string
+  tags?: string[]
   isFavorite?: boolean
   variant?: "simple" | "detailed"
   onAction?: (e: React.MouseEvent) => void
@@ -59,6 +60,15 @@ function FavoriteButton({
   )
 }
 
+const getTagStyles = (tag: string) => {
+  const normalized = tag.toUpperCase()
+  if (normalized.includes("HIKING")) return "border-primary text-primary bg-white font-bold"
+  if (normalized.includes("MOUNTAIN")) return "border-muted-foreground text-muted-foreground bg-white font-bold"
+  if (normalized.includes("PHOTOGRAPHY") || normalized.includes("LUXURY")) return "border-tertiary text-tertiary bg-white font-bold"
+  if (normalized.includes("ADVENTURE") || normalized.includes("WILDLIFE")) return "border-primary-container text-primary-container bg-white font-bold"
+  return "border-border text-muted-foreground bg-white font-bold"
+}
+
 export function PackageCard({
   title,
   location,
@@ -70,7 +80,7 @@ export function PackageCard({
   badge,
   badgeVariant = "blue",
   rating,
-  category,
+  tags,
   isFavorite,
   variant = "simple",
   onAction,
@@ -129,7 +139,7 @@ export function PackageCard({
       <div className="p-5 md:p-6">
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
-            <h3 className="text-lg font-bold tracking-tight text-foreground">
+            <h3 className="text-lg font-bold tracking-tight text-foreground leading-tight">
               {title}
             </h3>
             {location && (
@@ -154,15 +164,28 @@ export function PackageCard({
 
         {/* Info Icons (Detailed Variant) */}
         {!isSimple && (
-          <div className="mt-3 flex flex-wrap items-center gap-4 text-xs font-semibold text-muted-foreground">
-            <div className="flex items-center gap-2">
+          <div className="mt-4 space-y-4">
+            {/* Duration Row */}
+            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
               <Clock className="h-5 w-5 opacity-70" />
               <span>{duration}</span>
             </div>
-            {category && (
-              <div className="flex items-center gap-2">
-                <Trees className="h-5 w-5 opacity-70" />
-                <span>{category}</span>
+            
+            {/* Tags Row */}
+            {tags && tags.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2">
+                {tags.map((tag: string) => (
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className={cn(
+                      "px-4 py-1.5 text-[0.75rem] transition-all duration-300 hover:shadow-sm",
+                      getTagStyles(tag)
+                    )}
+                  >
+                    {tag}
+                  </Badge>
+                ))}
               </div>
             )}
           </div>

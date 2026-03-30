@@ -39,7 +39,7 @@ export default function ComponentsPage() {
               title="Swiss Alps Explorer"
               location="Switzerland"
               duration="7 Days"
-              category="Adventure"
+              tags={["HIKING", "MOUNTAIN", "PHOTOGRAPHY"]}
               price="$1,850"
               priceSuffix="/person"
               priceLabel="Starting from"
@@ -102,9 +102,9 @@ export default function ComponentsPage() {
         <div className="flex flex-col gap-6">
           <h2 className="text-3xl font-bold text-[#1D1B20]">Badges</h2>
           <div className="flex gap-3 items-center">
-            <Badge status="confirmed" className="rounded-full px-4 py-1" />
-            <Badge status="pending" className="rounded-full px-4 py-1" />
-            <Badge status="cancelled" className="rounded-full px-4 py-1" />
+            <Badge variant="confirmed" className="px-4 py-1">Confirmed</Badge>
+            <Badge variant="pending" className="px-4 py-1">Pending</Badge>
+            <Badge variant="cancelled" className="px-4 py-1">Cancelled</Badge>
           </div>
         </div>
 

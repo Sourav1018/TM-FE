@@ -1,7 +1,7 @@
-import type { PackageDetailData } from "./data"
+import type { PackageDetailData } from "./types"
 import { PackageFactCard } from "./package-fact-card"
 
-interface PackageOverviewProps {
+type PackageOverviewProps = {
   data: PackageDetailData
 }
 

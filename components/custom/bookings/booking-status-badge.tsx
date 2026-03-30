@@ -1,8 +1,8 @@
-﻿import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
-import type { BookingStatus } from "./data"
+import type { BookingStatus } from "./types"
 
-interface BookingStatusBadgeProps {
+type BookingStatusBadgeProps = {
   status: BookingStatus
 }
 

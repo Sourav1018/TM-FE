@@ -1,9 +1,9 @@
-﻿import { Compass } from "lucide-react"
+import { Compass } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-interface BookingEmptyStateProps {
+type BookingEmptyStateProps = {
   title: string
   description: string
 }

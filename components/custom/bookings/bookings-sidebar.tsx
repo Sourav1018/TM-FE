@@ -1,10 +1,10 @@
-﻿import { CalendarDays, CircleX, History } from "lucide-react"
+import { CalendarDays, CircleX, History } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import type { BookingCategory, BookingNavItem } from "./data"
+import type { BookingCategory, BookingNavItem } from "./types"
 
-interface BookingsSidebarProps {
+type BookingsSidebarProps = {
   items: BookingNavItem[]
   activeCategory: BookingCategory
   onCategoryChange: (value: BookingCategory) => void

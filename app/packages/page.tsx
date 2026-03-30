@@ -82,7 +82,7 @@ export default function Page() {
     <div className="min-h-screen bg-surface text-on-surface">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-8">
+      <main className="mx-auto container px-4 pt-20 pb-20 md:px-8">
         <section className="mb-12">
           <div className="relative flex min-h-[300px] items-center justify-center overflow-hidden rounded-xl bg-primary p-8">
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-90" />

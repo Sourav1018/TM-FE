@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Heart, Star, Clock, Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { getTagStyles } from "@/utils"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -58,15 +59,6 @@ function FavoriteButton({
       />
     </button>
   )
-}
-
-const getTagStyles = (tag: string) => {
-  const normalized = tag.toUpperCase()
-  if (normalized.includes("HIKING")) return "border-primary text-primary bg-white font-bold"
-  if (normalized.includes("MOUNTAIN")) return "border-muted-foreground text-muted-foreground bg-white font-bold"
-  if (normalized.includes("PHOTOGRAPHY") || normalized.includes("LUXURY")) return "border-tertiary text-tertiary bg-white font-bold"
-  if (normalized.includes("ADVENTURE") || normalized.includes("WILDLIFE")) return "border-primary-container text-primary-container bg-white font-bold"
-  return "border-border text-muted-foreground bg-white font-bold"
 }
 
 export function PackageCard({

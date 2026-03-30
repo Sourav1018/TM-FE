@@ -9,6 +9,13 @@ import { PackageCard } from "@/components/custom/package-card/package-card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { packageCards, HERO_IMAGE, CATEGORIES } from "@/mock/packages"
 import {
   Calendar,
@@ -30,6 +37,13 @@ export default function Page() {
   const [minPrice] = useState(500)
   const [maxPrice, setMaxPrice] = useState(5000)
   const [duration, setDuration] = useState("")
+
+  const SORT_OPTIONS = [
+    { value: "recommended", label: "Recommended" },
+    { value: "price-low", label: "Price: Low to High" },
+    { value: "price-high", label: "Price: High to Low" },
+    { value: "rated", label: "Top Rated" },
+  ]
 
   const filtered = useMemo(() => {
     const result = packageCards.filter((pkg) => {
@@ -250,20 +264,23 @@ export default function Page() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 rounded-full border border-outline-variant/20 bg-surface-container-low px-4 py-2">
-                <span className="text-xs font-bold text-outline">Sort by:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  title="Sort packages by"
-                  className="cursor-pointer bg-transparent p-0 pr-8 text-sm font-semibold outline-none"
-                >
-                  <option value="recommended">Recommended</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rated">Top Rated</option>
-                </select>
-              </div>
+              <Select value={sortBy} onValueChange={(val) => val && setSortBy(val)}>
+                <SelectTrigger className="rounded-full border-outline-variant/20 bg-surface-container-low px-4 h-auto py-2 border font-semibold group/trigger">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-bold text-outline">Sort by:</span>
+                    <SelectValue>
+                      {SORT_OPTIONS.find((opt) => opt.value === sortBy)?.label}
+                    </SelectValue>
+                  </div>
+                </SelectTrigger>
+                <SelectContent className="rounded-2xl p-2 min-w-[200px]" align="end">
+                  {SORT_OPTIONS.map((opt) => (
+                    <SelectItem key={opt.value} value={opt.value} className="rounded-xl px-4 py-2.5">
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-2">
@@ -299,8 +316,8 @@ export default function Page() {
                 <button
                   key={page}
                   className={`flex h-10 w-10 items-center justify-center rounded-full font-bold transition-colors ${page === 1
-                      ? "bg-primary text-on-primary"
-                      : "hover:bg-surface-container"
+                    ? "bg-primary text-on-primary"
+                    : "hover:bg-surface-container"
                     }`}
                 >
                   {page}

@@ -5,7 +5,7 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/custom/navbar"
-import { PackageCard } from "@/components/custom/package-card"
+import { PackageCard, PackageCardSkeleton } from "@/components/custom/package-card"
 
 export default function ComponentsPage() {
   return (
@@ -27,7 +27,7 @@ export default function ComponentsPage() {
               location="Greece"
               duration="7 Days / 6 Nights"
               price="$1,250"
-              image="/home/tushar/.gemini/antigravity/brain/71dee494-f3fb-4077-94af-46cc65765ac0/santorini_landscape_1774419762693.png"
+              image="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&q=80&w=800"
               badge="BEST SELLER"
               badgeVariant="blue"
               variant="simple"
@@ -43,7 +43,7 @@ export default function ComponentsPage() {
               price="$1,850"
               priceSuffix="/person"
               priceLabel="Starting from"
-              image="/home/tushar/.gemini/antigravity/brain/71dee494-f3fb-4077-94af-46cc65765ac0/santorini_landscape_1774419762693.png"
+              image="https://images.unsplash.com/photo-1531310197839-ccf54634509e?auto=format&fit=crop&q=80&w=800"
               badge="BEST SELLER"
               badgeVariant="orange"
               rating={4.9}
@@ -105,6 +105,17 @@ export default function ComponentsPage() {
             <Badge variant="confirmed" className="px-4 py-1">Confirmed</Badge>
             <Badge variant="pending" className="px-4 py-1">Pending</Badge>
             <Badge variant="cancelled" className="px-4 py-1">Cancelled</Badge>
+          </div>
+        </div>
+
+        {/* Skeleton Section */}
+        <div className="flex flex-col gap-6">
+          <h2 className="text-3xl font-bold text-[#1D1B20]">Skeleton Loaders</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <p className="text-sm font-medium text-muted-foreground">Package Card Skeleton</p>
+              <PackageCardSkeleton className="w-[380px]" />
+            </div>
           </div>
         </div>
 

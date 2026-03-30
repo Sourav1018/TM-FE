@@ -40,6 +40,7 @@ function FavoriteButton({
   const [isFavorite, setIsFavorite] = React.useState(initialFavorite)
   return (
     <button
+      aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
       className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all hover:bg-white/40 group/heart"
       onClick={(e) => {
         e.stopPropagation()

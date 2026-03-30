@@ -60,7 +60,7 @@ export function PackageCard({
   return (
     <Card
       className={cn(
-        "group cursor-pointer overflow-hidden border-none bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-[2rem]",
+        "group cursor-pointer overflow-hidden border-none bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl flex flex-col h-full",
         className
       )}
       onClick={onClick}
@@ -99,7 +99,8 @@ export function PackageCard({
       </div>
 
       {/* Content Area */}
-      <div className="p-5 md:p-6">
+      <div className="p-5 md:p-6 flex flex-col flex-1">
+        <div className="flex-1">
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
             <h3 className="text-lg font-bold tracking-tight text-foreground leading-tight">
@@ -154,10 +155,11 @@ export function PackageCard({
           </div>
         )}
 
+        </div>
         {!isSimple && <div className="my-6 h-px w-full bg-border/30" />}
 
         {/* Bottom Section: Pricing & Action */}
-        <div className={cn("flex items-end justify-between", isSimple ? "mt-6" : "mt-2")}>
+        <div className={cn("flex items-end justify-between mt-auto", isSimple ? "pt-6" : "pt-2")}>
           <div className="flex flex-col">
             <span className="mb-0.5 text-[0.7rem] font-medium text-muted-foreground">
               {priceLabel || (isSimple ? "Starts at" : "Starting from")}
@@ -179,7 +181,7 @@ export function PackageCard({
               {isSimple && !actionLabel ? (
                 <Button
                   size="icon"
-                  className="h-12 w-12 rounded-full bg-muted text-foreground hover:bg-surface-container-highest"
+                  className="h-12 w-12 rounded-full bg-muted text-foreground hover:bg-surface-container-highest transition-all active:scale-95"
                   onClick={onAction}
                 >
                   {actionIcon || <Plus className="h-6 w-6" />}
@@ -187,8 +189,8 @@ export function PackageCard({
               ) : (
                 <Button
                   className={cn(
-                    "h-10 rounded-full font-bold transition-all duration-300 shadow-[0_8px_20px_rgba(0,174,239,0.25)]",
-                    isSimple ? "bg-muted text-foreground hover:bg-surface-container-highest px-5 shadow-none text-sm" : "bg-primary-container px-6 text-base text-white hover:bg-primary-container/90"
+                    "h-10 rounded-full font-bold transition-all duration-300 shadow-[0_8px_20px_rgba(0,174,239,0.25)] active:scale-95",
+                    isSimple ? "bg-muted text-foreground hover:bg-surface-container-highest px-5 shadow-none text-sm" : "bg-primary-container px-6 text-base text-white hover:bg-primary-container/90 active:bg-primary"
                   )}
                   onClick={onAction}
                 >

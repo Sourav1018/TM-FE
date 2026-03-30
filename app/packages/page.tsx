@@ -2,41 +2,28 @@
 
 import Image from "next/image"
 import { useMemo, useState } from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { format } from "date-fns"
 import { Navbar } from "@/components/custom/navbar"
+import { PackageCard } from "@/components/custom/package-card/package-card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Calendar as CalendarComponent } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { packageCards, HERO_IMAGE, CATEGORIES } from "@/mock/packages"
 import {
-  Activity,
   Calendar,
   ChevronLeft,
   ChevronRight,
-  Clock,
-  Heart,
   MapPin,
   Minus,
   Plus,
-  Star,
   Users,
 } from "lucide-react"
 
-const categoryIcon = (category: string) => {
-  switch (category) {
-    case "Adventure":
-      return <Activity size={14} />
-    case "Luxury":
-      return <Star size={14} className="fill-current" />
-    case "Culture":
-      return <MapPin size={14} />
-    case "Wildlife":
-      return <Users size={14} />
-    default:
-      return <Activity size={14} />
-  }
-}
-
 export default function Page() {
+  const router = useRouter()
   const [search, setSearch] = useState("")
-  const [selectedDate, setSelectedDate] = useState("")
+  const [selectedDate, setSelectedDate] = useState<Date>()
   const [guests, setGuests] = useState(2)
   const [sortBy, setSortBy] = useState("recommended")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -121,14 +108,23 @@ export default function Page() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-outline">
                       When?
                     </span>
-                    <input
-                      value={selectedDate}
-                      onChange={(e) => setSelectedDate(e.target.value)}
-                      min={new Date().toISOString().split("T")[0]}
-                      type="date"
-                      title="Select travel date"
-                      className="w-full border-none bg-transparent p-0 font-medium text-on-surface outline-none"
-                    />
+                    <Popover>
+                      <PopoverTrigger className="w-full text-left font-medium text-on-surface outline-none">
+                        {selectedDate ? (
+                          format(selectedDate, "MMM d, yyyy")
+                        ) : (
+                          <span className="text-outline-variant">Select date...</span>
+                        )}
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <CalendarComponent
+                          mode="single"
+                          selected={selectedDate}
+                          onSelect={setSelectedDate}
+                          disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                        />
+                      </PopoverContent>
+                    </Popover>
                   </div>
                 </div>
 
@@ -190,11 +186,9 @@ export default function Page() {
                 <div className="space-y-3">
                   {CATEGORIES.map((category) => (
                     <label key={category} className="group flex cursor-pointer items-center gap-3">
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         checked={selectedCategories.includes(category)}
-                        onChange={() => toggleCategory(category)}
-                        className="h-5 w-5 rounded border-outline-variant text-primary"
+                        onCheckedChange={() => toggleCategory(category)}
                       />
                       <span className="text-on-surface-variant transition-colors group-hover:text-on-surface">
                         {category}
@@ -229,11 +223,9 @@ export default function Page() {
                 <div className="space-y-3">
                   {["1-3", "4-7", "8-14"].map((value) => (
                     <label key={value} className="group flex cursor-pointer items-center gap-3">
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         checked={duration === value}
-                        onChange={() => setDuration(duration === value ? "" : value)}
-                        className="h-5 w-5 rounded border-outline-variant text-primary"
+                        onCheckedChange={() => setDuration(duration === value ? "" : value)}
                       />
                       <span className="text-on-surface-variant transition-colors group-hover:text-on-surface">
                         {value.replace("-", " - ")} Days
@@ -276,78 +268,21 @@ export default function Page() {
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-2">
               {filtered.map((pkg) => (
-                <Link
-                  key={pkg.id}
-                  className="group block overflow-hidden rounded-lg border border-outline-variant/10 bg-surface-container-lowest transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/5"
-                  href={`/packages/${pkg.slug}`}
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={pkg.image}
-                      alt={pkg.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-
-                    {pkg.badge && (
-                      <div
-                        className={`absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-md ${
-                          pkg.badge === "Best Seller" ? "bg-tertiary-container" : "bg-primary"
-                        }`}
-                      >
-                        {pkg.badge}
-                      </div>
-                    )}
-
-                    <button
-                      type="button"
-                      aria-label="Add to favorites"
-                      className="absolute top-4 right-4 rounded-full bg-white/30 p-2 text-white backdrop-blur-md transition-colors hover:bg-white/50"
-                    >
-                      <Heart size={20} />
-                    </button>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="mb-2 flex items-start justify-between">
-                      <h3 className="pr-2 text-xl font-bold transition-colors group-hover:text-primary">
-                        {pkg.title}
-                      </h3>
-                      <div className="flex items-center gap-1 text-secondary">
-                        <Star size={14} className="fill-secondary" />
-                        <span className="text-sm font-bold text-on-surface">{pkg.rating}</span>
-                      </div>
-                    </div>
-
-                    <p className="mb-4 flex items-center gap-1 text-sm text-on-surface-variant">
-                      <MapPin size={14} />
-                      {pkg.location}
-                    </p>
-
-                    <div className="mb-4 flex items-center gap-4">
-                      <span className="flex items-center gap-1 text-xs font-medium text-on-surface-variant">
-                        <Clock size={14} /> {pkg.duration} Days
-                      </span>
-                      <span className="flex items-center gap-1 text-xs font-medium text-on-surface-variant">
-                        {categoryIcon(pkg.category)} {pkg.category}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center justify-between border-t border-surface-container pt-4">
-                      <div>
-                        <span className="text-xs font-medium text-outline">Starting from</span>
-                        <div className="text-2xl font-extrabold text-primary">
-                          ${pkg.price.toLocaleString()}
-                          <span className="text-xs font-normal text-outline">/person</span>
-                        </div>
-                      </div>
-                      <span className="inline-block rounded-full bg-primary-container px-6 py-2.5 font-bold text-on-primary-container transition-all group-hover:bg-primary group-hover:text-white">
-                        Details
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+                <div key={pkg.id} className="h-full">
+                  <PackageCard
+                    title={pkg.title}
+                    location={pkg.location}
+                    duration={`${pkg.duration} Days`}
+                    price={`$${pkg.price.toLocaleString()}`}
+                    image={pkg.image}
+                    badge={pkg.badge}
+                    badgeVariant={pkg.badge === "Best Seller" ? "orange" : "blue"}
+                    rating={pkg.rating}
+                    tags={Array.from(new Set([pkg.category, ...pkg.tags.map(t => t.charAt(0) + t.slice(1).toLowerCase())]))}
+                    variant="detailed"
+                    onAction={() => router.push(`/packages/${pkg.slug}`)}
+                  />
+                </div>
               ))}
             </div>
 
@@ -363,11 +298,10 @@ export default function Page() {
               {[1, 2, 3].map((page) => (
                 <button
                   key={page}
-                  className={`flex h-10 w-10 items-center justify-center rounded-full font-bold transition-colors ${
-                    page === 1
+                  className={`flex h-10 w-10 items-center justify-center rounded-full font-bold transition-colors ${page === 1
                       ? "bg-primary text-on-primary"
                       : "hover:bg-surface-container"
-                  }`}
+                    }`}
                 >
                   {page}
                 </button>

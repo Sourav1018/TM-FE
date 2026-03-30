@@ -2,13 +2,15 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { Heart, Star, Clock, Trees, Plus } from "lucide-react"
+import { Star, Clock, Plus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { getTagStyles } from "@/utils"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-
-interface PackageCardProps {
+import { Badge } from "@/components/ui/badge"
+import { FavoriteButton } from "./favorite-button"
+export type PackageCardProps = {
   title: string
   location?: string
   duration: string
@@ -19,7 +21,7 @@ interface PackageCardProps {
   badge?: string
   badgeVariant?: "blue" | "orange"
   rating?: number
-  category?: string
+  tags?: string[]
   isFavorite?: boolean
   variant?: "simple" | "detailed"
   onAction?: (e: React.MouseEvent) => void
@@ -28,35 +30,6 @@ interface PackageCardProps {
   showActionButton?: boolean
   actionIcon?: React.ReactNode
   actionLabel?: string
-}
-
-function FavoriteButton({
-  initialFavorite,
-  onToggle
-}: {
-  initialFavorite?: boolean
-  onToggle?: (isFavorite: boolean) => void
-}) {
-  const [isFavorite, setIsFavorite] = React.useState(initialFavorite)
-  return (
-    <button
-      aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-      className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all hover:bg-white/40 group/heart"
-      onClick={(e) => {
-        e.stopPropagation()
-        const newFavorite = !isFavorite
-        setIsFavorite(newFavorite)
-        onToggle?.(newFavorite)
-      }}
-    >
-      <Heart
-        className={cn(
-          "h-6 w-6 transition-all duration-300",
-          isFavorite ? "fill-red-500 text-red-500 scale-110" : "text-white"
-        )}
-      />
-    </button>
-  )
 }
 
 export function PackageCard({
@@ -70,7 +43,7 @@ export function PackageCard({
   badge,
   badgeVariant = "blue",
   rating,
-  category,
+  tags,
   isFavorite,
   variant = "simple",
   onAction,
@@ -87,14 +60,14 @@ export function PackageCard({
   return (
     <Card
       className={cn(
-        "group cursor-pointer overflow-hidden border-none bg-background shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-[2rem]",
+        "group cursor-pointer overflow-hidden border-none bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-[2rem]",
         className
       )}
       onClick={onClick}
       {...props}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] m-0">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none m-0">
         <Image
           src={image}
           alt={title}
@@ -129,7 +102,7 @@ export function PackageCard({
       <div className="p-5 md:p-6">
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
-            <h3 className="text-lg font-bold tracking-tight text-foreground">
+            <h3 className="text-lg font-bold tracking-tight text-foreground leading-tight">
               {title}
             </h3>
             {location && (
@@ -154,15 +127,28 @@ export function PackageCard({
 
         {/* Info Icons (Detailed Variant) */}
         {!isSimple && (
-          <div className="mt-3 flex flex-wrap items-center gap-4 text-xs font-semibold text-muted-foreground">
-            <div className="flex items-center gap-2">
+          <div className="mt-4 space-y-4">
+            {/* Duration Row */}
+            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
               <Clock className="h-5 w-5 opacity-70" />
               <span>{duration}</span>
             </div>
-            {category && (
-              <div className="flex items-center gap-2">
-                <Trees className="h-5 w-5 opacity-70" />
-                <span>{category}</span>
+            
+            {/* Tags Row */}
+            {tags && tags.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2">
+                {tags.map((tag: string) => (
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className={cn(
+                      "px-4 py-1.5 text-[0.75rem] transition-all duration-300 hover:shadow-sm",
+                      getTagStyles(tag)
+                    )}
+                  >
+                    {tag}
+                  </Badge>
+                ))}
               </div>
             )}
           </div>

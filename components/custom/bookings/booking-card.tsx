@@ -1,4 +1,4 @@
-﻿import Image from "next/image"
+import Image from "next/image"
 import { CalendarDays, ChevronRight, RefreshCw } from "lucide-react"
 
 import {
@@ -11,10 +11,10 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
-import type { BookingItem } from "./data"
+import type { BookingItem } from "./types"
 import { BookingStatusBadge } from "./booking-status-badge"
 
-interface BookingCardProps {
+type BookingCardProps = {
   booking: BookingItem
 }
 

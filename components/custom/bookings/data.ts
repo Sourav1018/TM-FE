@@ -1,49 +1,4 @@
-﻿export type BookingStatus = "confirmed" | "pending" | "cancelled"
-export type BookingCategory = "upcoming" | "past" | "cancelled"
-
-export interface BookingTraveler {
-  id: string
-  name: string
-  avatar: string
-}
-
-export interface BookingItem {
-  id: string
-  label: string
-  packageName: string
-  dateRange: string
-  status: BookingStatus
-  category: BookingCategory
-  travelers: BookingTraveler[]
-  travelerLabel: string
-  image: string
-  imageAlt: string
-  actionLabel: string
-  actionVariant: "link" | "primary" | "muted"
-  refundNote?: string
-}
-
-export interface BookingNavItem {
-  id: BookingCategory
-  label: string
-  count: number
-}
-
-export interface BookingPromoCard {
-  id: string
-  title: string
-  description: string
-  actionLabel: string
-  tone: "primary" | "secondary"
-}
-
-export interface BookingsPageData {
-  title: string
-  description: string
-  navItems: BookingNavItem[]
-  bookings: BookingItem[]
-  promos: BookingPromoCard[]
-}
+import { type BookingsPageData } from "./types"
 
 export const bookingsPageData: BookingsPageData = {
   title: "My Bookings",
@@ -141,4 +96,3 @@ export const bookingsPageData: BookingsPageData = {
     },
   ],
 }
-

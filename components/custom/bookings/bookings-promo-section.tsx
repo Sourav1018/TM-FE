@@ -1,9 +1,9 @@
-﻿import { ArrowRight, CircleHelp, Compass } from "lucide-react"
+import { ArrowRight, CircleHelp, Compass } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-interface BookingsPromoSectionProps {
+type BookingsPromoSectionProps = {
   items: {
     id: string
     title: string

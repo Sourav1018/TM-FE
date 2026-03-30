@@ -1,4 +1,4 @@
-﻿interface BookingsHeaderProps {
+type BookingsHeaderProps = {
   title: string
   description: string
 }

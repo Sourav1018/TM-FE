@@ -2,9 +2,9 @@ import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
-import type { PackageGalleryImage } from "./data"
+import type { PackageGalleryImage } from "./types"
 
-interface PackageHeroGalleryCardProps {
+type PackageHeroGalleryCardProps = {
   image: PackageGalleryImage
   className?: string
   showOverlay?: boolean

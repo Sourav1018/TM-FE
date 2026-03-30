@@ -4,7 +4,7 @@ import { Minus, Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
-interface BookingGuestStepperProps {
+type BookingGuestStepperProps = {
   guests: number
   onGuestsChange: (value: number) => void
 }

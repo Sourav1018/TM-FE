@@ -1,8 +1,8 @@
-﻿import type { BookingItem } from "./data"
+import type { BookingItem } from "./types"
 import { BookingCard } from "./booking-card"
 import { BookingEmptyState } from "./booking-empty-state"
 
-interface BookingListProps {
+type BookingListProps = {
   bookings: BookingItem[]
 }
 

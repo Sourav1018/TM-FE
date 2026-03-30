@@ -1,94 +1,9 @@
-export interface PackageGalleryImage {
-  id: string
-  src: string
-  alt: string
-  title?: string
-  featured?: boolean
-}
-
-export interface PackageQuickFact {
-  id: string
-  label: string
-  value: string
-  icon: "calendar" | "users" | "activity" | "globe"
-}
-
-export interface PackageItineraryDay {
-  day: number
-  title: string
-  description: string
-  highlights: string[]
-  isActive?: boolean
-}
-
-export interface PackageListItem {
-  id: string
-  label: string
-}
-
-export interface PackageMapStop {
-  id: string
-  label: string
-  description: string
-  topClassName: string
-  leftClassName: string
-  tone?: "primary" | "tertiary"
-}
-
-export interface PackagePricingLine {
-  id: string
-  label: string
-  value: string
-}
-
-export interface PackageTrustBadge {
-  id: string
-  label: string
-  icon: "shield" | "badge"
-  tone: "warning" | "info"
-}
-
-export interface PackageDetailData {
-  slug: string
-  title: string
-  location: string
-  category: string
-  rating: number
-  reviewCount: number
-  badge: string
-  description: string
-  duration: string
-  groupSize: string
-  activityLevel: string
-  language: string
-  pricePerPerson: number
-  savingsLabel: string
-  cancellationPolicy: string
-  defaultTravelDate: string
-  defaultGuests: number
-  gallery: PackageGalleryImage[]
-  quickFacts: PackageQuickFact[]
-  itinerary: PackageItineraryDay[]
-  inclusions: PackageListItem[]
-  exclusions: PackageListItem[]
-  mapStops: PackageMapStop[]
-  pricingLines: PackagePricingLine[]
-  trustBadges: PackageTrustBadge[]
-}
-
-export interface PackageCardData {
-  id: number
-  slug: string
-  title: string
-  location: string
-  category: string
-  price: number
-  duration: number
-  image: string
-  badge?: string
-  rating?: number
-  description: string
-}
+import {
+  type PackagePricingLine,
+  type PackageTrustBadge,
+  type PackageDetailData,
+  type PackageCardData,
+} from "./types"
 
 const trustBadges: PackageTrustBadge[] = [
   { id: "secure", label: "Secure Booking", icon: "shield", tone: "warning" },
@@ -109,7 +24,7 @@ const packageDetailCollection: PackageDetailData[] = [
     slug: "algarve-coastal-escape",
     title: "Algarve Coastal Escape",
     location: "Portugal, Faro District",
-    category: "Culture",
+    tags: ["CULTURE", "COASTAL", "RELAX"],
     rating: 4.9,
     reviewCount: 124,
     badge: "Best Seller",
@@ -216,7 +131,7 @@ const packageDetailCollection: PackageDetailData[] = [
     slug: "swiss-alps-explorer",
     title: "Swiss Alps Explorer",
     location: "Switzerland, Interlaken",
-    category: "Adventure",
+    tags: ["HIKING", "MOUNTAIN", "PHOTOGRAPHY"],
     rating: 4.9,
     reviewCount: 98,
     badge: "Best Seller",
@@ -322,7 +237,7 @@ const packageDetailCollection: PackageDetailData[] = [
     slug: "bali-retreat",
     title: "Bali Serenity Retreat",
     location: "Indonesia, Ubud & Uluwatu",
-    category: "Luxury",
+    tags: ["LUXURY", "WELLNESS", "BEACH"],
     rating: 5,
     reviewCount: 76,
     badge: "New",
@@ -428,7 +343,7 @@ const packageDetailCollection: PackageDetailData[] = [
     slug: "kenyan-safari-adventure",
     title: "Kenyan Safari Adventure",
     location: "Kenya, Maasai Mara",
-    category: "Wildlife",
+    tags: ["WILDLIFE", "SAFARI", "ADVENTURE"],
     rating: 4.9,
     reviewCount: 89,
     badge: "Best Seller",
@@ -539,7 +454,7 @@ export const packageCards: PackageCardData[] = packageDetailCollection.map((pkg,
   slug: pkg.slug,
   title: pkg.title,
   location: pkg.location.split(",")[0],
-  category: pkg.category,
+  tags: pkg.tags,
   price: pkg.pricePerPerson,
   duration: Number.parseInt(pkg.duration, 10),
   image: pkg.gallery[0].src,

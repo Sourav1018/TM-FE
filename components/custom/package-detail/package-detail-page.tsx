@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/custom/navbar"
 
-import type { PackageDetailData } from "./data"
+import type { PackageDetailData } from "./types"
 import { PackageBookingSidebar } from "./package-booking-sidebar"
 import { PackageDetailHero } from "./package-detail-hero"
 import { PackageDetailTabs } from "./package-detail-tabs"
@@ -9,7 +9,7 @@ import { PackageItinerary } from "./package-itinerary"
 import { PackageOverview } from "./package-overview"
 import { PackageRouteMap } from "./package-route-map"
 
-interface PackageDetailPageProps {
+type PackageDetailPageProps = {
   data: PackageDetailData
 }
 

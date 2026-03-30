@@ -74,6 +74,7 @@ export type PackageDetailData = {
   mapStops: PackageMapStop[]
   pricingLines: PackagePricingLine[]
   trustBadges: PackageTrustBadge[]
+  category: string
 }
 
 export type PackageCardData = {
@@ -88,4 +89,5 @@ export type PackageCardData = {
   badge?: string
   rating?: number
   description: string
+  category: string
 }

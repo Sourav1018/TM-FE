@@ -1,4 +1,4 @@
-import { type BookingsPageData } from "./types"
+import { type BookingsPageData } from "@/components/sections/bookings/types"
 
 export const bookingsPageData: BookingsPageData = {
   title: "My Bookings",

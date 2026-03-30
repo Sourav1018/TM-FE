@@ -3,7 +3,12 @@ import {
   type PackageTrustBadge,
   type PackageDetailData,
   type PackageCardData,
-} from "./types"
+} from "@/components/sections/package-detail/types"
+
+export const HERO_IMAGE =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDjZqgqG3IYsqoEkT1qtxDJdEnC7b4j10sJ4dLGdNB_PoQiXW6N8JKBljGzoePHxrBRYyRm_n-ApoUuXMYPJ7u438RTQpfdsiB4fbu8a3GgcEo-RncTjgIQtUhkD3fco_gCw5vtrpRad4fpVcgtlbLgKrzP3BRrql1Wduy12M3WYUD4UVusqkO83-_Tr-0QJ-xWk8FoUpFJIboC5qYNgRUCzLYP-X0p1yQlwZZvBXsMMIgqGQiwjXfULcfav1XSf1H3bUvQZJBfrsE"
+
+export const CATEGORIES = ["Adventure", "Family", "Luxury", "Eco-Friendly"]
 
 const trustBadges: PackageTrustBadge[] = [
   { id: "secure", label: "Secure Booking", icon: "shield", tone: "warning" },
@@ -126,6 +131,7 @@ const packageDetailCollection: PackageDetailData[] = [
       { id: "vip", label: "Airport VIP Service", value: "Included" },
     ]),
     trustBadges,
+    category: "Luxury",
   },
   {
     slug: "swiss-alps-explorer",
@@ -232,6 +238,7 @@ const packageDetailCollection: PackageDetailData[] = [
       { id: "rail", label: "Swiss Rail Pass Upgrade", value: "Included" },
     ]),
     trustBadges,
+    category: "Adventure",
   },
   {
     slug: "bali-retreat",
@@ -338,6 +345,7 @@ const packageDetailCollection: PackageDetailData[] = [
       { id: "spa", label: "Wellness Package", value: "Included" },
     ]),
     trustBadges,
+    category: "Luxury",
   },
   {
     slug: "kenyan-safari-adventure",
@@ -444,6 +452,7 @@ const packageDetailCollection: PackageDetailData[] = [
       { id: "drive", label: "Private 4x4 Safari Vehicle", value: "Included" },
     ]),
     trustBadges,
+    category: "Adventure",
   },
 ]
 
@@ -461,6 +470,7 @@ export const packageCards: PackageCardData[] = packageDetailCollection.map((pkg,
   badge: pkg.badge,
   rating: pkg.rating,
   description: pkg.description,
+  category: pkg.category,
 }))
 
 export function getAllPackageDetails() {

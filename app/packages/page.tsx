@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import { Navbar } from "@/components/custom/navbar"
-import { packageCards } from "@/components/custom/package-detail/data"
+import { packageCards, HERO_IMAGE, CATEGORIES } from "@/mock/packages"
 import {
   Activity,
   Calendar,
@@ -18,11 +18,6 @@ import {
   Star,
   Users,
 } from "lucide-react"
-
-const HERO_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDjZqgqG3IYsqoEkT1qtxDJdEnC7b4j10sJ4dLGdNB_PoQiXW6N8JKBljGzoePHxrBRYyRm_n-ApoUuXMYPJ7u438RTQpfdsiB4fbu8a3GgcEo-RncTjgIQtUhkD3fco_gCw5vtrpRad4fpVcgtlbLgKrzP3BRrql1Wduy12M3WYUD4UVusqkO83-_Tr-0QJ-xWk8FoUpFJIboC5qYNgRUCzLYP-X0p1yQlwZZvBXsMMIgqGQiwjXfULcfav1XSf1H3bUvQZJBfrsE"
-
-const CATEGORIES = ["Adventure", "Family", "Luxury", "Eco-Friendly"]
 
 const categoryIcon = (category: string) => {
   switch (category) {

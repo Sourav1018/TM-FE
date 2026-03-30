@@ -4,8 +4,8 @@ import { notFound } from "next/navigation"
 import {
   getAllPackageDetails,
   getPackageDetailBySlug,
-} from "@/components/custom/package-detail/data"
-import { PackageDetailPage } from "@/components/custom/package-detail/package-detail-page"
+} from "@/mock/packages"
+import { PackageDetailPage } from "@/components/sections/package-detail/package-detail-page"
 
 type PackageDetailRouteProps = {
   params: Promise<{

@@ -3,10 +3,14 @@
 import { useMemo, useState } from "react"
 import { CalendarDays, MessageCircleMore } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
 import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { format } from "date-fns"
+
+import { cn } from "@/lib/utils"
 
 import type { PackageDetailData } from "./types"
 import { BookingGuestStepper } from "./booking-guest-stepper"
@@ -23,7 +27,9 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
 })
 
 export function PackageBookingSidebar({ data }: PackageBookingSidebarProps) {
-  const [travelDate, setTravelDate] = useState(data.defaultTravelDate)
+  const [travelDate, setTravelDate] = useState<Date | undefined>(
+    data.defaultTravelDate ? new Date(data.defaultTravelDate) : undefined
+  )
   const [guests, setGuests] = useState(data.defaultGuests)
 
   const totalEstimate = useMemo(
@@ -56,16 +62,32 @@ export function PackageBookingSidebar({ data }: PackageBookingSidebarProps) {
             >
               Travel Date
             </Label>
-            <div className="relative">
-              <Input
+            <Popover>
+              <PopoverTrigger
                 id="travel-date"
-                type="date"
-                value={travelDate}
-                onChange={(event) => setTravelDate(event.target.value)}
-                className="h-12 rounded-xl border-none bg-surface-container-low pr-12"
-              />
-              <CalendarDays className="pointer-events-none absolute top-3.5 right-4 h-5 w-5 text-muted-foreground" />
-            </div>
+                className={cn(
+                  buttonVariants({ variant: "secondary" }),
+                  "h-14 w-full justify-between rounded-full border-none bg-surface-container-low px-8 text-left text-sm font-medium hover:bg-surface-container-high",
+                  !travelDate && "text-muted-foreground"
+                )}
+              >
+                <span>
+                  {travelDate ? (
+                    format(travelDate, "MM/dd/yyyy")
+                  ) : (
+                    "Select Date"
+                  )}
+                </span>
+                <CalendarDays className="h-6 w-6 text-slate-500" />
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="center">
+                <Calendar
+                  mode="single"
+                  selected={travelDate}
+                  onSelect={setTravelDate}
+                />
+              </PopoverContent>
+            </Popover>
           </div>
 
           <div className="space-y-2">

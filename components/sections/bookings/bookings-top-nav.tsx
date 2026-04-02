@@ -15,7 +15,10 @@ export function BookingsTopNav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-[20px]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
+        <Link
+          href="/"
+          className="text-xl font-bold tracking-tight text-foreground"
+        >
           Sunlit Horizons
         </Link>
 
@@ -27,7 +30,7 @@ export function BookingsTopNav() {
               className={cn(
                 "border-b-2 pb-1 transition-colors",
                 item.active
-                  ? "border-primary text-primary font-semibold"
+                  ? "border-primary font-semibold text-primary"
                   : "border-transparent text-muted-foreground hover:text-primary"
               )}
             >
@@ -48,4 +51,3 @@ export function BookingsTopNav() {
     </header>
   )
 }
-

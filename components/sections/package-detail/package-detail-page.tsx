@@ -20,7 +20,7 @@ export function PackageDetailPage({ data }: PackageDetailPageProps) {
         <Navbar />
       </div>
 
-      <main className="mx-auto max-w-7xl px-4 pb-12 pt-8 md:px-8">
+      <main className="mx-auto max-w-7xl px-4 pt-8 pb-12 md:px-8">
         <PackageDetailHero data={data} />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">

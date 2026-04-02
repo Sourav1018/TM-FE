@@ -22,9 +22,7 @@ const currencyFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 })
 
-export function PackageBookingSidebar({
-  data,
-}: PackageBookingSidebarProps) {
+export function PackageBookingSidebar({ data }: PackageBookingSidebarProps) {
   const [travelDate, setTravelDate] = useState(data.defaultTravelDate)
   const [guests, setGuests] = useState(data.defaultGuests)
 
@@ -54,7 +52,7 @@ export function PackageBookingSidebar({
           <div className="space-y-2">
             <Label
               htmlFor="travel-date"
-              className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground"
+              className="text-xs font-bold tracking-[0.18em] text-muted-foreground uppercase"
             >
               Travel Date
             </Label>
@@ -66,12 +64,12 @@ export function PackageBookingSidebar({
                 onChange={(event) => setTravelDate(event.target.value)}
                 className="h-12 rounded-xl border-none bg-surface-container-low pr-12"
               />
-              <CalendarDays className="pointer-events-none absolute right-4 top-3.5 h-5 w-5 text-muted-foreground" />
+              <CalendarDays className="pointer-events-none absolute top-3.5 right-4 h-5 w-5 text-muted-foreground" />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+            <Label className="text-xs font-bold tracking-[0.18em] text-muted-foreground uppercase">
               Number of Guests
             </Label>
             <BookingGuestStepper guests={guests} onGuestsChange={setGuests} />
@@ -81,7 +79,8 @@ export function PackageBookingSidebar({
         <div className="mb-8 space-y-3">
           <div className="flex items-center justify-between text-sm text-muted-foreground">
             <span>
-              Base Package ({currencyFormatter.format(data.pricePerPerson)} x {guests})
+              Base Package ({currencyFormatter.format(data.pricePerPerson)} x{" "}
+              {guests})
             </span>
             <span>{totalEstimate}</span>
           </div>
@@ -105,7 +104,9 @@ export function PackageBookingSidebar({
         </div>
 
         <div className="flex flex-col gap-3">
-          <Button className="h-12 text-base font-bold">Check Availability</Button>
+          <Button className="h-12 text-base font-bold">
+            Check Availability
+          </Button>
           <Button
             variant="secondary"
             className="h-12 bg-surface-container-low text-foreground"
@@ -118,7 +119,7 @@ export function PackageBookingSidebar({
           </Button>
         </div>
 
-        <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+        <p className="mt-4 text-center text-[10px] font-bold tracking-[0.18em] text-muted-foreground uppercase">
           {data.cancellationPolicy}
         </p>
       </Card>

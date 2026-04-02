@@ -13,7 +13,7 @@ export function PackageDetailTabs() {
         <a
           key={tab.id}
           href={`#${tab.id}`}
-          className={`whitespace-nowrap border-b-2 py-4 text-sm font-bold transition-colors ${
+          className={`border-b-2 py-4 text-sm font-bold whitespace-nowrap transition-colors ${
             index === 0
               ? "border-primary text-primary"
               : "border-transparent text-muted-foreground hover:text-primary"

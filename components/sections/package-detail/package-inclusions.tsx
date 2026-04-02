@@ -17,12 +17,15 @@ function InclusionList({
   type: "include" | "exclude"
 }) {
   const Icon = type === "include" ? Check : X
-  const iconColor = type === "include" ? "text-primary" : "text-muted-foreground"
+  const iconColor =
+    type === "include" ? "text-primary" : "text-muted-foreground"
   const headingColor = type === "include" ? "text-primary" : "text-destructive"
 
   return (
     <div>
-      <h2 className={`mb-6 flex items-center gap-2 text-xl font-extrabold ${headingColor}`}>
+      <h2
+        className={`mb-6 flex items-center gap-2 text-xl font-extrabold ${headingColor}`}
+      >
         <Icon className="h-5 w-5" />
         <span>{title}</span>
       </h2>

@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-3 py-1 text-xs font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 uppercase tracking-wide",
+  "inline-flex items-center rounded-full border px-3 py-1 text-xs font-bold tracking-wide uppercase transition-colors focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none",
   {
     variants: {
       variant: {
@@ -16,11 +16,15 @@ const badgeVariants = cva(
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
         // Tonal variants for the Sunlit Path aesthetic
-        tonal: "border-transparent bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest",
+        tonal:
+          "text-on-surface-variant border-transparent bg-surface-container-high hover:bg-surface-container-highest",
         // Specialized status variants for Bookings
-        confirmed: "border-transparent bg-emerald-100 text-emerald-700 hover:bg-emerald-200",
-        pending: "border-transparent bg-yellow-100 text-yellow-700 hover:bg-yellow-200",
-        cancelled: "border-transparent bg-red-100 text-red-700 hover:bg-red-200",
+        confirmed:
+          "border-transparent bg-emerald-100 text-emerald-700 hover:bg-emerald-200",
+        pending:
+          "border-transparent bg-yellow-100 text-yellow-700 hover:bg-yellow-200",
+        cancelled:
+          "border-transparent bg-red-100 text-red-700 hover:bg-red-200",
       },
     },
     defaultVariants: {
@@ -30,7 +34,8 @@ const badgeVariants = cva(
 )
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
 function Badge({ className, variant, ...props }: BadgeProps) {

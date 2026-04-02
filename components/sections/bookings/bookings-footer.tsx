@@ -6,7 +6,9 @@ export function BookingsFooter() {
     <footer className="mt-20 border-t border-border bg-surface-container-low/40 py-12 text-sm leading-relaxed">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-8 md:grid-cols-2">
         <div className="space-y-4">
-          <div className="text-lg font-bold text-foreground">Sunlit Horizons</div>
+          <div className="text-lg font-bold text-foreground">
+            Sunlit Horizons
+          </div>
           <p className="max-w-sm text-muted-foreground">
             Elevating your travel experience with curated coastal escapes and
             mindful journeys across the world&apos;s most beautiful horizons.
@@ -18,16 +20,28 @@ export function BookingsFooter() {
 
         <div className="flex flex-col gap-6 md:items-end">
           <nav className="flex flex-wrap gap-x-8 gap-y-2">
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+            <Link
+              href="#"
+              className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+            >
               Privacy Policy
             </Link>
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+            <Link
+              href="#"
+              className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+            >
               Terms of Service
             </Link>
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+            <Link
+              href="#"
+              className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+            >
               Help Center
             </Link>
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+            <Link
+              href="#"
+              className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+            >
               Contact Us
             </Link>
           </nav>
@@ -41,4 +55,3 @@ export function BookingsFooter() {
     </footer>
   )
 }
-

@@ -24,7 +24,9 @@ export function MobileBookingsNav() {
               item.active ? "text-primary" : "text-muted-foreground"
             )}
           >
-            <Icon className={cn("h-5 w-5", item.active ? "fill-current" : "")} />
+            <Icon
+              className={cn("h-5 w-5", item.active ? "fill-current" : "")}
+            />
             <span className={item.active ? "font-bold" : ""}>{item.label}</span>
           </button>
         )
@@ -32,4 +34,3 @@ export function MobileBookingsNav() {
     </nav>
   )
 }
-

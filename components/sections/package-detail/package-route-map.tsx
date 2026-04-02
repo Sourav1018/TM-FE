@@ -29,7 +29,7 @@ export function PackageRouteMap({ image, stops }: PackageRouteMapProps) {
         />
 
         <div className="absolute inset-0 bg-gradient-to-tr from-background/35 via-transparent to-background/20" />
-        <div className="absolute left-[42%] top-[46%] h-1 w-[22%] rotate-[24deg] rounded-full border-t-4 border-dashed border-primary/70" />
+        <div className="absolute top-[46%] left-[42%] h-1 w-[22%] rotate-[24deg] rounded-full border-t-4 border-dashed border-primary/70" />
 
         {stops.map((stop) => {
           const isPrimary = stop.tone !== "tertiary"
@@ -50,7 +50,9 @@ export function PackageRouteMap({ image, stops }: PackageRouteMapProps) {
               <MapPin
                 className={cn(
                   "h-9 w-9",
-                  isPrimary ? "fill-primary text-primary" : "fill-tertiary text-tertiary"
+                  isPrimary
+                    ? "fill-primary text-primary"
+                    : "fill-tertiary text-tertiary"
                 )}
               />
             </div>

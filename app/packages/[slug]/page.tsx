@@ -1,10 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import {
-  getAllPackageDetails,
-  getPackageDetailBySlug,
-} from "@/mock/packages"
+import { getAllPackageDetails, getPackageDetailBySlug } from "@/mock/packages"
 import { PackageDetailPage } from "@/components/sections/package-detail/package-detail-page"
 
 type PackageDetailRouteProps = {
@@ -46,7 +43,9 @@ export async function generateMetadata({
   }
 }
 
-export default async function PackageSlugPage({ params }: PackageDetailRouteProps) {
+export default async function PackageSlugPage({
+  params,
+}: PackageDetailRouteProps) {
   const { slug } = await params
   const pkg = getPackageDetailBySlug(slug)
 

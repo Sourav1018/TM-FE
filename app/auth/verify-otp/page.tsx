@@ -27,9 +27,8 @@ export default function VerifyOtpPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
-
       {/* Main Card */}
-      <Card className="w-full max-w-lg overflow-hidden border-none bg-white/95 shadow-2xl shadow-blue-100/50 p-6 md:p-12">
+      <Card className="w-full max-w-lg overflow-hidden border-none bg-white/95 p-6 shadow-2xl shadow-blue-100/50 md:p-12">
         <CardContent className="flex flex-col items-center p-0 text-center">
           {/* Shield Icon */}
           <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 text-primary">
@@ -37,7 +36,9 @@ export default function VerifyOtpPage() {
           </div>
 
           {/* Heading */}
-          <h1 className="mb-2 text-3xl font-bold text-foreground">Verify Your Identity</h1>
+          <h1 className="mb-2 text-3xl font-bold text-foreground">
+            Verify Your Identity
+          </h1>
           <p className="mb-8 text-slate-500">
             We&apos;ve sent a 6-digit code to your email <br />
             <span className="font-semibold text-primary">alex@example.com</span>
@@ -53,9 +54,11 @@ export default function VerifyOtpPage() {
                 inputMode="numeric"
                 maxLength={1}
                 value={digit}
-                onChange={(e) => handleOtpChange(index, e.target.value, otp, setOtp)}
+                onChange={(e) =>
+                  handleOtpChange(index, e.target.value, otp, setOtp)
+                }
                 onKeyDown={(e) => handleOtpKeyDown(index, e.key, otp[index])}
-                className="max-[376px]:h-10 max-[376px]:w-8.5 h-12 sm:h-14 w-12 sm:w-14 border-none bg-slate-200 text-center text-sm sm:text-lg font-bold focus-visible:ring-2 focus-visible:ring-primary/20"
+                className="h-12 w-12 border-none bg-slate-200 text-center text-sm font-bold focus-visible:ring-2 focus-visible:ring-primary/20 max-[376px]:h-10 max-[376px]:w-8.5 sm:h-14 sm:w-14 sm:text-lg"
               />
             ))}
           </div>
@@ -63,11 +66,17 @@ export default function VerifyOtpPage() {
           {/* Resend Timer */}
           <div className="mb-10 flex items-center gap-2 text-sm font-medium text-slate-500">
             <Clock className="h-4 w-4 text-orange-400" />
-            <span>Resend code in <span className="text-orange-400">{formatTime(timer)}</span></span>
+            <span>
+              Resend code in{" "}
+              <span className="text-orange-400">{formatTime(timer)}</span>
+            </span>
           </div>
 
           {/* Action Button */}
-          <Button className="mb-8 h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90" onClick={handleVerify}>
+          <Button
+            className="mb-8 h-14 w-full bg-primary text-lg font-bold hover:bg-primary/90"
+            onClick={handleVerify}
+          >
             Verify & Proceed
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -76,16 +85,22 @@ export default function VerifyOtpPage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="mb-8 flex items-center gap-2 text-sm font-bold text-primary hover:underline cursor-pointer bg-transparent border-none p-0"
+            className="mb-8 flex cursor-pointer items-center gap-2 border-none bg-transparent p-0 text-sm font-bold text-primary hover:underline"
           >
             <AtSign className="h-4 w-4" />
             Change email address
           </button>
 
           {/* Help Line */}
-          <div className="h-px w-32 bg-slate-100 mb-6"></div>
+          <div className="mb-6 h-px w-32 bg-slate-100"></div>
           <p className="text-sm text-slate-500">
-            Need help?{'  '}<Link href="#" className="font-semibold text-foreground underline decoration-slate-300 underline-offset-4">Contact Support</Link>
+            Need help?{"  "}
+            <Link
+              href="#"
+              className="font-semibold text-foreground underline decoration-slate-300 underline-offset-4"
+            >
+              Contact Support
+            </Link>
           </p>
         </CardContent>
       </Card>

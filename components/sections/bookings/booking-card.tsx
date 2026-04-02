@@ -25,12 +25,15 @@ export function BookingCard({ booking }: BookingCardProps) {
     <Card
       className={cn(
         "overflow-hidden rounded-[2rem] border-none bg-surface-container-lowest shadow-[var(--shadow-ambient)] transition-transform duration-300 md:flex",
-        isCancelled
-          ? "opacity-80"
-          : "hover:scale-[1.01]"
+        isCancelled ? "opacity-80" : "hover:scale-[1.01]"
       )}
     >
-      <div className={cn("relative h-48 w-full overflow-hidden md:h-auto md:w-56", isCancelled ? "grayscale" : "") }>
+      <div
+        className={cn(
+          "relative h-48 w-full overflow-hidden md:h-auto md:w-56",
+          isCancelled ? "grayscale" : ""
+        )}
+      >
         <Image
           src={booking.image}
           alt={booking.imageAlt}
@@ -43,10 +46,15 @@ export function BookingCard({ booking }: BookingCardProps) {
       <div className="flex flex-1 flex-col justify-between p-8">
         <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div>
-            <span className="mb-2 block text-xs font-bold uppercase tracking-[0.18em] text-primary/60">
+            <span className="mb-2 block text-xs font-bold tracking-[0.18em] text-primary/60 uppercase">
               {booking.label}
             </span>
-            <h3 className={cn("text-2xl font-bold", isCancelled ? "text-muted-foreground" : "text-foreground")}>
+            <h3
+              className={cn(
+                "text-2xl font-bold",
+                isCancelled ? "text-muted-foreground" : "text-foreground"
+              )}
+            >
               {booking.packageName}
             </h3>
             <p className="mt-2 flex items-center gap-2 text-muted-foreground">
@@ -60,7 +68,9 @@ export function BookingCard({ booking }: BookingCardProps) {
 
         <div className="flex flex-col gap-4 border-t border-surface-container pt-6 md:flex-row md:items-center md:justify-between">
           {isCancelled ? (
-            <span className="text-sm italic text-muted-foreground">{booking.refundNote}</span>
+            <span className="text-sm text-muted-foreground italic">
+              {booking.refundNote}
+            </span>
           ) : (
             <div className="flex items-center gap-4">
               <AvatarGroup>
@@ -78,7 +88,10 @@ export function BookingCard({ booking }: BookingCardProps) {
           )}
 
           {booking.actionVariant === "link" ? (
-            <Button variant="link" className="h-auto px-0 text-base font-semibold no-underline hover:no-underline">
+            <Button
+              variant="link"
+              className="h-auto px-0 text-base font-semibold no-underline hover:no-underline"
+            >
               {booking.actionLabel}
               <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -87,7 +100,10 @@ export function BookingCard({ booking }: BookingCardProps) {
               {booking.actionLabel}
             </Button>
           ) : (
-            <Button variant="ghost" className="justify-start px-0 text-base font-semibold text-muted-foreground hover:bg-transparent hover:text-primary">
+            <Button
+              variant="ghost"
+              className="justify-start px-0 text-base font-semibold text-muted-foreground hover:bg-transparent hover:text-primary"
+            >
               {booking.actionLabel}
               <RefreshCw className="h-4 w-4" />
             </Button>
@@ -97,4 +113,3 @@ export function BookingCard({ booking }: BookingCardProps) {
     </Card>
   )
 }
-

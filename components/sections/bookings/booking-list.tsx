@@ -24,4 +24,3 @@ export function BookingList({ bookings }: BookingListProps) {
     </div>
   )
 }
-

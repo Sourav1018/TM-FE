@@ -5,8 +5,7 @@ import Link from "next/link"
 
 function Navbar() {
   return (
-    <div className="flex items-center justify-between px-6 py-4 border-b bg-background">
-
+    <div className="flex items-center justify-between border-b bg-background px-6 py-4">
       {/* Left: Logo */}
       <Link href="/" className="text-lg font-semibold">
         Sunlit Travels
@@ -26,10 +25,12 @@ function Navbar() {
       </div>
 
       {/* Right: Profile / Link */}
-      <Link href="#" className="p-2 rounded-full hover:bg-accent text-muted-foreground hover:text-foreground transition-all duration-200">
-        <CircleUser className="w-6 h-6" />
+      <Link
+        href="#"
+        className="rounded-full p-2 text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-foreground"
+      >
+        <CircleUser className="h-6 w-6" />
       </Link>
-
     </div>
   )
 }

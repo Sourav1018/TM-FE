@@ -5,9 +5,6 @@ import {
   type PackageCardData,
 } from "@/components/sections/package-detail/types"
 
-export const HERO_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDjZqgqG3IYsqoEkT1qtxDJdEnC7b4j10sJ4dLGdNB_PoQiXW6N8JKBljGzoePHxrBRYyRm_n-ApoUuXMYPJ7u438RTQpfdsiB4fbu8a3GgcEo-RncTjgIQtUhkD3fco_gCw5vtrpRad4fpVcgtlbLgKrzP3BRrql1Wduy12M3WYUD4UVusqkO83-_Tr-0QJ-xWk8FoUpFJIboC5qYNgRUCzLYP-X0p1yQlwZZvBXsMMIgqGQiwjXfULcfav1XSf1H3bUvQZJBfrsE"
-
 export const CATEGORIES = ["Adventure", "Family", "Luxury", "Eco-Friendly"]
 
 const trustBadges: PackageTrustBadge[] = [
@@ -15,7 +12,11 @@ const trustBadges: PackageTrustBadge[] = [
   { id: "guides", label: "Expert Guides", icon: "badge", tone: "info" },
 ]
 
-const createPricingLines = (pricePerPerson: number, guests: number, extras?: PackagePricingLine[]) => [
+const createPricingLines = (
+  pricePerPerson: number,
+  guests: number,
+  extras?: PackagePricingLine[]
+) => [
   {
     id: "base",
     label: `Base Package ($${pricePerPerson.toLocaleString()} x ${guests})`,
@@ -71,7 +72,12 @@ const packageDetailCollection: PackageDetailData[] = [
     quickFacts: [
       { id: "duration", label: "Duration", value: "7 Days", icon: "calendar" },
       { id: "group", label: "Group Size", value: "Max 12", icon: "users" },
-      { id: "activity", label: "Activity", value: "Moderate", icon: "activity" },
+      {
+        id: "activity",
+        label: "Activity",
+        value: "Moderate",
+        icon: "activity",
+      },
       { id: "language", label: "Language", value: "English", icon: "globe" },
     ],
     itinerary: [
@@ -99,7 +105,10 @@ const packageDetailCollection: PackageDetailData[] = [
       },
     ],
     inclusions: [
-      { id: "stay", label: "6 nights in premium 5-star boutique accommodation" },
+      {
+        id: "stay",
+        label: "6 nights in premium 5-star boutique accommodation",
+      },
       { id: "meals", label: "Daily gourmet breakfast and 3 specialty dinners" },
       { id: "transfer", label: "Private airport transfers in a luxury SUV" },
       { id: "fees", label: "All entrance fees and activity permits" },
@@ -208,8 +217,14 @@ const packageDetailCollection: PackageDetailData[] = [
     ],
     inclusions: [
       { id: "stay", label: "6 nights in premium alpine accommodation" },
-      { id: "transport", label: "Regional rail transfers and scenic train tickets" },
-      { id: "meals", label: "Daily breakfast and 2 mountain dining experiences" },
+      {
+        id: "transport",
+        label: "Regional rail transfers and scenic train tickets",
+      },
+      {
+        id: "meals",
+        label: "Daily breakfast and 2 mountain dining experiences",
+      },
       { id: "guide", label: "Guided excursions to top alpine viewpoints" },
     ],
     exclusions: [
@@ -314,8 +329,14 @@ const packageDetailCollection: PackageDetailData[] = [
       },
     ],
     inclusions: [
-      { id: "stay", label: "9 nights in handpicked villa and coastal resort stays" },
-      { id: "meals", label: "Daily breakfast plus 4 curated dining experiences" },
+      {
+        id: "stay",
+        label: "9 nights in handpicked villa and coastal resort stays",
+      },
+      {
+        id: "meals",
+        label: "Daily breakfast plus 4 curated dining experiences",
+      },
       { id: "spa", label: "Two premium spa and wellness treatments" },
       { id: "guide", label: "Private local guide for cultural excursions" },
     ],
@@ -393,7 +414,12 @@ const packageDetailCollection: PackageDetailData[] = [
     quickFacts: [
       { id: "duration", label: "Duration", value: "6 Days", icon: "calendar" },
       { id: "group", label: "Group Size", value: "Max 10", icon: "users" },
-      { id: "activity", label: "Activity", value: "Moderate", icon: "activity" },
+      {
+        id: "activity",
+        label: "Activity",
+        value: "Moderate",
+        icon: "activity",
+      },
       { id: "language", label: "Language", value: "English", icon: "globe" },
     ],
     itinerary: [
@@ -458,20 +484,22 @@ const packageDetailCollection: PackageDetailData[] = [
 
 export const algarveCoastalEscape = packageDetailCollection[0]
 
-export const packageCards: PackageCardData[] = packageDetailCollection.map((pkg, index) => ({
-  id: index + 1,
-  slug: pkg.slug,
-  title: pkg.title,
-  location: pkg.location.split(",")[0],
-  tags: pkg.tags,
-  price: pkg.pricePerPerson,
-  duration: Number.parseInt(pkg.duration, 10),
-  image: pkg.gallery[0].src,
-  badge: pkg.badge,
-  rating: pkg.rating,
-  description: pkg.description,
-  category: pkg.category,
-}))
+export const packageCards: PackageCardData[] = packageDetailCollection.map(
+  (pkg, index) => ({
+    id: index + 1,
+    slug: pkg.slug,
+    title: pkg.title,
+    location: pkg.location.split(",")[0],
+    tags: pkg.tags,
+    price: pkg.pricePerPerson,
+    duration: Number.parseInt(pkg.duration, 10),
+    image: pkg.gallery[0].src,
+    badge: pkg.badge,
+    rating: pkg.rating,
+    description: pkg.description,
+    category: pkg.category,
+  })
+)
 
 export function getAllPackageDetails() {
   return packageDetailCollection

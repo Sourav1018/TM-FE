@@ -3,14 +3,11 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-function Card({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn(
-        "rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-all",
+        "rounded-xl border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md",
         className
       )}
       {...props}
@@ -36,7 +33,7 @@ function CardTitle({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={cn("text-lg font-semibold leading-none", className)}
+      className={cn("text-lg leading-none font-semibold", className)}
       {...props}
     />
   )
@@ -54,10 +51,7 @@ function CardFooter({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div
-      className={cn("flex items-center p-4 pt-0", className)}
-      {...props}
-    />
+    <div className={cn("flex items-center p-4 pt-0", className)} {...props} />
   )
 }
 

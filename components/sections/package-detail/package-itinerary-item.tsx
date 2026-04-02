@@ -15,7 +15,7 @@ export function PackageItineraryItem({
 }: PackageItineraryItemProps) {
   return (
     <div className={`relative pl-10 ${isLast ? "" : "pb-10"}`}>
-      <div className="absolute left-0 top-1 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background bg-surface-container-high">
+      <div className="absolute top-1 left-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background bg-surface-container-high">
         {item.isActive ? (
           <div className="h-3 w-3 rounded-full bg-primary" />
         ) : (
@@ -24,7 +24,7 @@ export function PackageItineraryItem({
       </div>
 
       <Card className="rounded-xl border-none bg-surface-container-lowest p-6 shadow-[var(--shadow-ambient)]">
-        <span className="block text-xs font-bold uppercase tracking-[0.18em] text-primary">
+        <span className="block text-xs font-bold tracking-[0.18em] text-primary uppercase">
           Day {item.day}
         </span>
         <h3 className="mt-2 text-xl font-bold">{item.title}</h3>

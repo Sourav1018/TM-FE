@@ -34,7 +34,7 @@ export function BookingsSidebar({
               type="button"
               onClick={() => onCategoryChange(item.id)}
               className={cn(
-                "flex items-center gap-3 whitespace-nowrap rounded-xl px-6 py-3 text-sm font-semibold transition-all",
+                "flex items-center gap-3 rounded-xl px-6 py-3 text-sm font-semibold whitespace-nowrap transition-all",
                 isActive
                   ? "bg-surface-container-lowest text-primary shadow-sm"
                   : "text-muted-foreground hover:bg-surface-container-high"
@@ -42,7 +42,9 @@ export function BookingsSidebar({
             >
               <Icon className="h-4 w-4" />
               <span>{item.label}</span>
-              {item.count > 0 ? <span className="text-xs opacity-70">{item.count}</span> : null}
+              {item.count > 0 ? (
+                <span className="text-xs opacity-70">{item.count}</span>
+              ) : null}
             </button>
           )
         })}
@@ -50,4 +52,3 @@ export function BookingsSidebar({
     </aside>
   )
 }
-

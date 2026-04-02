@@ -1,10 +1,10 @@
 /**
  * Formats a number of seconds into a M:SS string format.
- * 
+ *
  * @example
  * formatTime(59) // "0:59"
  * formatTime(125) // "2:05"
- * 
+ *
  * @param seconds - The total number of seconds to format.
  * @returns A formatted string in "minutes:seconds" format.
  */

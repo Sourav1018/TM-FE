@@ -24,4 +24,3 @@ export function BookingStatusBadge({ status }: BookingStatusBadgeProps) {
     </span>
   )
 }
-

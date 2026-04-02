@@ -16,21 +16,24 @@ type BookingsPageProps = {
 }
 
 export function BookingsPage({ data }: BookingsPageProps) {
-  const [activeCategory, setActiveCategory] = useState<BookingCategory>("upcoming")
+  const [activeCategory, setActiveCategory] =
+    useState<BookingCategory>("upcoming")
 
   const filteredBookings = useMemo(() => {
     if (activeCategory === "past") {
       return data.bookings.filter((booking) => booking.category === "past")
     }
 
-    return data.bookings.filter((booking) => booking.category === activeCategory)
+    return data.bookings.filter(
+      (booking) => booking.category === activeCategory
+    )
   }, [activeCategory, data.bookings])
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <BookingsTopNav />
 
-      <main className="mx-auto max-w-7xl px-6 pb-28 pt-24 md:pb-20">
+      <main className="mx-auto max-w-7xl px-6 pt-24 pb-28 md:pb-20">
         <BookingsHeader title={data.title} description={data.description} />
 
         <div className="flex flex-col gap-12 lg:flex-row">
@@ -53,4 +56,3 @@ export function BookingsPage({ data }: BookingsPageProps) {
     </div>
   )
 }
-

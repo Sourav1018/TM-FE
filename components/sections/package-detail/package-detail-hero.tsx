@@ -17,7 +17,7 @@ export function PackageDetailHero({ data }: PackageDetailHeroProps) {
       <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <div className="mb-2 flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-secondary px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-secondary-foreground">
+            <span className="rounded-full bg-secondary px-4 py-1 text-xs font-bold tracking-[0.18em] text-secondary-foreground uppercase">
               {data.badge}
             </span>
             <div className="flex items-center gap-1 text-sm font-bold text-tertiary">
@@ -83,7 +83,7 @@ export function PackageDetailHero({ data }: PackageDetailHeroProps) {
           <Button
             type="button"
             variant="secondary"
-            className="absolute bottom-4 right-4 bg-surface-container-lowest/95 text-primary shadow-[var(--shadow-ambient)] backdrop-blur"
+            className="absolute right-4 bottom-4 bg-surface-container-lowest/95 text-primary shadow-[var(--shadow-ambient)] backdrop-blur"
           >
             View All Photos
           </Button>

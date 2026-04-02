@@ -19,34 +19,39 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
-
       {/* Login Card */}
-      <Card className="w-full max-w-md overflow-hidden border-none bg-white/95  shadow-2xl shadow-blue-100/50 p-8 md:p-12">
+      <Card className="w-full max-w-md overflow-hidden border-none bg-white/95 p-8 shadow-2xl shadow-blue-100/50 md:p-12">
         <CardContent className="flex flex-col items-center p-0">
           {/* Logo Section */}
           <div className="mb-6 flex flex-col items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
-              <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center">
-                <div className="h-2.5 w-2.5 bg-black rounded-full" />
+              <div className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-black">
+                <div className="h-2.5 w-2.5 rounded-full bg-black" />
               </div>
             </div>
             <div className="text-center">
-              <h1 className="text-3xl font-bold tracking-tight text-foreground">Horizon Companion</h1>
-              <p className="mt-1 text-sm font-medium text-slate-500">Your Sunlit Path Awaits</p>
+              <h1 className="text-3xl font-bold tracking-tight text-foreground">
+                Horizon Companion
+              </h1>
+              <p className="mt-1 text-sm font-medium text-slate-500">
+                Your Sunlit Path Awaits
+              </p>
             </div>
           </div>
 
           {/* Form */}
-          <form className="w-full space-y-8 mt-4">
+          <form className="mt-4 w-full space-y-8">
             {/* Email Address */}
             <div className="space-y-3">
-              <Label className="text-sm font-semibold text-foreground ml-1">Email Address</Label>
-              <div className="relative group">
-                <Mail className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
+              <Label className="ml-1 text-sm font-semibold text-foreground">
+                Email Address
+              </Label>
+              <div className="group relative">
+                <Mail className="absolute top-1/2 left-5 h-5 w-5 -translate-y-1/2 text-slate-400 transition-colors group-focus-within:text-primary" />
                 <Input
                   type="email"
                   placeholder="name@example.com"
-                  className="h-14 border-none bg-slate-100 pl-14 pr-4 text-sm md:text-base focus-visible:ring-2 focus-visible:ring-primary/20"
+                  className="h-14 border-none bg-slate-100 pr-4 pl-14 text-sm focus-visible:ring-2 focus-visible:ring-primary/20 md:text-base"
                 />
               </div>
             </div>
@@ -55,7 +60,7 @@ export default function LoginPage() {
             <Button
               type="button"
               onClick={handleLogin}
-              className="h-14 w-full bg-[#00658D] text-lg font-bold rounded-full hover:bg-[#005575] transition-all shadow-lg shadow-blue-900/10"
+              className="h-14 w-full rounded-full bg-[#00658D] text-lg font-bold shadow-lg shadow-blue-900/10 transition-all hover:bg-[#005575]"
             >
               Sign In
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -64,7 +69,10 @@ export default function LoginPage() {
             {/* Footer */}
             <p className="text-center text-sm font-medium text-slate-500">
               New to Horizon?{" "}
-              <Link href="/auth/signup" className="font-bold text-[#00658D] hover:underline">
+              <Link
+                href="/auth/signup"
+                className="font-bold text-[#00658D] hover:underline"
+              >
                 Create Account
               </Link>
             </p>

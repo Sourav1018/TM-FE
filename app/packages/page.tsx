@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
-import { Navbar } from "@/components/custom/navbar"
 import { packageCards } from "@/mock/packages"
 import { PackagesHero } from "@/components/sections/packages/packages-hero"
 import { PackagesSidebar } from "@/components/sections/packages/packages-sidebar"
@@ -64,8 +63,6 @@ export default function Page() {
 
   return (
     <div className="bg-surface text-on-surface min-h-screen">
-      <Navbar />
-
       <main className="mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-8">
         <PackagesHero
           search={search}

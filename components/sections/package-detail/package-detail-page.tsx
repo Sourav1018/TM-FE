@@ -1,5 +1,3 @@
-import { Navbar } from "@/components/custom/navbar"
-
 import type { PackageDetailData } from "./types"
 import { PackageBookingSidebar } from "./package-booking-sidebar"
 import { PackageDetailHero } from "./package-detail-hero"
@@ -16,10 +14,6 @@ type PackageDetailPageProps = {
 export function PackageDetailPage({ data }: PackageDetailPageProps) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
-        <Navbar />
-      </div>
-
       <main className="mx-auto max-w-7xl px-4 pt-8 pb-12 md:px-8">
         <PackageDetailHero data={data} />
 

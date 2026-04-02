@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Navbar } from "@/components/custom/navbar"
 import {
   PackageCard,
   PackageCardSkeleton,
@@ -13,9 +12,6 @@ import {
 export default function ComponentsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navbar */}
-      <Navbar />
-
       {/* Main content */}
       <div className="flex flex-col gap-16 bg-white p-6 md:p-12">
         {/* Package Cards Showcase */}

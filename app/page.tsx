@@ -1,9 +1,6 @@
-import { Navbar } from "@/components/custom/navbar"
-
 export default function RootPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       <main className="flex min-h-[calc(100vh-80px)] flex-col items-center justify-center p-6">
         <h1 className="mb-6 text-center text-4xl font-bold text-foreground md:text-6xl">
           Welcome to Travel Management

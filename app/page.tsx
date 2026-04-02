@@ -1,14 +1,11 @@
-import { Navbar } from "@/components/custom/navbar"
-
 export default function RootPage() {
   return (
-    <div className="bg-background min-h-screen">
-      <Navbar />
-      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] p-6">
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground text-center mb-6">
+    <div className="min-h-screen bg-background">
+      <main className="flex min-h-[calc(100vh-80px)] flex-col items-center justify-center p-6">
+        <h1 className="mb-6 text-center text-4xl font-bold text-foreground md:text-6xl">
           Welcome to Travel Management
         </h1>
-        <p className="text-lg text-muted-foreground text-center max-w-2xl">
+        <p className="max-w-2xl text-center text-lg text-muted-foreground">
           Explore our beautifully crafted travel packages and components.
         </p>
       </main>

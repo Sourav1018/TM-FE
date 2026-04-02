@@ -2,17 +2,18 @@ import { Plus_Jakarta_Sans, Be_Vietnam_Pro } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Navbar } from "@/components/custom/navbar"
 
 const fontSans = Be_Vietnam_Pro({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-sans'
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-sans",
 })
 
 const fontHeading = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-heading'
+  subsets: ["latin"],
+  variable: "--font-heading",
 })
 
 export default function RootLayout({
@@ -24,10 +25,19 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased font-sans flex flex-col min-h-screen", fontSans.variable, fontHeading.variable)}
+      className={cn(
+        "flex min-h-screen flex-col font-sans antialiased",
+        fontSans.variable,
+        fontHeading.variable
+      )}
     >
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="flex min-h-screen flex-col">
+        <ThemeProvider>
+          <div className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur-sm">
+            <Navbar />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -60,14 +60,14 @@ export function PackageCard({
   return (
     <Card
       className={cn(
-        "group cursor-pointer overflow-hidden border-none bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-[2rem]",
+        "group flex h-full cursor-pointer flex-col overflow-hidden border-none bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl",
         className
       )}
       onClick={onClick}
       {...props}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none m-0">
+      <div className="relative m-0 aspect-[4/3] w-full overflow-hidden rounded-none">
         <Image
           src={image}
           alt={title}
@@ -77,10 +77,10 @@ export function PackageCard({
 
         {/* Badge Overlay */}
         {badge && (
-          <div className="absolute left-5 top-5">
+          <div className="absolute top-5 left-5">
             <span
               className={cn(
-                "inline-flex items-center rounded-full px-4 py-2 text-[0.7rem] font-bold uppercase tracking-wider text-white shadow-lg",
+                "inline-flex items-center rounded-full px-4 py-2 text-[0.7rem] font-bold tracking-wider text-white uppercase shadow-lg",
                 badgeVariant === "blue" ? "bg-primary-container" : "bg-tertiary"
               )}
             >
@@ -99,73 +99,77 @@ export function PackageCard({
       </div>
 
       {/* Content Area */}
-      <div className="p-5 md:p-6">
-        <div className="flex items-start justify-between gap-2">
-          <div className="space-y-1">
-            <h3 className="text-lg font-bold tracking-tight text-foreground leading-tight">
-              {title}
-            </h3>
-            {location && (
-              <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-2 font-medium">
-                {location}
-              </p>
-            )}
-            {isSimple && (
-              <p className="text-xs text-muted-foreground mt-0.5 font-medium">
-                {duration}
-              </p>
-            )}
-          </div>
-
-          {!isSimple && rating && (
-            <div className="flex items-center gap-1.5 font-bold shrink-0 bg-tertiary/10 text-tertiary px-2 py-1 rounded-lg">
-              <Star className="h-4 w-4 fill-tertiary" />
-              <span className="text-sm">{rating}</span>
+      <div className="flex flex-1 flex-col p-5 md:p-6">
+        <div className="flex-1">
+          <div className="flex items-start justify-between gap-2">
+            <div className="space-y-1">
+              <h3 className="text-lg leading-tight font-bold tracking-tight text-foreground">
+                {title}
+              </h3>
+              {location && (
+                <p className="mt-0.5 flex items-center gap-2 text-xs font-medium text-muted-foreground">
+                  {location}
+                </p>
+              )}
+              {isSimple && (
+                <p className="mt-0.5 text-xs font-medium text-muted-foreground">
+                  {duration}
+                </p>
+              )}
             </div>
-          )}
-        </div>
 
-        {/* Info Icons (Detailed Variant) */}
-        {!isSimple && (
-          <div className="mt-4 space-y-4">
-            {/* Duration Row */}
-            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-              <Clock className="h-5 w-5 opacity-70" />
-              <span>{duration}</span>
-            </div>
-            
-            {/* Tags Row */}
-            {tags && tags.length > 0 && (
-              <div className="flex flex-wrap items-center gap-2">
-                {tags.map((tag: string) => (
-                  <Badge
-                    key={tag}
-                    variant="outline"
-                    className={cn(
-                      "px-4 py-1.5 text-[0.75rem] transition-all duration-300 hover:shadow-sm",
-                      getTagStyles(tag)
-                    )}
-                  >
-                    {tag}
-                  </Badge>
-                ))}
+            {!isSimple && rating && (
+              <div className="flex shrink-0 items-center gap-1.5 rounded-lg bg-tertiary/10 px-2 py-1 font-bold text-tertiary">
+                <Star className="h-4 w-4 fill-tertiary" />
+                <span className="text-sm">{rating}</span>
               </div>
             )}
           </div>
-        )}
 
+          {/* Info Icons (Detailed Variant) */}
+          {!isSimple && (
+            <div className="mt-4 space-y-4">
+              {/* Duration Row */}
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+                <Clock className="h-5 w-5 opacity-70" />
+                <span>{duration}</span>
+              </div>
+
+              {/* Tags Row */}
+              {tags && tags.length > 0 && (
+                <div className="flex flex-wrap items-center gap-2">
+                  {tags.map((tag: string) => (
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className={cn(
+                        "px-4 py-1.5 text-[0.75rem] transition-all duration-300 hover:shadow-sm",
+                        getTagStyles(tag)
+                      )}
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
         {!isSimple && <div className="my-6 h-px w-full bg-border/30" />}
 
         {/* Bottom Section: Pricing & Action */}
-        <div className={cn("flex items-end justify-between", isSimple ? "mt-6" : "mt-2")}>
+        <div
+          className={cn(
+            "mt-auto flex items-end justify-between",
+            isSimple ? "pt-6" : "pt-2"
+          )}
+        >
           <div className="flex flex-col">
             <span className="mb-0.5 text-[0.7rem] font-medium text-muted-foreground">
               {priceLabel || (isSimple ? "Starts at" : "Starting from")}
             </span>
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-black text-primary">
-                {price}
-              </span>
+              <span className="text-2xl font-black text-primary">{price}</span>
               {priceSuffix && (
                 <span className="text-[0.7rem] font-bold text-muted-foreground">
                   {priceSuffix}
@@ -179,7 +183,7 @@ export function PackageCard({
               {isSimple && !actionLabel ? (
                 <Button
                   size="icon"
-                  className="h-12 w-12 rounded-full bg-muted text-foreground hover:bg-surface-container-highest"
+                  className="h-12 w-12 rounded-full bg-muted text-foreground transition-all hover:bg-surface-container-highest active:scale-95"
                   onClick={onAction}
                 >
                   {actionIcon || <Plus className="h-6 w-6" />}
@@ -187,8 +191,10 @@ export function PackageCard({
               ) : (
                 <Button
                   className={cn(
-                    "h-10 rounded-full font-bold transition-all duration-300 shadow-[0_8px_20px_rgba(0,174,239,0.25)]",
-                    isSimple ? "bg-muted text-foreground hover:bg-surface-container-highest px-5 shadow-none text-sm" : "bg-primary-container px-6 text-base text-white hover:bg-primary-container/90"
+                    "h-10 rounded-full font-bold shadow-[0_8px_20px_rgba(0,174,239,0.25)] transition-all duration-300 active:scale-95",
+                    isSimple
+                      ? "bg-muted px-5 text-sm text-foreground shadow-none hover:bg-surface-container-highest"
+                      : "bg-primary-container px-6 text-base text-white hover:bg-primary-container/90 active:bg-primary"
                   )}
                   onClick={onAction}
                 >

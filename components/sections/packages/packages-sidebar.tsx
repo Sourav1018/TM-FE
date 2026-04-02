@@ -26,7 +26,7 @@ export function PackagesSidebar({
 }: PackagesSidebarProps) {
   return (
     <aside className="w-full flex-shrink-0 lg:w-72">
-      <div className="bg-surface-container-low rounded-DEFAULT sticky top-[4.5rem] p-6">
+      <div className="bg-surface-container-low rounded-lg sticky top-20 p-6 shadow-md">
         <div className="mb-6 flex items-center justify-between">
           <Label className="text-lg font-bold">Filters</Label>
           <Button

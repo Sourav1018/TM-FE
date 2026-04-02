@@ -26,7 +26,7 @@ export function SearchBar({
   onSearch,
 }: SearchBarProps) {
   return (
-    <div className="bg-surface-container-lowest flex flex-col items-center gap-2 rounded-full p-2 shadow-xl md:flex-row">
+    <div className="bg-surface-container-lowest flex flex-col items-center gap-2 rounded-full py-1 px-3 shadow-xl md:flex-row">
       <div className="border-surface-container flex w-full flex-1 items-center gap-3 border-b px-6 md:border-b-0 md:border-r">
         <MapPin size={20} className="text-primary shrink-0" />
         <div className="flex min-w-0 flex-1 flex-col py-2">

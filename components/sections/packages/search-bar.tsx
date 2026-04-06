@@ -3,8 +3,9 @@
 import { Button } from "@/components/ui/button"
 import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { format } from "date-fns"
 import { Calendar, MapPin, Minus, Plus, Users } from "lucide-react"
+
+import { formatShortDate } from "@/lib/utils"
 
 interface SearchBarProps {
   search: string
@@ -51,7 +52,7 @@ export function SearchBar({
           <Popover>
             <PopoverTrigger className="text-on-surface w-full text-left font-medium outline-none">
               {selectedDate ? (
-                format(selectedDate, "MMM d, yyyy")
+                formatShortDate(selectedDate)
               ) : (
                 <span className="text-outline-variant">Select date...</span>
               )}
@@ -61,7 +62,7 @@ export function SearchBar({
                 mode="single"
                 selected={selectedDate}
                 onSelect={onDateChange}
-                disabled={(date) =>
+                disabled={(date: Date) =>
                   date < new Date(new Date().setHours(0, 0, 0, 0))
                 }
               />

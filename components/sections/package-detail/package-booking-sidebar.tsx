@@ -8,9 +8,8 @@ import { Calendar } from "@/components/ui/calendar"
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { format } from "date-fns"
 
-import { cn } from "@/lib/utils"
+import { cn, formatNumericDate } from "@/lib/utils"
 
 import type { PackageDetailData } from "./types"
 import { BookingGuestStepper } from "./booking-guest-stepper"
@@ -73,7 +72,7 @@ export function PackageBookingSidebar({ data }: PackageBookingSidebarProps) {
               >
                 <span>
                   {travelDate ? (
-                    format(travelDate, "MM/dd/yyyy")
+                    formatNumericDate(travelDate)
                   ) : (
                     "Select Date"
                   )}

@@ -44,6 +44,7 @@ export function PackagesGrid({ packages, onAction }: PackagesGridProps) {
               ])
             )}
             variant="detailed"
+            onClick={() => onAction(pkg.slug)}
             onAction={() => onAction(pkg.slug)}
           />
         </div>

@@ -15,9 +15,10 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 
 const ADMIN_MENU = [
-  { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+  { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { label: "Packages", href: "/admin/packages", icon: Package },
   { label: "Leads", href: "/admin/leads", icon: Users },
   { label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
@@ -91,6 +92,8 @@ export function Sidebar() {
           ))}
         </div>
 
+
+
         {/* User Profile */}
         <div className="mt-8 flex items-center gap-4 border-t border-border/40 pt-8">
           <Avatar className="h-12 w-12 ring-2 ring-border/20">
@@ -102,7 +105,7 @@ export function Sidebar() {
               Alex Rivers
             </h3>
             <p className="text-sm font-medium text-muted-foreground">
-              Agency Admin
+              Agency Manager
             </p>
           </div>
         </div>

@@ -1,8 +1,8 @@
 "use client"
 
 import { Bell, Calendar as CalendarIcon, Handshake, TrendingUp, UserPlus } from "lucide-react"
-import { KPICard } from "@/components/admin/kpi-card"
-import { RevenueChart } from "@/components/admin/revenue-chart"
+import { KPICard } from "@/components/custom/kpi-card"
+import { RevenueChart } from "@/components/sections/admin/revenue-chart"
 import { KPI_DATA } from "@/mock/admin-dashboard"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"

@@ -34,11 +34,11 @@ export default function PackagesPage() {
             </div>
             
             <div className="flex items-center gap-3">
-              <Button variant="outline" className="rounded-2xl border-border/40 bg-white px-6 py-6 text-sm font-bold shadow-sm hover:bg-muted transition-all">
+              <Button variant="outline" className="rounded-full border-border/40 bg-white px-5 py-3 text-sm font-bold shadow-sm hover:bg-muted transition-all">
                 <Filter className="mr-2 h-4 w-4" />
                 Filter
               </Button>
-              <Button className="rounded-2xl bg-[#00658D] px-6 py-6 text-sm font-bold shadow-md hover:bg-[#004d6b] transition-all">
+              <Button className="rounded-full bg-[#00658D] px-5 py-3 text-sm font-bold shadow-md hover:bg-[#004d6b] transition-all">
                 <Plus className="mr-2 h-4 w-4" />
                 Add New Package
               </Button>

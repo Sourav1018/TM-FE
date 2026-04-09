@@ -31,8 +31,8 @@ export default function DashboardPage() {
 
           <div>
             <Popover>
-              <PopoverTrigger className="flex items-center gap-3 rounded-2xl bg-white px-5 py-3 text-sm font-bold shadow-sm shadow-black/[0.03] transition-all hover:shadow-md cursor-pointer border-none outline-none">
-                <CalendarIcon className="h-5 w-5 text-primary" />
+              <PopoverTrigger className="flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-bold shadow-sm shadow-black/[0.1] transition-all hover:shadow-md cursor-pointer border-none outline-none">
+                <CalendarIcon className="h-5 w-5 text-primary shrink-0" />
                 <span>
                   {date?.from ? (
                     date.to ? (
@@ -48,9 +48,8 @@ export default function DashboardPage() {
                   )}
                 </span>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 rounded-3xl" align="end">
+              <PopoverContent className="w-auto p-0" align="end">
                 <Calendar
-                  initialFocus
                   mode="range"
                   defaultMonth={date?.from}
                   selected={date}

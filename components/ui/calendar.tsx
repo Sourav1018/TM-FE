@@ -48,14 +48,14 @@ function Calendar({
         ...formatters,
       }}
       classNames={{
-        root: cn("w-fit", defaultClassNames.root),
+        root: cn("relative w-fit", defaultClassNames.root),
         months: cn(
           "relative flex flex-col gap-4 md:flex-row",
           defaultClassNames.months
         ),
         month: cn("flex w-full flex-col gap-4", defaultClassNames.month),
         nav: cn(
-          "absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1",
+          "absolute inset-x-0 top-0 flex items-center justify-between gap-1 px-1 py-3",
           defaultClassNames.nav
         ),
         button_previous: cn(
@@ -107,16 +107,19 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full p-0 text-center select-none",
+          "group/day relative aspect-square h-full w-full p-0 text-center select-none data-[selected=true]:z-10",
           defaultClassNames.day
         ),
         range_start: cn(
-          "relative isolate z-0 rounded-l-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-muted",
+          "relative before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:bg-muted after:hidden",
           defaultClassNames.range_start
         ),
-        range_middle: cn("rounded-none", defaultClassNames.range_middle),
+        range_middle: cn(
+          "bg-muted rounded-none",
+          defaultClassNames.range_middle
+        ),
         range_end: cn(
-          "relative isolate z-0 rounded-r-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:left-0 after:w-4 after:bg-muted",
+          "relative before:absolute before:inset-y-0 before:left-0 before:w-1/2 before:bg-muted after:hidden",
           defaultClassNames.range_end
         ),
         today: cn(

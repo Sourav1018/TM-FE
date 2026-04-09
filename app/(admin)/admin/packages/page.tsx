@@ -5,12 +5,12 @@ import { KPICard } from "@/components/custom/kpi-card"
 import { PackagesTable } from "@/components/sections/admin/packages-table"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select"
 import { useState } from "react"
 
@@ -32,7 +32,7 @@ export default function PackagesPage() {
                 Manage your premium travel offerings, availability, and promotional pricing from a central dashboard.
               </p>
             </div>
-            
+
             <div className="flex items-center gap-3">
               <Button variant="outline" className="rounded-full border-border/40 bg-white px-5 py-3 text-sm font-bold shadow-sm hover:bg-muted transition-all">
                 <Filter className="mr-2 h-4 w-4" />
@@ -45,7 +45,7 @@ export default function PackagesPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <KPICard
               title="ACTIVE PACKAGES"
               value="24"
@@ -53,14 +53,6 @@ export default function PackagesPage() {
               iconBg="bg-[#D3E9FA]"
               trend="+3 this month"
               trendColor="positive"
-            />
-            <KPICard
-              title="TOTAL LEADS"
-              value="1.2k"
-              icon={Users}
-              iconBg="bg-muted"
-              trend="Stable"
-              trendColor="neutral"
             />
             <KPICard
               title="DRAFTS"
@@ -93,11 +85,11 @@ export default function PackagesPage() {
 
         {/* Packages List Section */}
         <section className="flex flex-col gap-6">
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className={'border-b'}>
             <div className="flex items-center justify-between">
               <TabsList className="border-none">
                 {TABS.map((tab) => (
-                  <TabsTrigger key={tab} value={tab}>
+                  <TabsTrigger key={tab} value={tab} className="border-b w-30">
                     {tab}
                   </TabsTrigger>
                 ))}

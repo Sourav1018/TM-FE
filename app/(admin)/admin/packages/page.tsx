@@ -13,6 +13,7 @@ import {
   SelectValue
 } from "@/components/ui/select"
 import { useState } from "react"
+import { motion } from "motion/react"
 
 const TABS = ["All Packages", "Active", "Drafts", "Archived"]
 
@@ -87,31 +88,44 @@ export default function PackagesPage() {
         <section className="flex flex-col gap-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className={'border-b'}>
             <div className="flex items-center justify-between">
-              <TabsList className="border-none">
+              <TabsList className="relative flex w-max items-center gap-0 border-none bg-transparent p-0">
                 {TABS.map((tab) => (
-                  <TabsTrigger key={tab} value={tab} className="border-b w-30">
-                    {tab}
+                  <TabsTrigger
+                    key={tab}
+                    value={tab}
+                    className="relative h-12 w-36 border-none bg-transparent px-4 text-sm font-bold text-muted-foreground transition-colors hover:text-foreground data-[selected]:text-[#00658D] after:hidden cursor-pointer"
+                  >
+                    <span className={`relative z-10 transition-colors duration-200 ${activeTab === tab ? "text-[#00658D]" : "text-muted-foreground hover:text-foreground"}`}>
+                      {tab}
+                    </span>
+                    {activeTab === tab && (
+                      <motion.div
+                        layoutId="active-tab-indicator"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#00658D] rounded-t-full"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
                   </TabsTrigger>
                 ))}
               </TabsList>
 
               <div className="flex items-center gap-4 text-sm font-bold text-muted-foreground">
-                <span className="shrink-0">Show:</span>
+                <span className="shrink-0">Rows per page</span>
                 <Select defaultValue="10">
-                  <SelectTrigger className="border-none bg-transparent hover:bg-muted/50 transition-all font-bold text-foreground focus-visible:ring-0">
+                  <SelectTrigger className="h-10 w-[85px] border border-border/60 bg-white/50 backdrop-blur-sm hover:bg-white hover:shadow-sm transition-all font-bold text-foreground focus:ring-0 focus:ring-offset-0 px-3">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent align="end">
-                    <SelectItem value="10">10 rows</SelectItem>
-                    <SelectItem value="25">25 rows</SelectItem>
-                    <SelectItem value="50">50 rows</SelectItem>
+                  <SelectContent align="end" className="border-border/60 shadow-lg p-1">
+                    <SelectItem value="10">10</SelectItem>
+                    <SelectItem value="25">25</SelectItem>
+                    <SelectItem value="50">50</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
           </Tabs>
 
-          <PackagesTable />
+          <PackagesTable activeTab={activeTab} />
         </section>
       </div>
     </div>

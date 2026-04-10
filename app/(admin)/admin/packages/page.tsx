@@ -88,7 +88,7 @@ export default function PackagesPage() {
         <section className="flex flex-col gap-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="border-b">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="overflow-x-auto">
+              <div className="w-full overflow-x-auto pb-1 lg:overflow-x-visible">
                 <TabsList className="relative flex w-max items-center gap-0 border-none bg-transparent p-0">
                   {PACKAGE_TABS.map((tab) => (
                     <TabsTrigger

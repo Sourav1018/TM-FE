@@ -36,16 +36,23 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
     } else {
       // Archive
       setPackages((prev) =>
-        prev.map((p) => (p.id === packageToHandle.id ? { ...p, status: "ARCHIVED" } : p))
+        prev.map((p) => (p.id === packageToHandle.id ? { ...p, status: "ARCHIVED", previousStatus: p.status } : p))
       )
     }
     setIsModalOpen(false)
     setPackageToHandle(null)
   }
+
+  const handleRestoreClick = (pkg: Package) => {
+    setPackages((prev) =>
+      prev.map((p) => (p.id === pkg.id ? { ...p, status: p.previousStatus || "ACTIVE" } : p))
+    )
+  }
+
   return (
     <>
       <div className="w-full overflow-x-auto rounded-[2rem] bg-white shadow-sm shadow-black/[0.03]">
-        <table className="w-full min-w-[900px] border-collapse text-left">
+        <table className="w-full min-w-[900px] lg:min-w-full border-collapse text-left">
           <thead>
             <tr className="border-b border-border/40 bg-muted/20">
               <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Package Name</th>
@@ -99,7 +106,11 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
                 <td className="px-8 py-6">
                   <div className="flex items-center justify-end gap-5">
                     {pkg.status === "ARCHIVED" ? (
-                      <button className="text-muted-foreground transition-all hover:text-emerald-500 hover:scale-110">
+                      <button 
+                        onClick={() => handleRestoreClick(pkg)}
+                        className="text-muted-foreground transition-all hover:text-emerald-500 hover:scale-110"
+                        title="Restore Package"
+                      >
                         <History className="h-5 w-5" />
                       </button>
                     ) : (

@@ -6,6 +6,7 @@ export type Package = {
   price: string
   duration: string
   status: string
+  previousStatus?: string
 }
 
 export type PACKAGE_STATUS = "ACTIVE" | "DRAFT" | "ARCHIVED"

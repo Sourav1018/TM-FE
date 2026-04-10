@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-interface ConfirmationDialogProps {
+export type ConfirmationDialogProps = {
   isOpen: boolean
   onOpenChange: (open: boolean) => void
   title: string

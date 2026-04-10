@@ -3,7 +3,7 @@
 import { LucideIcon, TrendingUp } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-interface KPICardProps {
+export type KPICardProps = {
   title: string
   value: string
   icon: LucideIcon
@@ -12,7 +12,7 @@ interface KPICardProps {
   trendColor?: "positive" | "negative" | "neutral"
   extraStatValue?: string
   extraStatLabel?: string
-  subtitle?: string
+  subtitle?: string | React.ReactNode
   variant?: "default" | "gradient"
   progress?: number
 }
@@ -37,8 +37,8 @@ export function KPICard({
   return (
     <div className={cn(
       "group relative flex flex-col gap-6 overflow-hidden p-8 transition-all duration-300",
-      isDark 
-        ? "rounded-3xl bg-[#006085] text-white shadow-lg" 
+      isDark
+        ? "rounded-3xl bg-[#006085] text-white shadow-lg"
         : "rounded-[2.5rem] bg-white text-foreground shadow-sm shadow-black/[0.03] hover:shadow-md"
     )}>
       {/* Top Row: Icon and (Trend Pill OR Extra Stat OR Dynamic Label) */}
@@ -90,7 +90,7 @@ export function KPICard({
       <div className="mt-2 space-y-4">
         {progress !== undefined && (
           <div className="h-3 w-full overflow-hidden rounded-full bg-[#E8ECEE]/20">
-            <div 
+            <div
               className={cn("h-full transition-all duration-1000", isDark ? "bg-white" : "bg-[#00AEEF]")}
               style={{ width: `${progress}%` }}
             />

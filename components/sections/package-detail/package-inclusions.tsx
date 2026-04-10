@@ -1,6 +1,6 @@
 import { Check, X } from "lucide-react"
 
-import type { PackageListItem } from "./types"
+import type { PackageListItem } from "@/types/packages"
 
 type PackageInclusionsProps = {
   inclusions: PackageListItem[]

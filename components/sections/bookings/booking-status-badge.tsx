@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-import type { BookingStatus } from "./types"
+import type { BookingStatus } from "@/types/bookings"
 
 type BookingStatusBadgeProps = {
   status: BookingStatus

@@ -2,7 +2,7 @@ import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
-import type { PackageGalleryImage } from "./types"
+import type { PackageGalleryImage } from "@/types/packages"
 
 type PackageHeroGalleryCardProps = {
   image: PackageGalleryImage

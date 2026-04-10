@@ -1,4 +1,4 @@
-import type { BookingItem } from "./types"
+import type { BookingItem } from "@/types/bookings"
 import { BookingCard } from "./booking-card"
 import { BookingEmptyState } from "./booking-empty-state"
 

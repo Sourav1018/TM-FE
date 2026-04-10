@@ -1,4 +1,6 @@
-export const INITIAL_PACKAGES = [
+import { Package } from "@/types/packages"
+
+export const INITIAL_PACKAGES: Package[] = [
   {
     id: 1,
     name: "Maldives Azure Escape",

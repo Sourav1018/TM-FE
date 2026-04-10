@@ -12,7 +12,7 @@ import { format } from "date-fns"
 
 import { cn } from "@/lib/utils"
 
-import type { PackageDetailData } from "./types"
+import type { PackageDetailData } from "@/types/packages"
 import { BookingGuestStepper } from "./booking-guest-stepper"
 import { TrustBadge } from "./trust-badge"
 

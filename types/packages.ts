@@ -1,3 +1,14 @@
+export type Package = {
+  id: number
+  name: string
+  category: string
+  image: string
+  price: string
+  duration: string
+  status: string
+}
+
+export type PACKAGE_STATUS = "ACTIVE" | "DRAFT" | "ARCHIVED"
 export type PackageGalleryImage = {
   id: string
   src: string

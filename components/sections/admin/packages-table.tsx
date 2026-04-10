@@ -7,22 +7,22 @@ import { Edit2, History, Trash2 } from "lucide-react"
 import { useMemo, useState } from "react"
 import Image from "next/image"
 import { INITIAL_PACKAGES } from "@/constants/packages"
+import { Package } from "@/types/packages"
 
-
-interface PackagesTableProps {
+export type PackagesTableProps = {
   activeTab: string
 }
 
 export function PackagesTable({ activeTab }: PackagesTableProps) {
   const [packages, setPackages] = useState(INITIAL_PACKAGES)
-  const [packageToHandle, setPackageToHandle] = useState<{ id: number; name: string; status: string } | null>(null)
+  const [packageToHandle, setPackageToHandle] = useState<Package | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const filteredPackages = useMemo(() => {
     return packages.filter((pkg) => pkg.status === activeTab.toUpperCase().replace(/S$/, ""))
   }, [packages, activeTab])
 
-  const handleDeleteClick = (pkg: any) => {
+  const handleDeleteClick = (pkg: Package) => {
     setPackageToHandle(pkg)
     setIsModalOpen(true)
   }
@@ -44,8 +44,8 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
   }
   return (
     <>
-      <div className="w-full overflow-hidden rounded-[2rem] bg-white shadow-sm shadow-black/[0.03]">
-        <table className="w-full border-collapse text-left">
+      <div className="w-full overflow-x-auto rounded-[2rem] bg-white shadow-sm shadow-black/[0.03]">
+        <table className="w-full min-w-[900px] border-collapse text-left">
           <thead>
             <tr className="border-b border-border/40 bg-muted/20">
               <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Package Name</th>

@@ -2,7 +2,7 @@ import { Heart, MapPin, Share2, Star } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
-import type { PackageDetailData } from "./types"
+import type { PackageDetailData } from "@/types/packages"
 import { PackageHeroGalleryCard } from "./package-hero-gallery-card"
 
 type PackageDetailHeroProps = {

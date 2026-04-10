@@ -26,7 +26,7 @@ export function MobileNav() {
           <Menu className="h-6 w-6" />
           <span className="sr-only">Toggle navigation menu</span>
         </SheetTrigger>
-        <SheetContent side="left" className="w-72 p-0">
+        <SheetContent side="right" className="w-full p-0">
           <SidebarContent />
         </SheetContent>
       </Sheet>

@@ -11,7 +11,7 @@ export function SidebarContent() {
   const pathname = usePathname()
 
   return (
-    <div className="flex h-full flex-col px-6 py-10">
+    <div className="flex h-full flex-col p-0 lg:px-6 lg:py-10">
       {/* Logo */}
       <div className="mb-12 flex items-center gap-3 px-2">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#00658D]">

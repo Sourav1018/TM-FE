@@ -1,34 +1,14 @@
 "use client"
 
-import {
-  LayoutDashboard,
-  Package,
-  Users,
-  BarChart3,
-  Settings,
-  HelpCircle,
-  LogOut,
-  Mountain,
-} from "lucide-react"
+import { Mountain } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ADMIN_MENU, FOOTER_MENU } from "@/constants/navigation"
 
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 
-const ADMIN_MENU = [
-  { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-  { label: "Packages", href: "/admin/packages", icon: Package },
-  { label: "Leads", href: "/admin/leads", icon: Users },
-  { label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
-  { label: "Settings", href: "/admin/settings", icon: Settings },
-]
-
-const FOOTER_MENU = [
-  { label: "Support", href: "/admin/support", icon: HelpCircle },
-  { label: "Log out", href: "/auth/login", icon: LogOut },
-]
 
 export function Sidebar() {
   const pathname = usePathname()

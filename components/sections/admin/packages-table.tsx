@@ -1,75 +1,13 @@
 "use client"
 
-import { Edit2, Copy, Trash2, History, MoreHorizontal, AlertTriangle } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { ConfirmationDialog } from "@/components/custom/confirmation-dialog"
 import { Badge } from "@/components/ui/badge"
-import { useState, useMemo } from "react"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Edit2, History, Trash2 } from "lucide-react"
+import { useMemo, useState } from "react"
+import Image from "next/image"
+import { INITIAL_PACKAGES } from "@/constants/packages"
 
-const INITIAL_PACKAGES = [
-  {
-    id: 1,
-    name: "Maldives Azure Escape",
-    category: "Luxury Resort • All-Inclusive",
-    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=100&h=100&fit=crop",
-    price: "$2,499",
-    duration: "7 Days",
-    status: "ACTIVE",
-  },
-  {
-    id: 2,
-    name: "Swiss Alp Expedition",
-    category: "Mountain Adventure • Guided",
-    image: "https://images.unsplash.com/photo-1531310197839-ccf54634509e?w=100&h=100&fit=crop",
-    price: "$1,850",
-    duration: "5 Days",
-    status: "DRAFT",
-  },
-  {
-    id: 3,
-    name: "Golden Triangle Heritage",
-    category: "Cultural Tour • Heritage",
-    image: "https://images.unsplash.com/photo-1524492707947-2f85a208f7aa?w=100&h=100&fit=crop",
-    price: "$1,200",
-    duration: "10 Days",
-    status: "ACTIVE",
-  },
-  {
-    id: 4,
-    name: "Classic Amalfi Coast (Old)",
-    category: "Archived 2023",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=100&h=100&fit=crop",
-    price: "$3,100",
-    duration: "14 Days",
-    status: "ARCHIVED",
-  },
-  {
-    id: 5,
-    name: "Santorini Sunset Cruise",
-    category: "Leisure • Romantic",
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=100&h=100&fit=crop",
-    price: "$850",
-    duration: "3 Days",
-    status: "ACTIVE",
-  },
-  {
-    id: 6,
-    name: "Tokyo Neon Nights",
-    category: "Urban • Nightlife",
-    image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=100&h=100&fit=crop",
-    price: "$1,400",
-    duration: "4 Days",
-    status: "DRAFT",
-  },
-]
 
 interface PackagesTableProps {
   activeTab: string
@@ -81,8 +19,7 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const filteredPackages = useMemo(() => {
-    if (activeTab === "All Packages") return packages
-    return packages.filter((pkg) => pkg.status === activeTab.toUpperCase().replace(/S$/, ''))
+    return packages.filter((pkg) => pkg.status === activeTab.toUpperCase().replace(/S$/, ""))
   }, [packages, activeTab])
 
   const handleDeleteClick = (pkg: any) => {
@@ -123,8 +60,13 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
               <tr key={pkg.id} className="group transition-colors hover:bg-muted/10">
                 <td className="px-8 py-6">
                   <div className="flex items-center gap-4">
-                    <div className="h-14 w-14 overflow-hidden rounded-2xl bg-muted shadow-inner">
-                      <img src={pkg.image} alt={pkg.name} className="h-full w-full object-cover grayscale-[0.2] transition-transform duration-500 group-hover:scale-110" />
+                    <div className="relative h-14 w-14 overflow-hidden rounded-2xl bg-muted shadow-inner">
+                      <Image 
+                        src={pkg.image} 
+                        alt={pkg.name} 
+                        fill
+                        className="object-cover grayscale-[0.2] transition-transform duration-500 group-hover:scale-110" 
+                      />
                     </div>
                     <div>
                       <h4 className="font-heading text-base font-bold text-foreground">{pkg.name}</h4>
@@ -191,39 +133,19 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
         </div>
       </div>
 
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-md gap-6 rounded-3xl p-8">
-          <DialogHeader>
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600 mb-4">
-              <AlertTriangle className="h-6 w-6" />
-            </div>
-            <DialogTitle className="text-2xl font-bold tracking-tight">
-              {packageToHandle?.status === "ARCHIVED" ? "Delete Package Permanently?" : "Archive this Package?"}
-            </DialogTitle>
-            <DialogDescription className="text-base font-medium leading-relaxed mt-2">
-              {packageToHandle?.status === "ARCHIVED" 
-                ? `You are about to permanently delete "${packageToHandle?.name}". This action cannot be undone.`
-                : `Are you sure you want to move "${packageToHandle?.name}" to the archives? You can restore it later.`}
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="flex-row gap-4 sm:justify-start mt-4">
-            <Button
-              variant="destructive"
-              className="flex-1 rounded-full py-6 text-base font-bold shadow-lg shadow-destructive/20 hover:scale-[1.02] transition-transform"
-              onClick={handleConfirmAction}
-            >
-              {packageToHandle?.status === "ARCHIVED" ? "Yes, delete completely" : "Yes, move to archive"}
-            </Button>
-            <Button
-              variant="outline"
-              className="flex-1 rounded-full py-6 text-base font-bold border-border/60 hover:bg-muted transition-all"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Cancel
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <ConfirmationDialog
+        isOpen={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        title={packageToHandle?.status === "ARCHIVED" ? "Delete Package Permanently?" : "Archive this Package?"}
+        description={
+          packageToHandle?.status === "ARCHIVED" 
+            ? `You are about to permanently delete "${packageToHandle?.name}". This action cannot be undone.`
+            : `Are you sure you want to move "${packageToHandle?.name}" to the archives? You can restore it later.`
+        }
+        confirmText={packageToHandle?.status === "ARCHIVED" ? "Yes, delete completely" : "Yes, move to archive"}
+        onConfirm={handleConfirmAction}
+        variant="destructive"
+      />
     </>
   )
       

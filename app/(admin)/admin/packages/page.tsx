@@ -14,11 +14,11 @@ import {
 } from "@/components/ui/select"
 import { useState } from "react"
 import { motion } from "motion/react"
+import { PACKAGE_TABS } from "@/constants/packages"
 
-const TABS = ["All Packages", "Active", "Drafts", "Archived"]
 
 export default function PackagesPage() {
-  const [activeTab, setActiveTab] = useState("All Packages")
+  const [activeTab, setActiveTab] = useState("Active")
 
   return (
     <div className="flex flex-col gap-8 pb-10">
@@ -89,7 +89,7 @@ export default function PackagesPage() {
           <Tabs value={activeTab} onValueChange={setActiveTab} className={'border-b'}>
             <div className="flex items-center justify-between">
               <TabsList className="relative flex w-max items-center gap-0 border-none bg-transparent p-0">
-                {TABS.map((tab) => (
+                {PACKAGE_TABS.map((tab) => (
                   <TabsTrigger
                     key={tab}
                     value={tab}
@@ -115,7 +115,7 @@ export default function PackagesPage() {
                   <SelectTrigger className="h-10 w-[85px] border border-border/60 bg-white/50 backdrop-blur-sm hover:bg-white hover:shadow-sm transition-all font-bold text-foreground focus:ring-0 focus:ring-offset-0 px-3">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent align="end" className="border-border/60 shadow-lg p-1">
+                  <SelectContent align="end" className="border-border/60 shadow-lg p-1 w-1/2">
                     <SelectItem value="10">10</SelectItem>
                     <SelectItem value="25">25</SelectItem>
                     <SelectItem value="50">50</SelectItem>

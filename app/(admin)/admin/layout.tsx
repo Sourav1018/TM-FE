@@ -1,9 +1,10 @@
 import { AdminNav } from "@/components/sections/admin/admin-nav"
-import { LayoutProps } from "@/types/layout"
 
 export default function AdminLayout({
   children,
-}: LayoutProps) {
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
     <div className="flex min-h-screen flex-col bg-[#F7F9F9] lg:flex-row">
       <AdminNav />

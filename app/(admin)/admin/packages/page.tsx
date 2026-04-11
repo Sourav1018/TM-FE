@@ -35,11 +35,11 @@ export default function PackagesPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button variant="outline" className="flex-1 rounded-full border-border/40 bg-white px-5 py-3 text-sm font-bold shadow-sm hover:bg-muted transition-all lg:flex-none">
+              <Button variant="outline" className="flex-1 border-border/40 bg-white px-5 py-3 text-sm font-bold shadow-sm hover:bg-muted transition-all lg:flex-none w-full xl:w-fit">
                 <Filter className="mr-2 h-4 w-4" />
                 Filter
               </Button>
-              <Button className="flex-1 rounded-full bg-[#00658D] px-5 py-3 text-sm font-bold shadow-md hover:bg-[#004d6b] transition-all lg:flex-none">
+              <Button className="flex-1 bg-[#00658D] px-5 py-3 text-sm font-bold shadow-md hover:bg-[#004d6b] transition-all lg:flex-none w-full xl:w-fit">
                 <Plus className="mr-2 h-4 w-4" />
                 Add New
               </Button>
@@ -86,7 +86,7 @@ export default function PackagesPage() {
 
         {/* Packages List Section */}
         <section className="flex flex-col gap-6">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="border-b">
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="w-full overflow-x-auto pb-1 lg:overflow-x-visible">
                 <TabsList className="relative flex w-max items-center gap-0 border-none bg-transparent p-0">
@@ -94,7 +94,7 @@ export default function PackagesPage() {
                     <TabsTrigger
                       key={tab}
                       value={tab}
-                      className="relative h-12 w-28 border-none bg-transparent px-2 text-xs font-bold text-muted-foreground transition-colors hover:text-foreground data-[selected]:text-[#00658D] after:hidden cursor-pointer lg:w-36 lg:px-4 lg:text-sm"
+                      className="relative h-12 w-28 border-none bg-transparent px-2 text-md font-bold text-muted-foreground transition-colors hover:text-foreground data-[selected]:text-[#00658D] after:hidden cursor-pointer lg:w-36 lg:px-4"
                     >
                       <span className={`relative z-10 transition-colors duration-200 ${activeTab === tab ? "text-[#00658D]" : "text-muted-foreground hover:text-foreground"}`}>
                         {tab}
@@ -111,7 +111,7 @@ export default function PackagesPage() {
                 </TabsList>
               </div>
 
-              <div className="flex items-center justify-between gap-4 text-xs font-bold text-muted-foreground lg:justify-end lg:text-sm">
+              <div className="flex items-center justify-between gap-4 text-md font-bold text-muted-foreground lg:justify-end">
                 <span className="shrink-0">Rows per page</span>
                 <Select defaultValue="10">
                   <SelectTrigger className="h-10 w-[85px] border border-border/60 bg-white/50 backdrop-blur-sm hover:bg-white hover:shadow-sm transition-all font-bold text-foreground focus:ring-0 focus:ring-offset-0 px-3">

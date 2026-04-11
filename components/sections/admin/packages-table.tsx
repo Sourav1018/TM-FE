@@ -51,85 +51,87 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
 
   return (
     <>
-      <div className="w-full overflow-x-auto rounded-[2rem] bg-white shadow-sm shadow-black/[0.03]">
-        <table className="w-full min-w-[900px] lg:min-w-full border-collapse text-left">
-          <thead>
-            <tr className="border-b border-border/40 bg-muted/20">
-              <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Package Name</th>
-              <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Starting Price</th>
-              <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Duration</th>
-              <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Status</th>
-              <th className="px-8 py-6 text-right text-xs font-bold uppercase tracking-widest text-muted-foreground">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border/40">
-            {filteredPackages.map((pkg) => (
-              <tr key={pkg.id} className="group transition-colors hover:bg-muted/10">
-                <td className="px-8 py-6">
-                  <div className="flex items-center gap-4">
-                    <div className="relative h-14 w-14 overflow-hidden rounded-2xl bg-muted shadow-inner">
-                      <Image 
-                        src={pkg.image} 
-                        alt={pkg.name} 
-                        fill
-                        className="object-cover grayscale-[0.2] transition-transform duration-500 group-hover:scale-110" 
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-heading text-base font-bold text-foreground">{pkg.name}</h4>
-                      <p className="text-xs font-medium text-muted-foreground">{pkg.category}</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-8 py-6 font-heading text-lg font-bold text-foreground">
-                  {pkg.price}
-                </td>
-                <td className="px-8 py-6">
-                  <Badge variant="secondary" className="rounded-full bg-[#FFF5E5] px-4 py-1.5 text-xs font-bold text-[#FF9900] border-none">
-                    {pkg.duration}
-                  </Badge>
-                </td>
-                <td className="px-8 py-6">
-                  <div className="flex items-center gap-2">
-                    <span className={cn(
-                      "h-2 w-2 rounded-full",
-                      pkg.status === "ACTIVE" ? "bg-emerald-500" : pkg.status === "DRAFT" ? "bg-amber-400" : "bg-muted-foreground/40"
-                    )} />
-                    <span className={cn(
-                      "text-xs font-bold uppercase tracking-wider",
-                      pkg.status === "ACTIVE" ? "text-emerald-500" : pkg.status === "DRAFT" ? "text-amber-500" : "text-muted-foreground"
-                    )}>
-                      {pkg.status}
-                    </span>
-                  </div>
-                </td>
-                <td className="px-8 py-6">
-                  <div className="flex items-center justify-end gap-5">
-                    {pkg.status === "ARCHIVED" ? (
-                      <button 
-                        onClick={() => handleRestoreClick(pkg)}
-                        className="text-muted-foreground transition-all hover:text-emerald-500 hover:scale-110"
-                        title="Restore Package"
-                      >
-                        <History className="h-5 w-5" />
-                      </button>
-                    ) : (
-                      <button className="text-muted-foreground transition-all hover:text-[#00658D] hover:scale-110">
-                        <Edit2 className="h-5 w-5" />
-                      </button>
-                    )}
-                    <button
-                      onClick={() => handleDeleteClick(pkg)}
-                      className="text-muted-foreground transition-all hover:text-destructive hover:scale-110"
-                    >
-                      <Trash2 className="h-5 w-5" />
-                    </button>
-                  </div>
-                </td>
+      <div className="w-full rounded-lg bg-white shadow-sm shadow-black/[0.1] overflow-hidden">
+        <div className="w-full overflow-x-auto">
+          <table className="w-full min-w-[900px] lg:min-w-full border-collapse text-left whitespace-nowrap">
+            <thead>
+              <tr className="border-b border-border/40 bg-muted/20">
+                <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Package Name</th>
+                <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Starting Price</th>
+                <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Duration</th>
+                <th className="px-8 py-6 text-xs font-bold uppercase tracking-widest text-muted-foreground">Status</th>
+                <th className="px-8 py-6 text-right text-xs font-bold uppercase tracking-widest text-muted-foreground">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-border/40">
+              {filteredPackages.map((pkg) => (
+                <tr key={pkg.id} className="group transition-colors hover:bg-muted/10">
+                  <td className="px-8 py-6">
+                    <div className="flex items-center gap-4">
+                      <div className="relative h-14 w-14 overflow-hidden rounded-2xl bg-muted shadow-inner">
+                        <Image 
+                          src={pkg.image} 
+                          alt={pkg.name} 
+                          fill
+                          className="object-cover grayscale-[0.2] transition-transform duration-500 group-hover:scale-110" 
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-heading text-base font-bold text-foreground">{pkg.name}</h4>
+                        <p className="text-xs font-medium text-muted-foreground">{pkg.category}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-8 py-6 font-heading text-lg font-bold text-foreground">
+                    {pkg.price}
+                  </td>
+                  <td className="px-8 py-6">
+                    <Badge variant="secondary" className="rounded-full bg-[#FFF5E5] px-4 py-1.5 text-xs font-bold text-[#FF9900] border-none">
+                      {pkg.duration}
+                    </Badge>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="flex items-center gap-2">
+                      <span className={cn(
+                        "h-2 w-2 rounded-full",
+                        pkg.status === "ACTIVE" ? "bg-emerald-500" : pkg.status === "DRAFT" ? "bg-amber-400" : "bg-muted-foreground/40"
+                      )} />
+                      <span className={cn(
+                        "text-xs font-bold uppercase tracking-wider",
+                        pkg.status === "ACTIVE" ? "text-emerald-500" : pkg.status === "DRAFT" ? "text-amber-500" : "text-muted-foreground"
+                      )}>
+                        {pkg.status}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="flex items-center justify-end gap-5">
+                      {pkg.status === "ARCHIVED" ? (
+                        <button 
+                          onClick={() => handleRestoreClick(pkg)}
+                          className="text-muted-foreground transition-all hover:text-emerald-500 hover:scale-110"
+                          title="Restore Package"
+                        >
+                          <History className="h-5 w-5" />
+                        </button>
+                      ) : (
+                        <button className="text-muted-foreground transition-all hover:text-[#00658D] hover:scale-110">
+                          <Edit2 className="h-5 w-5" />
+                        </button>
+                      )}
+                      <button
+                        onClick={() => handleDeleteClick(pkg)}
+                        className="text-muted-foreground transition-all hover:text-destructive hover:scale-110"
+                      >
+                        <Trash2 className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         
         {/* Footer / Pagination Placeholder */}
         <div className="flex items-center justify-between border-t border-border/40 px-8 py-6">

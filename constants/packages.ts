@@ -23,7 +23,7 @@ export const INITIAL_PACKAGES: Package[] = [
     id: 3,
     name: "Golden Triangle Heritage",
     category: "Cultural Tour • Heritage",
-    image: "https://images.unsplash.com/photo-1524492707947-2f85a208f7aa?w=100&h=100&fit=crop",
+    image: "https://images.unsplash.com/photo-1773332585815-f106a5d6ed6c?w=100&h=100&fit=crop",
     price: "$1,200",
     duration: "10 Days",
     status: "ACTIVE",

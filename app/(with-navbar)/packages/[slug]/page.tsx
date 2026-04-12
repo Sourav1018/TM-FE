@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import type { PackageGalleryImage } from "@/types/packages"
 import { notFound } from "next/navigation"
 
 import { getAllPackageDetails, getPackageDetailBySlug } from "@/mock/packages"
@@ -41,7 +42,7 @@ export async function generateMetadata({
     openGraph: {
       title: pkg.title,
       description: pkg.description,
-      images: pkg.gallery.slice(0, 1).map((image) => ({
+      images: pkg.gallery.slice(0, 1).map((image: PackageGalleryImage) => ({
         url: image.src,
         alt: image.alt,
       })),

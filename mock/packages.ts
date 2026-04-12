@@ -3,7 +3,7 @@ import {
   type PackageTrustBadge,
   type PackageDetailData,
   type PackageCardData,
-} from "@/components/sections/package-detail/types"
+} from "@/types/packages"
 
 export const CATEGORIES = ["Adventure", "Family", "Luxury", "Eco-Friendly"]
 

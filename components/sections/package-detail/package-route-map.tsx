@@ -4,7 +4,7 @@ import { MapPin } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
-import type { PackageMapStop } from "./types"
+import type { PackageMapStop } from "@/types/packages"
 
 type PackageRouteMapProps = {
   image: {

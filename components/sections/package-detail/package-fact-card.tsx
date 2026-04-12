@@ -2,7 +2,7 @@ import { CalendarDays, Globe2, Mountain, Users } from "lucide-react"
 
 import { Card } from "@/components/ui/card"
 
-import type { PackageQuickFact } from "./types"
+import type { PackageQuickFact } from "@/types/packages"
 
 type PackageFactCardProps = {
   fact: PackageQuickFact

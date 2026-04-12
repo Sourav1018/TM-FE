@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
-import type { BookingItem } from "./types"
+import type { BookingItem } from "@/types/bookings"
 import { BookingStatusBadge } from "./booking-status-badge"
 
 type BookingCardProps = {

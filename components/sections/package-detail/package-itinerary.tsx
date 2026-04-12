@@ -1,4 +1,4 @@
-import type { PackageDetailData } from "./types"
+import type { PackageDetailData } from "@/types/packages"
 import { PackageItineraryItem } from "./package-itinerary-item"
 
 type PackageItineraryProps = {

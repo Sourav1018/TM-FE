@@ -2,7 +2,7 @@ import { BadgeCheck, Shield } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import type { PackageTrustBadge } from "./types"
+import type { PackageTrustBadge } from "@/types/packages"
 
 type TrustBadgeProps = {
   badge: PackageTrustBadge

@@ -2,7 +2,7 @@ import { Check, Circle } from "lucide-react"
 
 import { Card } from "@/components/ui/card"
 
-import type { PackageItineraryDay } from "./types"
+import type { PackageItineraryDay } from "@/types/packages"
 
 type PackageItineraryItemProps = {
   item: PackageItineraryDay

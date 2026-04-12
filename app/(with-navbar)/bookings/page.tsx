@@ -6,7 +6,7 @@ import { BookingsHeader } from "@/components/sections/bookings/bookings-header"
 import { BookingsPromoSection } from "@/components/sections/bookings/bookings-promo-section"
 import { BookingsSidebar } from "@/components/sections/bookings/bookings-sidebar"
 import { MobileBookingsNav } from "@/components/sections/bookings/mobile-bookings-nav"
-import type { BookingCategory } from "@/components/sections/bookings/types"
+import type { BookingCategory } from "@/types/bookings"
 import { bookingsPageData } from "@/mock/bookings"
 import { useMemo, useState } from "react"
 

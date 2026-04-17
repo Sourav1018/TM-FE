@@ -232,6 +232,14 @@
     @apply bg-background/80 backdrop-blur-[20px];
   }
 
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero-gradient {
     /* linear gradient from primary to primary_container at 135deg */
     background: linear-gradient(135deg, var(--primary), var(--primary-container));

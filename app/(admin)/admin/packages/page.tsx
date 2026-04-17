@@ -1,10 +1,8 @@
 "use client"
 
-import { Filter, Plus, Package, Users, FileText, RefreshCw, Star } from "lucide-react"
 import { KPICard } from "@/components/custom/kpi-card"
 import { PackagesTable } from "@/components/sections/admin/packages-table"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Select,
   SelectContent,
@@ -12,13 +10,21 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
-import { useState } from "react"
-import { motion } from "motion/react"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PACKAGE_TABS } from "@/constants/packages"
-
+import { FileText, Filter, Package, Plus } from "lucide-react"
+import { motion } from "motion/react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function PackagesPage() {
   const [activeTab, setActiveTab] = useState("Active")
+  const router = useRouter()
+
+  const handleAddNew = () => {
+    const randomSlug = Math.random().toString(36).substring(2, 10)
+    router.push(`/admin/packages/${randomSlug}`)
+  }
 
   return (
     <div className="flex flex-col gap-8 pb-10">
@@ -39,7 +45,10 @@ export default function PackagesPage() {
                 <Filter className="mr-2 h-4 w-4" />
                 Filter
               </Button>
-              <Button className="flex-1 bg-[#00658D] px-5 py-3 text-sm font-bold shadow-md hover:bg-[#004d6b] transition-all lg:flex-none w-full xl:w-fit">
+              <Button 
+                onClick={handleAddNew}
+                className="flex-1 bg-[#00658D] px-5 py-3 text-sm font-bold shadow-md hover:bg-[#004d6b] transition-all lg:flex-none w-full xl:w-fit"
+              >
                 <Plus className="mr-2 h-4 w-4" />
                 Add New
               </Button>

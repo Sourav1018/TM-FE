@@ -9,11 +9,14 @@ import Image from "next/image"
 import { INITIAL_PACKAGES } from "@/constants/packages"
 import { Package } from "@/types/packages"
 
+import { useRouter } from "next/navigation"
+
 export type PackagesTableProps = {
   activeTab: string
 }
 
 export function PackagesTable({ activeTab }: PackagesTableProps) {
+  const router = useRouter()
   const [packages, setPackages] = useState(INITIAL_PACKAGES)
   const [packageToHandle, setPackageToHandle] = useState<Package | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -47,6 +50,10 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
     setPackages((prev) =>
       prev.map((p) => (p.id === pkg.id ? { ...p, status: p.previousStatus || "ACTIVE" } : p))
     )
+  }
+
+  const handleEditClick = (pkg: Package) => {
+    router.push(`/admin/packages/${pkg.id}`)
   }
 
   return (
@@ -115,7 +122,10 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
                           <History className="h-5 w-5" />
                         </button>
                       ) : (
-                        <button className="text-muted-foreground transition-all hover:text-[#00658D] hover:scale-110">
+                        <button 
+                          onClick={() => handleEditClick(pkg)}
+                          className="text-muted-foreground transition-all hover:text-[#00658D] hover:scale-110"
+                        >
                           <Edit2 className="h-5 w-5" />
                         </button>
                       )}

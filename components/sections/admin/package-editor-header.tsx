@@ -19,7 +19,7 @@ export function PackageEditorHeader() {
           Design Your Next Adventure
         </h1>
         <p className="text-muted-foreground">
-          Let's build a premium travel experience step-by-step.
+          Let&apos;s build a premium travel experience step-by-step.
         </p>
       </div>
 
@@ -27,7 +27,7 @@ export function PackageEditorHeader() {
         <Button variant="ghost" className="text-muted-foreground hover:bg-transparent hover:text-foreground hover:underline px-0 h-auto font-medium">
           Save Draft
         </Button>
-        <Button className="rounded-full bg-[#00658D] hover:bg-[#005575] gap-2 px-6">
+        <Button className="rounded-full bg-primary hover:brightness-90 gap-2 px-6">
           <UploadCloud className="h-4 w-4" />
           Publish Live
         </Button>

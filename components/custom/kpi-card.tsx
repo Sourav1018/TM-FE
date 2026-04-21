@@ -38,7 +38,7 @@ export function KPICard({
     <div className={cn(
       "group relative flex flex-col gap-6 overflow-hidden p-8 transition-all duration-300",
       isDark
-        ? "rounded-3xl bg-[#006085] text-white shadow-lg"
+        ? "rounded-3xl bg-primary text-white shadow-lg"
         : "rounded-[2.5rem] bg-white text-foreground shadow-sm shadow-black/[0.03] hover:shadow-md"
     )}>
       {/* Top Row: Icon and (Trend Pill OR Extra Stat OR Dynamic Label) */}
@@ -89,9 +89,9 @@ export function KPICard({
       {/* Bottom Section: Progress Bar, Subtitle, or Gradient Trend */}
       <div className="mt-2 space-y-4">
         {progress !== undefined && (
-          <div className="h-3 w-full overflow-hidden rounded-full bg-[#E8ECEE]/20">
+          <div className="h-3 w-full overflow-hidden rounded-full bg-muted/20">
             <div
-              className={cn("h-full transition-all duration-1000", isDark ? "bg-white" : "bg-[#00AEEF]")}
+              className={cn("h-full transition-all duration-1000", isDark ? "bg-white" : "bg-primary-container")}
               style={{ width: `${progress}%` }}
             />
           </div>

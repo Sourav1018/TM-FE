@@ -20,7 +20,7 @@ export function AdminNav() {
       {/* Mobile Navigation */}
       <div className="flex h-16 items-center justify-between border-b border-border/40 bg-background/50 px-6 backdrop-blur-xl lg:hidden">
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00658D]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
             <Mountain className="h-4 w-4 text-white" />
           </div>
           <h1 className="font-heading text-lg font-bold tracking-tight text-primary">

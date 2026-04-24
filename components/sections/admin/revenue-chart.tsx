@@ -21,11 +21,11 @@ export function RevenueChart() {
         </div>
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-[#00658D]" />
+            <div className="h-3 w-3 rounded-full bg-primary" />
             <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Actual</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-[#00AEEF]" />
+            <div className="h-3 w-3 rounded-full bg-primary-container" />
             <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Projected</span>
           </div>
         </div>
@@ -39,20 +39,20 @@ export function RevenueChart() {
           >
             <defs>
               <linearGradient id="colorActual" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#00658D" stopOpacity={0.1}/>
-                <stop offset="95%" stopColor="#00658D" stopOpacity={0}/>
+                <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.1}/>
+                <stop offset="95%" stopColor="var(--primary)" stopOpacity={0}/>
               </linearGradient>
               <linearGradient id="colorProjected" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#00AEEF" stopOpacity={0.1}/>
-                <stop offset="95%" stopColor="#00AEEF" stopOpacity={0}/>
+                <stop offset="5%" stopColor="var(--primary-container)" stopOpacity={0.1}/>
+                <stop offset="95%" stopColor="var(--primary-container)" stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#E8ECEE" />
+            <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--muted)" />
             <XAxis 
               dataKey="month" 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#40484C', fontSize: 10, fontWeight: 700 }}
+              tick={{ fill: 'var(--muted-foreground)', fontSize: 10, fontWeight: 700 }}
               dy={20}
             />
             <YAxis hide />
@@ -68,22 +68,22 @@ export function RevenueChart() {
             <Area
               type="monotone"
               dataKey="actual"
-              stroke="#00658D"
+              stroke="var(--primary)"
               strokeWidth={3}
               fillOpacity={1}
               fill="url(#colorActual)"
-              dot={{ r: 4, fill: '#00658D', strokeWidth: 2, stroke: '#FFFFFF' }}
+              dot={{ r: 4, fill: 'var(--primary)', strokeWidth: 2, stroke: '#FFFFFF' }}
               activeDot={{ r: 6, strokeWidth: 0 }}
             />
             <Area
               type="monotone"
               dataKey="projected"
-              stroke="#00AEEF"
+              stroke="var(--primary-container)"
               strokeWidth={3}
               strokeDasharray="5 5"
               fillOpacity={1}
               fill="url(#colorProjected)"
-              dot={{ r: 4, fill: '#00AEEF', strokeWidth: 2, stroke: '#FFFFFF' }}
+              dot={{ r: 4, fill: 'var(--primary-container)', strokeWidth: 2, stroke: '#FFFFFF' }}
               activeDot={{ r: 6, strokeWidth: 0 }}
             />
           </AreaChart>

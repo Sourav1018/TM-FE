@@ -14,7 +14,7 @@ export function SidebarContent() {
     <div className="flex h-full flex-col p-0 lg:px-6 lg:py-10">
       {/* Logo */}
       <div className="mb-12 flex items-center gap-3 px-2">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#00658D]">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
           <Mountain className="h-6 w-6 text-white" />
         </div>
         <div>
@@ -38,14 +38,14 @@ export function SidebarContent() {
               className={cn(
                 "group flex items-center gap-4 rounded-2xl px-4 py-4 text-base font-semibold transition-all duration-300",
                 isActive
-                  ? "bg-[#E0F2F1] text-[#00658D]"
+                  ? "bg-primary-container/20 text-primary"
                   : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
               )}
             >
               <item.icon
                 className={cn(
                   "h-6 w-6 transition-colors",
-                  isActive ? "text-[#00658D]" : "text-muted-foreground group-hover:text-foreground"
+                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
                 )}
               />
               {item.label}

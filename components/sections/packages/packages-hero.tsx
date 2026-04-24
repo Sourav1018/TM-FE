@@ -3,7 +3,7 @@
 import { SearchBar } from "./search-bar"
 import Image from "next/image"
 
-interface PackagesHeroProps {
+type PackagesHeroProps = {
   search: string
   onSearchChange: (value: string) => void
   selectedDate: Date | undefined

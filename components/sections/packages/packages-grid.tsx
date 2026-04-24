@@ -2,7 +2,7 @@
 
 import { PackageCard } from "@/components/custom/package-card/package-card"
 
-interface Package {
+type Package = {
   id: string | number
   title: string
   location?: string
@@ -16,7 +16,7 @@ interface Package {
   slug: string
 }
 
-interface PackagesGridProps {
+type PackagesGridProps = {
   packages: Package[]
   onAction: (slug: string) => void
 }

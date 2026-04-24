@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select"
 import { SORT_OPTIONS } from "@/constants/sort-options"
 
-interface PackagesHeaderProps {
+type PackagesHeaderProps = {
   count: number
   sortBy: string
   onSortChange: (value: string) => void

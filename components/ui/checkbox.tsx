@@ -1,31 +1,31 @@
 "use client"
 
-import { Checkbox as CheckboxPrimitive } from "@base-ui/react/checkbox"
-
-import { cn } from "@/lib/utils"
+import * as React from "react"
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
 import { CheckIcon } from "lucide-react"
 
-function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
-  return (
-    <CheckboxPrimitive.Root
-      data-slot="checkbox"
-      className={cn(
-        "peer relative flex h-5 w-5 shrink-0 cursor-pointer items-center justify-center rounded-full border-1 border-border bg-muted transition-all outline-none",
-        "focus-visible:ring-2 focus-visible:ring-ring/30",
-        "data-checked:border-primary data-checked:bg-primary",
-        "disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
-      {...props}
+import { cn } from "@/lib/utils"
+
+const Checkbox = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<typeof CheckboxPrimitive.Root>) => (
+  <CheckboxPrimitive.Root
+    ref={ref}
+    className={cn(
+      "peer h-5 w-5 shrink-0 rounded-full border border-primary shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+      className
+    )}
+    {...props}
+  >
+    <CheckboxPrimitive.Indicator
+      className={cn("flex items-center justify-center text-current")}
     >
-      <CheckboxPrimitive.Indicator
-        data-slot="checkbox-indicator"
-        className="flex h-full w-full items-center justify-center rounded-full text-primary-foreground transition-none"
-      >
-        <CheckIcon className="h-3 w-3" strokeWidth={3} />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
-  )
-}
+      <CheckIcon className="h-3.5 w-3.5" strokeWidth={3} />
+    </CheckboxPrimitive.Indicator>
+  </CheckboxPrimitive.Root>
+)
+Checkbox.displayName = CheckboxPrimitive.Root.displayName
 
 export { Checkbox }

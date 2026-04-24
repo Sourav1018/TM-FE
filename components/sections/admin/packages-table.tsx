@@ -9,11 +9,14 @@ import Image from "next/image"
 import { INITIAL_PACKAGES } from "@/constants/packages"
 import { Package } from "@/types/packages"
 
+import { useRouter } from "next/navigation"
+
 export type PackagesTableProps = {
   activeTab: string
 }
 
 export function PackagesTable({ activeTab }: PackagesTableProps) {
+  const router = useRouter()
   const [packages, setPackages] = useState(INITIAL_PACKAGES)
   const [packageToHandle, setPackageToHandle] = useState<Package | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -47,6 +50,10 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
     setPackages((prev) =>
       prev.map((p) => (p.id === pkg.id ? { ...p, status: p.previousStatus || "ACTIVE" } : p))
     )
+  }
+
+  const handleEditClick = (pkg: Package) => {
+    router.push(`/admin/packages/${pkg.id}`)
   }
 
   return (
@@ -86,7 +93,7 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
                     {pkg.price}
                   </td>
                   <td className="px-8 py-6">
-                    <Badge variant="secondary" className="rounded-full bg-[#FFF5E5] px-4 py-1.5 text-xs font-bold text-[#FF9900] border-none">
+                    <Badge variant="secondary" className="rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-bold text-tertiary border-none">
                       {pkg.duration}
                     </Badge>
                   </td>
@@ -115,7 +122,10 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
                           <History className="h-5 w-5" />
                         </button>
                       ) : (
-                        <button className="text-muted-foreground transition-all hover:text-[#00658D] hover:scale-110">
+                        <button 
+                          onClick={() => handleEditClick(pkg)}
+                          className="text-muted-foreground transition-all hover:text-primary hover:scale-110"
+                        >
                           <Edit2 className="h-5 w-5" />
                         </button>
                       )}
@@ -139,7 +149,7 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
             Showing <span className="font-bold text-foreground">1 - {filteredPackages.length}</span> of <span className="font-bold text-foreground">{filteredPackages.length}</span> results
           </p>
           <div className="flex items-center gap-2">
-            <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#00658D] text-sm font-bold text-white">1</button>
+            <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white">1</button>
             <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-sm font-bold text-muted-foreground transition-all hover:bg-muted">2</button>
             <button className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-sm font-bold text-muted-foreground transition-all hover:bg-muted">Next</button>
           </div>

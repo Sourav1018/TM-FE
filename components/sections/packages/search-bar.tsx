@@ -6,7 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { format } from "date-fns"
 import { Calendar, MapPin, Minus, Plus, Users } from "lucide-react"
 
-interface SearchBarProps {
+type SearchBarProps = {
   search: string
   onSearchChange: (value: string) => void
   selectedDate: Date | undefined

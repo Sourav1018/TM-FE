@@ -5,7 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { CATEGORIES } from "@/mock/packages"
 
-interface PackagesSidebarProps {
+type PackagesSidebarProps = {
   selectedCategories: string[]
   onCategoryToggle: (category: string) => void
   maxPrice: number

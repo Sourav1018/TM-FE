@@ -1,16 +1,9 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import { PACKAGE_EDITOR_STEPS } from "@/constants/package-editor"
 
-const steps = [
-  { id: 1, label: "Core Details" },
-  { id: 2, label: "Pricing" },
-  { id: 3, label: "Experience Builder" },
-  { id: 4, label: "Gallery" },
-  { id: 5, label: "Final Review" },
-]
-
-interface PackageEditorStepperProps {
+type PackageEditorStepperProps = {
   currentStep?: number
   onStepClick?: (stepId: number) => void
 }
@@ -23,10 +16,10 @@ export function PackageEditorStepper({
     <div className="w-full px-1">
       {/* Container for scrolling */}
       <div className="no-scrollbar flex w-full items-start gap-0 overflow-x-auto py-6">
-        {steps.map((step, index) => {
+        {PACKAGE_EDITOR_STEPS.map((step, index) => {
           const isActive = step.id === currentStep
           const isCompleted = step.id < currentStep
-          const isLast = index === steps.length - 1
+          const isLast = index === PACKAGE_EDITOR_STEPS.length - 1
 
           return (
             <div 

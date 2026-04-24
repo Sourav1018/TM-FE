@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
-interface PackagesPaginationProps {
+type PackagesPaginationProps = {
   currentPage?: number
   onPageChange?: (page: number) => void
 }

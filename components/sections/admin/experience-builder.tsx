@@ -1,7 +1,9 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardContent } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
+import { Input } from "@/components/ui/input"
 import { Calendar, Plus, Trash2 } from "lucide-react"
 import { useState } from "react"
 
@@ -51,14 +53,14 @@ export function ExperienceBuilder() {
       {/* Header Area */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-sm border border-sky-200/50">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm border border-primary/20">
             <Calendar className="h-6 w-6" />
           </div>
           {/* Title removed as requested */}
         </div>
-        <Button 
+        <Button
           onClick={addDay}
-          className="rounded-full bg-[#00AEEF] px-8 py-6 hover:bg-[#009ED9] text-white font-bold flex items-center gap-2 shadow-lg shadow-sky-500/20 transition-all hover:scale-105 active:scale-95"
+          className="rounded-full bg-primary-container px-8 py-6 hover:bg-primary-container/90 text-white font-bold flex items-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95"
         >
           <Plus className="h-5 w-5" />
           Add Day
@@ -68,42 +70,44 @@ export function ExperienceBuilder() {
       {/* Itinerary List */}
       <div className="relative flex flex-col gap-20">
         {/* Vertical Timeline Line */}
-        <div className="absolute left-6 top-10 bottom-10 w-[1.5px] bg-slate-200" />
+        <div className="absolute left-6 top-10 bottom-10 w-[1.5px] bg-border" />
 
         {days.map((day) => (
           <div key={day.id} className="relative pl-24">
             {/* Day Number Circle */}
-            <div className="absolute left-2 top-8 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#004B71] text-white text-sm font-bold shadow-md">
+            <div className="absolute left-2 top-8 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-sm font-bold shadow-md">
               {day.day}
             </div>
 
             {/* Day Content Card */}
-            <div className="rounded-[2.5rem] bg-[#F1F5F9] p-16 flex flex-col gap-10 shadow-sm border border-slate-200/40 group transition-all hover:shadow-lg hover:bg-[#EEF2F6]">
-              <div className="flex items-center justify-between">
-                <input 
+            <Card className="bg-surface-container-low p-8 flex flex-col gap-10 shadow-sm border border-border/40 group transition-all hover:shadow-lg hover:bg-surface-container">
+              <CardHeader className="flex-row items-center justify-between p-0 space-y-0">
+                <Input
                   type="text"
                   value={day.title}
                   onChange={(e) => updateDay(day.id, { title: e.target.value })}
                   placeholder="Day Title"
-                  className="bg-transparent text-2xl font-extrabold text-slate-800 focus:outline-none w-full placeholder:text-slate-400"
+                  className="bg-transparent text-2xl font-extrabold text-foreground focus-visible:ring-0 border-none w-full placeholder:text-muted-foreground px-1 h-auto"
                 />
-                <button 
+                <Button
+                  variant="ghost"
+                  size="icon"
                   onClick={() => removeDay(day.id)}
-                  className="p-3 rounded-2xl text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all opacity-60 group-hover:opacity-100"
+                  className="p-3 h-auto w-auto rounded-full text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all opacity-60 group-hover:opacity-100"
                 >
                   <Trash2 className="h-7 w-7" />
-                </button>
-              </div>
+                </Button>
+              </CardHeader>
 
-              <div className="bg-white rounded-[1.5rem] p-8 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-slate-200/50">
-                <Textarea 
+              <CardContent className="bg-white rounded-[1.5rem] p-5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-border/50">
+                <Textarea
                   value={day.description}
                   onChange={(e) => updateDay(day.id, { description: e.target.value })}
                   placeholder="Describe the activities for this day..."
-                  className="min-h-[140px] bg-transparent border-none resize-none p-0 text-slate-600 text-xl leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-slate-300"
+                  className="min-h-[140px] bg-transparent border-none resize-none px-1 py-0 text-foreground/70 text-lg leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-muted-foreground/50"
                 />
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         ))}
       </div>

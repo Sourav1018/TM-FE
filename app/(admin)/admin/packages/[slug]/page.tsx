@@ -8,6 +8,7 @@ import { PricingEditor } from "@/components/sections/admin/pricing-editor"
 import { ExperienceBuilder } from "@/components/sections/admin/experience-builder"
 import { EditorStepCard } from "@/components/sections/admin/editor-step-card"
 import { PACKAGE_EDITOR_STEPS } from "@/constants/package-editor"
+import { GalleryEditor } from "@/components/sections/admin/gallery-editor"
 import { useState } from "react"
 
 export default function PackageEditorPage() {
@@ -36,7 +37,9 @@ export default function PackageEditorPage() {
 
         {currentStep === 3 && <ExperienceBuilder />}
 
-        {currentStep >= 4 && (
+        {currentStep === 4 && <GalleryEditor />}
+
+        {currentStep >= 5 && (
            <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
               <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
                  <span className="text-2xl font-bold text-muted-foreground">{currentStep}</span>

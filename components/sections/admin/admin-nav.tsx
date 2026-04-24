@@ -29,9 +29,11 @@ export function AdminNav() {
         </div>
 
         <Sheet>
-          <SheetTrigger render={<Button variant="ghost" size="icon" className="h-10 w-10" />}>
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Toggle navigation menu</span>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="h-10 w-10">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-full p-0">
             <SidebarContent />

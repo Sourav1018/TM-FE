@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button"
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -23,8 +24,11 @@ function Navbar() {
       {/* Left: Logo & Mobile Toggle */}
       <div className="flex items-center gap-4">
         <Sheet>
-          <SheetTrigger className="rounded-full p-2 text-muted-foreground transition-all hover:bg-accent hover:text-foreground md:hidden">
-            <Menu className="h-6 w-6" />
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="h-10 w-10">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px]">
             <SheetHeader>
@@ -34,10 +38,12 @@ function Navbar() {
             </SheetHeader>
             <div className="mt-8 flex flex-col gap-6">
               {NAV_LINKS.map((link) => (
-                <SheetClose key={link.href} render={<Link href={link.href} />}>
-                  <span className="text-lg font-semibold transition-colors hover:text-primary">
-                    {link.label}
-                  </span>
+                <SheetClose key={link.href} asChild>
+                  <Link href={link.href}>
+                    <span className="text-lg font-semibold transition-colors hover:text-primary">
+                      {link.label}
+                    </span>
+                  </Link>
                 </SheetClose>
               ))}
             </div>

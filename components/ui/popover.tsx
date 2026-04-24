@@ -11,15 +11,22 @@ const PopoverTrigger = PopoverPrimitive.Trigger
 
 const PopoverAnchor = PopoverPrimitive.Anchor
 
-const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof PopoverPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
->(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+const PopoverContent = ({
+  className,
+  align = "center",
+  sideOffset = 4,
+  alignOffset = 0,
+  ref,
+  ...props
+}: React.ComponentProps<typeof PopoverPrimitive.Content> & {
+  alignOffset?: number
+}) => (
   <PopoverPrimitive.Portal>
     <PopoverPrimitive.Content
       ref={ref}
       align={align}
       sideOffset={sideOffset}
+      alignOffset={alignOffset}
       className={cn(
         "z-50 w-72 rounded-2xl border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
@@ -27,7 +34,7 @@ const PopoverContent = React.forwardRef<
       {...props}
     />
   </PopoverPrimitive.Portal>
-))
+)
 PopoverContent.displayName = PopoverPrimitive.Content.displayName
 
 const PopoverHeader = ({
@@ -41,28 +48,30 @@ const PopoverHeader = ({
 )
 PopoverHeader.displayName = "PopoverHeader"
 
-const PopoverTitle = React.forwardRef<
-  React.ElementRef<typeof React.ComponentPropsWithoutRef<"h3">>,
-  React.ComponentPropsWithoutRef<"h3">
->(({ className, ...props }, ref) => (
+const PopoverTitle = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"h3">) => (
   <h3
-    ref={ref as any}
+    ref={ref}
     className={cn("text-base font-semibold leading-none tracking-tight font-heading", className)}
     {...props}
   />
-))
+)
 PopoverTitle.displayName = "PopoverTitle"
 
-const PopoverDescription = React.forwardRef<
-  React.ElementRef<typeof React.ComponentPropsWithoutRef<"p">>,
-  React.ComponentPropsWithoutRef<"p">
->(({ className, ...props }, ref) => (
+const PopoverDescription = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentProps<"p">) => (
   <p
-    ref={ref as any}
+    ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
-))
+)
 PopoverDescription.displayName = "PopoverDescription"
 
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverHeader, PopoverTitle, PopoverDescription }

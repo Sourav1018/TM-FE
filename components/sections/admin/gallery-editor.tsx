@@ -46,14 +46,14 @@ export function GalleryEditor() {
       {/* Hidden Inputs */}
       <Input 
         type="file" 
-        id="hero-upload" 
+        id="hero-upload"
         className="hidden" 
         accept="image/*" 
         onChange={handleHeroUpload} 
       />
       <Input 
         type="file" 
-        id="gallery-upload" 
+        id="gallery-upload"
         className="hidden" 
         accept="image/*" 
         multiple 
@@ -88,17 +88,19 @@ export function GalleryEditor() {
           </div>
         ) : (
           <Button 
+            asChild
             variant="ghost"
-            onClick={() => document.getElementById("hero-upload")?.click()}
-            className="flex flex-col items-center justify-center aspect-[21/9] w-full h-auto rounded-[2.5rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group"
+            className="flex flex-col items-center justify-center aspect-[21/9] w-full h-auto rounded-[2.5rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
           >
-            <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">
-              <ImagePlus className="w-8 h-8 text-muted-foreground group-hover:text-primary" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-base font-bold text-muted-foreground group-hover:text-primary transition-colors">Upload Hero Image</span>
-              <span className="text-xs text-muted-foreground/60">Recommended size: 1920x820px</span>
-            </div>
+            <label htmlFor="hero-upload" className="w-full h-full flex flex-col items-center justify-center gap-4 cursor-pointer">
+              <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">
+                <ImagePlus className="w-8 h-8 text-muted-foreground group-hover:text-primary" />
+              </div>
+              <div className="flex flex-col gap-1 items-center">
+                <span className="text-base font-bold text-muted-foreground group-hover:text-primary transition-colors">Upload Hero Image</span>
+                <span className="text-xs text-muted-foreground/60">Recommended size: 1920x820px</span>
+              </div>
+            </label>
           </Button>
         )}
       </div>
@@ -138,14 +140,16 @@ export function GalleryEditor() {
           
           {/* Upload More Button */}
           <Button 
+            asChild
             variant="ghost"
-            onClick={() => document.getElementById("gallery-upload")?.click()}
-            className="flex flex-col items-center justify-center aspect-square h-auto rounded-[2rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group"
+            className="flex flex-col items-center justify-center aspect-square h-auto rounded-[2rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
           >
-            <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">
-              <ImagePlus className="w-6 h-6 text-muted-foreground group-hover:text-primary" />
-            </div>
-            <span className="text-sm font-bold text-muted-foreground group-hover:text-primary transition-colors">Upload More</span>
+            <label htmlFor="gallery-upload" className="w-full h-full flex flex-col items-center justify-center gap-4 cursor-pointer">
+              <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">
+                <ImagePlus className="w-6 h-6 text-muted-foreground group-hover:text-primary" />
+              </div>
+              <span className="text-sm font-bold text-muted-foreground group-hover:text-primary transition-colors">Upload More</span>
+            </label>
           </Button>
         </div>
       </div>

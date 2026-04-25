@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Calendar, Plus, Trash2 } from "lucide-react"
 import { useState } from "react"
+import { CustomAlert } from "@/components/ui/custom-alert"
 
 type ItineraryDay = {
   id: string
@@ -50,6 +51,10 @@ export function ExperienceBuilder() {
 
   return (
     <div className="flex flex-col gap-10">
+      <CustomAlert tone="amber">
+        <span className="font-bold">Pro Tip:</span> A good itinerary balances active excursions with leisure time. Aim for 2-3 main activities per day.
+      </CustomAlert>
+
       {/* Header Area */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -80,7 +85,7 @@ export function ExperienceBuilder() {
             </div>
 
             {/* Day Content Card */}
-            <Card className="bg-surface-container-low p-8 flex flex-col gap-10 shadow-sm border border-border/40 group transition-all hover:shadow-lg hover:bg-surface-container">
+            <Card className="bg-surface-container-low p-8 flex flex-col gap-10 shadow-sm border border-border/40 group transition-all hover:shadow-lg hover:bg-surface-container rounded-[1.25rem]">
               <CardHeader className="flex-row items-center justify-between p-0 space-y-0">
                 <Input
                   type="text"
@@ -99,12 +104,12 @@ export function ExperienceBuilder() {
                 </Button>
               </CardHeader>
 
-              <CardContent className="bg-white rounded-[1.5rem] p-5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-border/50">
+              <CardContent className="bg-white rounded-[1.25rem] p-5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-border/50">
                 <Textarea
                   value={day.description}
                   onChange={(e) => updateDay(day.id, { description: e.target.value })}
                   placeholder="Describe the activities for this day..."
-                  className="min-h-[140px] bg-transparent border-none resize-none px-1 py-0 text-foreground/70 text-lg leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-muted-foreground/50"
+                  className="min-h-35 bg-transparent border-none resize-none px-1 py-0 text-foreground/70 text-lg leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-muted-foreground/50"
                 />
               </CardContent>
             </Card>

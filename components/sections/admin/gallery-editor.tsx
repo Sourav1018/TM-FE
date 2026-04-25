@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { ImagePlus, Trash2 } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
+import { CustomAlert } from "@/components/ui/custom-alert"
 
 const GALLERY_IMAGES = [
   { id: "1", src: "/images/gallery/amalfi.png", alt: "Amalfi Coast" },
@@ -43,6 +44,9 @@ export function GalleryEditor() {
 
   return (
     <div className="flex flex-col gap-12">
+      <CustomAlert tone="rose">
+        <span className="font-bold">Gallery Tip:</span> High-quality, bright photos significantly increase booking rates. Try to include at least one wide-angle landscape shot.
+      </CustomAlert>
       {/* Hidden Inputs */}
       <Input 
         type="file" 
@@ -67,7 +71,7 @@ export function GalleryEditor() {
         </div>
         
         {heroImage ? (
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[2.5rem] border border-border bg-muted/20 group shadow-sm transition-all hover:shadow-md">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[1.25rem] border border-border bg-muted/20 group shadow-sm transition-all hover:shadow-md">
             <Image 
               src={heroImage} 
               alt="Hero" 
@@ -80,7 +84,7 @@ export function GalleryEditor() {
                 variant="secondary"
                 size="icon"
                 onClick={() => setHeroImage(null)}
-                className="h-14 w-14 rounded-full bg-background shadow-lg border border-border hover:scale-110 hover:text-destructive transition-all duration-300 group/btn"
+                className="h-14 w-14 rounded-[1.25rem] bg-background shadow-lg border border-border hover:scale-110 hover:text-destructive transition-all duration-300 group/btn"
               >
                 <Trash2 className="w-6 h-6 text-muted-foreground group-hover/btn:text-destructive" />
               </Button>
@@ -90,7 +94,7 @@ export function GalleryEditor() {
           <Button 
             asChild
             variant="ghost"
-            className="flex flex-col items-center justify-center aspect-[21/9] w-full h-auto rounded-[2.5rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
+            className="flex flex-col items-center justify-center aspect-[21/9] w-full h-auto rounded-[1.25rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
           >
             <label htmlFor="hero-upload" className="w-full h-full flex flex-col items-center justify-center gap-4 cursor-pointer">
               <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">
@@ -116,7 +120,7 @@ export function GalleryEditor() {
           {galleryImages.map((img) => (
             <div 
               key={img.id} 
-              className="group relative aspect-square overflow-hidden rounded-[2rem] border border-border bg-muted/20 shadow-sm transition-all hover:shadow-md"
+              className="group relative aspect-square overflow-hidden rounded-[1.25rem] border border-border bg-muted/20 shadow-sm transition-all hover:shadow-md"
             >
               <Image 
                 src={img.src} 
@@ -130,7 +134,7 @@ export function GalleryEditor() {
                   variant="secondary"
                   size="icon"
                   onClick={() => removeGalleryImage(img.id)}
-                  className="h-10 w-10 rounded-full bg-background/90 text-foreground/60 hover:text-destructive hover:bg-background transition-all shadow-sm"
+                  className="h-10 w-10 rounded-[1.25rem] bg-background/90 text-foreground/60 hover:text-destructive hover:bg-background transition-all shadow-sm"
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
@@ -142,7 +146,7 @@ export function GalleryEditor() {
           <Button 
             asChild
             variant="ghost"
-            className="flex flex-col items-center justify-center aspect-square h-auto rounded-[2rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
+            className="flex flex-col items-center justify-center aspect-square h-auto rounded-[1.25rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
           >
             <label htmlFor="gallery-upload" className="w-full h-full flex flex-col items-center justify-center gap-4 cursor-pointer">
               <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">

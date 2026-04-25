@@ -9,6 +9,7 @@ import { ExperienceBuilder } from "@/components/sections/admin/experience-builde
 import { EditorStepCard } from "@/components/sections/admin/editor-step-card"
 import { PACKAGE_EDITOR_STEPS } from "@/constants/package-editor"
 import { GalleryEditor } from "@/components/sections/admin/gallery-editor"
+import { CustomAlert } from "@/components/ui/custom-alert"
 import { useState } from "react"
 
 export default function PackageEditorPage() {
@@ -40,7 +41,10 @@ export default function PackageEditorPage() {
         {currentStep === 4 && <GalleryEditor />}
 
         {currentStep >= 5 && (
-           <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
+           <div className="flex flex-col items-center justify-center py-20 text-center gap-4 max-w-2xl mx-auto">
+              <CustomAlert className="mb-8 w-full text-left">
+                 <span className="font-bold">Final Check:</span> Almost there! Review all your details carefully before publishing. You can always edit them later.
+              </CustomAlert>
               <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
                  <span className="text-2xl font-bold text-muted-foreground">{currentStep}</span>
               </div>

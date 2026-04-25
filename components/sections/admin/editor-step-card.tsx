@@ -15,7 +15,7 @@ export function EditorStepCard({
   isScrollable = false
 }: EditorStepCardProps) {
   return (
-    <Card className={cn("rounded-[2.5rem] bg-white p-16 shadow-sm border border-border/40 overflow-hidden", className)}>
+    <Card className={cn("rounded-lg bg-white p-16 shadow-sm border border-border/40 overflow-hidden", className)}>
       <div className={cn(
         "flex flex-col gap-10",
         isScrollable && "overflow-y-auto max-h-[calc(100vh-400px)] pr-2 custom-scrollbar",

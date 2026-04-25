@@ -20,8 +20,8 @@ export function PackageEditorFooter({
 }: PackageEditorFooterProps) {
   return (
     <div className="flex items-center justify-between border-t border-border pt-8 mt-8">
-      <Button 
-        variant="ghost" 
+      <Button
+        variant="ghost"
         className="text-muted-foreground gap-2 hover:bg-transparent hover:text-foreground h-12 px-6 font-bold"
         disabled={currentStep === 1}
         onClick={onBack}
@@ -34,7 +34,7 @@ export function PackageEditorFooter({
         Step {currentStep} of {totalSteps}
       </div>
 
-      <Button 
+      <Button
         className="rounded-full bg-primary hover:brightness-90 gap-2 px-10 py-6 h-auto text-base font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95"
         onClick={onContinue}
       >

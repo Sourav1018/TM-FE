@@ -30,7 +30,7 @@ function Navbar() {
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[300px]">
+          <SheetContent side="left" className="w-75">
             <SheetHeader>
               <SheetTitle className="text-left font-heading text-xl font-bold">
                 Sunlit Travels

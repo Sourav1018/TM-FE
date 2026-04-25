@@ -13,7 +13,7 @@ import { REVENUE_DATA } from "@/mock/admin-dashboard"
 
 export function RevenueChart() {
   return (
-    <div className="h-[400px] w-full rounded-3xl bg-white p-8 mb-4 shadow-sm shadow-black/[0.03]">
+    <div className="h-100 w-full rounded-3xl bg-white p-8 mb-4 shadow-sm shadow-black/[0.03]">
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h3 className="font-heading text-xl font-bold text-foreground">Revenue Growth</h3>
@@ -31,7 +31,7 @@ export function RevenueChart() {
         </div>
       </div>
       
-      <div className="h-[300px] w-full">
+      <div className="h-75 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={REVENUE_DATA}

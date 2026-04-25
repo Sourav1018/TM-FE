@@ -8,7 +8,7 @@ type PackageEditorStepperProps = {
   onStepClick?: (stepId: number) => void
 }
 
-export function PackageEditorStepper({ 
+export function PackageEditorStepper({
   currentStep = 1,
   onStepClick
 }: PackageEditorStepperProps) {
@@ -22,14 +22,14 @@ export function PackageEditorStepper({
           const isLast = index === PACKAGE_EDITOR_STEPS.length - 1
 
           return (
-            <div 
-              key={step.id} 
+            <div
+              key={step.id}
               className={cn(
-                "flex items-center group", 
+                "flex items-center group",
                 isLast ? "flex-none" : "flex-1 min-w-37.5"
               )}
             >
-              <div 
+              <div
                 className={cn(
                   "relative flex flex-col items-center gap-3 transition-all",
                   onStepClick && "cursor-pointer"
@@ -38,7 +38,7 @@ export function PackageEditorStepper({
               >
                 {/* Connector Line */}
                 {!isLast && (
-                  <div 
+                  <div
                     className={cn(
                       "absolute left-1/2 top-5 h-0.5 w-full -translate-y-1/2 translate-x-1/2",
                       isCompleted ? "bg-primary" : "bg-border"
@@ -47,12 +47,12 @@ export function PackageEditorStepper({
                 )}
 
                 {/* Number Circle */}
-                <div 
+                <div
                   className={cn(
                     "relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-semibold transition-all duration-300",
-                    isActive ? "border-primary bg-primary text-white shadow-lg shadow-primary/20 scale-110" : 
-                    isCompleted ? "border-primary bg-primary text-white" : 
-                    "border-border bg-muted text-muted-foreground",
+                    isActive ? "border-primary bg-primary text-white shadow-lg shadow-primary/20 scale-110" :
+                      isCompleted ? "border-primary bg-primary text-white" :
+                        "border-border bg-muted text-muted-foreground",
                     onStepClick && !isActive && !isCompleted && "group-hover:border-primary group-hover:bg-primary/5 group-hover:text-primary"
                   )}
                 >
@@ -60,7 +60,7 @@ export function PackageEditorStepper({
                 </div>
 
                 {/* Label */}
-                <span 
+                <span
                   className={cn(
                     "text-xs font-semibold whitespace-nowrap px-2 transition-colors",
                     isActive ? "text-primary" : "text-muted-foreground",

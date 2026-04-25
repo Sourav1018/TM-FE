@@ -22,7 +22,7 @@ export function PackagesHero({
 }: PackagesHeroProps) {
   return (
     <section className="mb-12">
-      <div className="bg-primary relative flex min-h-[300px] items-center justify-center overflow-hidden rounded-xl p-8">
+      <div className="bg-primary relative flex min-h-75 items-center justify-center overflow-hidden rounded-xl p-8">
         <div className="from-primary to-primary-container absolute inset-0 bg-gradient-to-br opacity-90" />
         <Image
           src="/images/packages/hero.jpg"

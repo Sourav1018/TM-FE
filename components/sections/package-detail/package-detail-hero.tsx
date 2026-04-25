@@ -61,24 +61,24 @@ export function PackageDetailHero({ data }: PackageDetailHeroProps) {
         </div>
       </div>
 
-      <div className="grid h-auto grid-cols-1 gap-4 md:h-[500px] md:grid-cols-4 md:grid-rows-2">
+      <div className="grid h-auto grid-cols-1 gap-4 md:h-125 md:grid-cols-4 md:grid-rows-2">
         <PackageHeroGalleryCard
           image={featuredImage}
           showOverlay
-          className="min-h-[320px] md:col-span-2 md:row-span-2"
+          className="min-h-80 md:col-span-2 md:row-span-2"
         />
 
         {secondaryImages.slice(0, 2).map((image) => (
           <PackageHeroGalleryCard
             key={image.id}
             image={image}
-            className="min-h-[180px]"
+            className="min-h-45"
           />
         ))}
 
         <PackageHeroGalleryCard
           image={secondaryImages[2]}
-          className="min-h-[220px] md:col-span-2"
+          className="min-h-55 md:col-span-2"
         >
           <Button
             type="button"

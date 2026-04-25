@@ -31,7 +31,7 @@ export default function PackageEditorPage() {
       />
 
       {/* Main Content Card */}
-      <EditorStepCard isScrollable={currentStep === 3}>
+      <EditorStepCard >
         {currentStep === 1 && <CoreDetailsEditor />}
 
         {currentStep === 2 && <PricingEditor />}

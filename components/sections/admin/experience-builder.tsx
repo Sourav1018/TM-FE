@@ -1,19 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardContent } from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
-import { Calendar, Plus, Trash2 } from "lucide-react"
+import { Plus, Search } from "lucide-react"
 import { useState } from "react"
 import { CustomAlert } from "@/components/ui/custom-alert"
-
-type ItineraryDay = {
-  id: string
-  day: number
-  title: string
-  description: string
-}
+import { ItineraryDayCard, type ItineraryDay } from "./itinerary-day-card"
 
 export function ExperienceBuilder() {
   const [days, setDays] = useState<ItineraryDay[]>([
@@ -22,12 +14,14 @@ export function ExperienceBuilder() {
       day: 1,
       title: "Arrival & Welcome Dinner",
       description: "Private transfer from Santorini Airport to Oia. Check-in to luxury suite followed by a 5-course welcome dinner at sunset.",
+      places: [],
     },
     {
       id: "2",
       day: 2,
       title: "Private Yacht Cruise",
       description: "Half-day cruise around the volcanic caldera with swimming stops at Red Beach and hot springs.",
+      places: [],
     },
   ])
 
@@ -37,6 +31,7 @@ export function ExperienceBuilder() {
       day: days.length + 1,
       title: "",
       description: "",
+      places: [],
     }
     setDays([...days, newDay])
   }
@@ -56,12 +51,13 @@ export function ExperienceBuilder() {
       </CustomAlert>
 
       {/* Header Area */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-sm border border-primary/20">
-            <Calendar className="h-6 w-6" />
-          </div>
-          {/* Title removed as requested */}
+      <div className="flex items-center justify-between gap-4">
+        <div className="relative group max-w-xl w-full">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+          <Input 
+            placeholder="Search itinerary..." 
+            className="pl-11 rounded-full bg-muted/40 border-none shadow-none focus-visible:ring-1 focus-visible:ring-primary/20 transition-all h-12"
+          />
         </div>
         <Button
           onClick={addDay}
@@ -85,34 +81,11 @@ export function ExperienceBuilder() {
             </div>
 
             {/* Day Content Card */}
-            <Card className="bg-surface-container-low p-8 flex flex-col gap-10 shadow-sm border border-border/40 group transition-all hover:shadow-lg hover:bg-surface-container rounded-[1.25rem]">
-              <CardHeader className="flex-row items-center justify-between p-0 space-y-0">
-                <Input
-                  type="text"
-                  value={day.title}
-                  onChange={(e) => updateDay(day.id, { title: e.target.value })}
-                  placeholder="Day Title"
-                  className="bg-transparent text-2xl font-extrabold text-foreground focus-visible:ring-0 border-none w-full placeholder:text-muted-foreground px-1 h-auto"
-                />
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => removeDay(day.id)}
-                  className="p-3 h-auto w-auto rounded-full text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all opacity-60 group-hover:opacity-100"
-                >
-                  <Trash2 className="h-7 w-7" />
-                </Button>
-              </CardHeader>
-
-              <CardContent className="bg-white rounded-[1.25rem] p-5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-border/50">
-                <Textarea
-                  value={day.description}
-                  onChange={(e) => updateDay(day.id, { description: e.target.value })}
-                  placeholder="Describe the activities for this day..."
-                  className="min-h-35 bg-transparent border-none resize-none px-1 py-0 text-foreground/70 text-lg leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-muted-foreground/50"
-                />
-              </CardContent>
-            </Card>
+            <ItineraryDayCard
+              day={day}
+              onUpdate={updateDay}
+              onRemove={removeDay}
+            />
           </div>
         ))}
       </div>

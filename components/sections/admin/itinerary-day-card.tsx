@@ -64,7 +64,7 @@ export function ItineraryDayCard({ day, onUpdate, onRemove }: ItineraryDayCardPr
           />
         </CardContent>
 
-        <div className="space-y-4 px-1">
+        <div className="flex flex-col gap-2 px-1">
           <Label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest pl-1">Places to visit</Label>
           <div className="flex flex-wrap gap-3">
             {day.places?.map(placeId => {

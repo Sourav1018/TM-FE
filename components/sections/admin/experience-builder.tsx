@@ -51,7 +51,7 @@ export function ExperienceBuilder() {
       </CustomAlert>
 
       {/* Header Area */}
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="relative group max-w-xl w-full">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
           <Input 
@@ -61,7 +61,7 @@ export function ExperienceBuilder() {
         </div>
         <Button
           onClick={addDay}
-          className="rounded-full bg-primary-container px-8 py-6 hover:bg-primary-container/90 text-white font-bold flex items-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95"
+          className="rounded-full bg-primary-container px-8 py-6 hover:bg-primary-container/90 text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
         >
           <Plus className="h-5 w-5" />
           Add Day
@@ -69,14 +69,14 @@ export function ExperienceBuilder() {
       </div>
 
       {/* Itinerary List */}
-      <div className="relative flex flex-col gap-20">
+      <div className="relative flex flex-col gap-12 sm:gap-20">
         {/* Vertical Timeline Line */}
-        <div className="absolute left-6 top-10 bottom-10 w-[1.5px] bg-border" />
+        <div className="absolute left-4 sm:left-6 top-10 bottom-10 w-[1.5px] bg-border" />
 
         {days.map((day) => (
-          <div key={day.id} className="relative pl-24">
+          <div key={day.id} className="relative pl-12 sm:pl-24">
             {/* Day Number Circle */}
-            <div className="absolute left-2 top-8 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-sm font-bold shadow-md">
+            <div className="absolute left-0 sm:left-2 top-8 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-primary text-white text-xs sm:text-sm font-bold shadow-md">
               {day.day}
             </div>
 

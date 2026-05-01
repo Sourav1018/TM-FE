@@ -71,7 +71,7 @@ export function GalleryEditor() {
         </div>
         
         {heroImage ? (
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[1.25rem] border border-border bg-muted/20 group shadow-sm transition-all hover:shadow-md">
+          <div className="relative aspect-video sm:aspect-[21/9] w-full overflow-hidden rounded-[1.25rem] border border-border bg-muted/20 group shadow-sm transition-all hover:shadow-md">
             <Image 
               src={heroImage} 
               alt="Hero" 
@@ -94,7 +94,7 @@ export function GalleryEditor() {
           <Button 
             asChild
             variant="ghost"
-            className="flex flex-col items-center justify-center aspect-[21/9] w-full h-auto rounded-[1.25rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
+            className="flex flex-col items-center justify-center aspect-video sm:aspect-[21/9] w-full h-auto rounded-[1.25rem] border-2 border-dashed border-border bg-muted/10 hover:bg-muted/20 hover:border-primary/40 transition-all gap-4 group cursor-pointer"
           >
             <label htmlFor="hero-upload" className="w-full h-full flex flex-col items-center justify-center gap-4 cursor-pointer">
               <div className="p-4 rounded-2xl bg-background shadow-sm border border-border group-hover:scale-110 group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">

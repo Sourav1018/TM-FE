@@ -36,32 +36,32 @@ export function ItineraryDayCard({ day, onUpdate, onRemove }: ItineraryDayCardPr
   }
 
   return (
-    <Card className="bg-surface-container-low p-8 flex flex-col gap-10 shadow-sm border border-border/40 group transition-all hover:shadow-lg hover:bg-surface-container rounded-[1.25rem]">
+    <Card className="bg-surface-container-low p-4 sm:p-8 flex flex-col gap-6 sm:gap-10 shadow-sm border border-border/40 group transition-all hover:shadow-lg hover:bg-surface-container rounded-[1.25rem]">
       <CardHeader className="flex-row items-center justify-between p-0 space-y-0">
         <Input
           type="text"
           value={day.title}
           onChange={(e) => onUpdate(day.id, { title: e.target.value })}
           placeholder="Day Title"
-          className="bg-transparent text-2xl font-extrabold text-foreground focus-visible:ring-0 border-none w-full placeholder:text-muted-foreground px-1 h-auto"
+          className="bg-transparent text-xl sm:text-2xl font-extrabold text-foreground focus-visible:ring-0 border-none w-full placeholder:text-muted-foreground px-1 h-auto"
         />
         <Button
           variant="ghost"
           size="icon"
           onClick={() => onRemove(day.id)}
-          className="p-3 h-auto w-auto rounded-full text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all opacity-60 group-hover:opacity-100"
+          className="p-2 sm:p-3 h-auto w-auto rounded-full text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all opacity-60 group-hover:opacity-100"
         >
-          <Trash2 className="h-7 w-7" />
+          <Trash2 className="h-5 w-5 sm:h-7 sm:w-7" />
         </Button>
       </CardHeader>
 
-      <div className="flex flex-col gap-8">
-        <CardContent className="bg-white rounded-[1.25rem] p-5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-border/50">
+      <div className="flex flex-col gap-6 sm:gap-8">
+        <CardContent className="bg-white rounded-[1.25rem] p-4 sm:p-5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] border border-border/50">
           <Textarea
             value={day.description}
             onChange={(e) => onUpdate(day.id, { description: e.target.value })}
             placeholder="Describe the activities for this day..."
-            className="min-h-35 bg-transparent border-none resize-none px-1 py-0 text-foreground/70 text-lg leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-muted-foreground/50"
+            className="min-h-30 sm:min-h-35 bg-transparent border-none resize-none px-1 py-0 text-foreground/70 text-base sm:text-lg leading-relaxed focus-visible:ring-0 shadow-none placeholder:text-muted-foreground/50"
           />
         </CardContent>
 

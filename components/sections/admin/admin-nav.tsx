@@ -13,7 +13,7 @@ export function AdminNav() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-border/40 bg-background/50 backdrop-blur-xl lg:flex">
+      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-border/40 bg-background/50 backdrop-blur-xl lg:flex lg:px-6 lg:py-10">
         <SidebarContent />
       </aside>
 
@@ -35,7 +35,7 @@ export function AdminNav() {
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-full p-0">
+          <SheetContent side="right" className="w-[320px] p-6">
             <SidebarContent />
           </SheetContent>
         </Sheet>

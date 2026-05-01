@@ -58,7 +58,7 @@ export function FacilitiesEditor() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Inclusions Card */}
-        <Card className="bg-white p-8 flex flex-col gap-6 shadow-sm border border-border/40 rounded-[1.25rem]">
+        <Card className="bg-white p-4 sm:p-8 flex flex-col gap-6 shadow-sm border border-border/40 rounded-[1.25rem]">
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-bold text-slate-700">Inclusions</h3>

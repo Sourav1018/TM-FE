@@ -19,10 +19,10 @@ export function PackageEditorFooter({
   nextLabel
 }: PackageEditorFooterProps) {
   return (
-    <div className="flex items-center justify-between border-t border-border pt-8 mt-8">
+    <div className="flex flex-col-reverse gap-6 sm:flex-row sm:items-center sm:justify-between border-t border-border pt-8 mt-8">
       <Button
         variant="ghost"
-        className="text-muted-foreground gap-2 hover:bg-transparent hover:text-foreground h-12 px-6 font-bold"
+        className="text-muted-foreground gap-2 hover:bg-transparent hover:text-foreground h-12 px-6 font-bold w-full sm:w-auto"
         disabled={currentStep === 1}
         onClick={onBack}
       >
@@ -30,12 +30,12 @@ export function PackageEditorFooter({
         Previous
       </Button>
 
-      <div className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
+      <div className="text-sm font-bold text-muted-foreground uppercase tracking-widest text-center">
         Step {currentStep} of {totalSteps}
       </div>
 
       <Button
-        className="rounded-full bg-primary hover:brightness-90 gap-2 px-10 py-6 h-auto text-base font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95"
+        className="rounded-full bg-primary hover:brightness-90 gap-2 px-10 py-6 h-auto text-base font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
         onClick={onContinue}
       >
         {currentStep === totalSteps ? "Finish & Save" : (nextLabel || "Next Step")}

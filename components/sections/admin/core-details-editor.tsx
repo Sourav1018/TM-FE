@@ -32,7 +32,7 @@ export function CoreDetailsEditor() {
             <Input className="rounded-sm" placeholder="e.g. Majestic Swiss Alps Discovery" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4 items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
             <div className="flex flex-col gap-1">
               <Label className="text-sm font-bold text-foreground pl-1">Destination</Label>
               <div className="relative">

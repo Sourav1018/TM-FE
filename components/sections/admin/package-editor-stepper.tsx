@@ -13,9 +13,9 @@ export function PackageEditorStepper({
   onStepClick
 }: PackageEditorStepperProps) {
   return (
-    <div className="w-full px-2">
+    <div className="w-full overflow-x-auto no-scrollbar pb-4">
       <div 
-        className="grid w-full py-6"
+        className="grid min-w-[800px] lg:min-w-0 w-full py-6"
         style={{ 
           gridTemplateColumns: `repeat(${PACKAGE_EDITOR_STEPS.length}, 1fr)` 
         }}

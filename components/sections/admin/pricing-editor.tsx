@@ -45,7 +45,7 @@ export function PricingEditor() {
               <p className="text-sm text-muted-foreground">Set the minimum and maximum group size for this package.</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 max-w-md">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-md">
               <div className="space-y-4">
                 <Label className="text-sm font-bold text-foreground pl-1">Min. Guests</Label>
                 <div className="relative group">

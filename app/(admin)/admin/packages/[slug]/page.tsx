@@ -11,6 +11,7 @@ import { PACKAGE_EDITOR_STEPS } from "@/constants/package-editor"
 import { GalleryEditor } from "@/components/sections/admin/gallery-editor"
 import { CustomAlert } from "@/components/ui/custom-alert"
 import { useState } from "react"
+import { FacilitiesEditor } from "@/components/sections/admin/facilities-editor"
 
 export default function PackageEditorPage() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -40,7 +41,9 @@ export default function PackageEditorPage() {
 
         {currentStep === 4 && <GalleryEditor />}
 
-        {currentStep >= 5 && (
+        {currentStep === 5 && <FacilitiesEditor />}
+
+        {currentStep >= 6 && (
            <div className="flex flex-col items-center justify-center py-20 text-center gap-4 max-w-2xl mx-auto">
               <CustomAlert className="mb-8 w-full text-left">
                  <span className="font-bold">Final Check:</span> Almost there! Review all your details carefully before publishing. You can always edit them later.

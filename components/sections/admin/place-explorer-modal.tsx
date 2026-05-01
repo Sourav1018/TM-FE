@@ -1,15 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { MOCK_PLACES } from "@/constants/package-editor"
-import { Search, Plus, Check, GripVertical, Trash2, MapPin } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { type ItineraryDay } from "./itinerary-day-card"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { MOCK_PLACES } from "@/constants/package-editor"
+import { cn } from "@/lib/utils"
+import { Check, GripVertical, MapPin, Plus, Search, Trash2 } from "lucide-react"
+import { useState } from "react"
+import { type ItineraryDay } from "./itinerary-day-card"
 
 const uniqueCities = Array.from(new Set(MOCK_PLACES.map(p => p.location?.split(",")[0].trim()).filter(Boolean))) as string[]
 const uniqueCategories = Array.from(new Set(MOCK_PLACES.map(p => p.category).filter(Boolean))) as string[]

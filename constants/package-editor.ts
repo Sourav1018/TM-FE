@@ -14,11 +14,11 @@ export const TRAVEL_CATEGORIES = [
 ]
 
 export const MOCK_PLACES = [
-  { id: "p1", name: "Oia Village" },
-  { id: "p2", name: "Fira Town" },
-  { id: "p3", name: "Red Beach" },
-  { id: "p4", name: "Akrotiri Ruins" },
-  { id: "p5", name: "Santorini Caldera" },
-  { id: "p6", name: "Amalfi Cathedral" },
-  { id: "p7", name: "Positano Beach" },
+  { id: "p1", name: "Oia Village", location: "Santorini, Greece", district: "Thira", state: "South Aegean", category: "VIEWPOINT", isPopular: true, isHiddenGem: false },
+  { id: "p2", name: "Fira Town", location: "Santorini, Greece", district: "Thira", state: "South Aegean", category: "CULTURE", isPopular: true, isHiddenGem: false },
+  { id: "p3", name: "Red Beach", location: "Santorini, Greece", district: "Akrotiri", state: "South Aegean", category: "BEACH", isPopular: false, isHiddenGem: true },
+  { id: "p4", name: "Akrotiri Ruins", location: "Santorini, Greece", district: "Akrotiri", state: "South Aegean", category: "CULTURE", isPopular: false, isHiddenGem: true },
+  { id: "p5", name: "Santorini Caldera", location: "Santorini, Greece", district: "Thira", state: "South Aegean", category: "NATURE", isPopular: true, isHiddenGem: false },
+  { id: "p6", name: "Amalfi Cathedral", location: "Amalfi, Italy", district: "Salerno", state: "Campania", category: "CULTURE", isPopular: true, isHiddenGem: false },
+  { id: "p7", name: "Positano Beach", location: "Positano, Italy", district: "Salerno", state: "Campania", category: "BEACH", isPopular: true, isHiddenGem: false },
 ]

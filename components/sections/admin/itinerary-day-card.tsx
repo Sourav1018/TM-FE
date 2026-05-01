@@ -4,9 +4,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { MOCK_PLACES } from "@/constants/package-editor"
 import { Badge } from "@/components/ui/badge"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Label } from "@/components/ui/label"
 import { Plus, Trash2, X } from "lucide-react"
+import { useState } from "react"
+import { PlaceExplorerModal } from "./place-explorer-modal"
 
 export type ItineraryDay = {
   id: string
@@ -23,12 +24,12 @@ type ItineraryDayCardProps = {
 }
 
 export function ItineraryDayCard({ day, onUpdate, onRemove }: ItineraryDayCardProps) {
-  const handleAddPlace = (placeId: string) => {
-    const currentPlaces = day.places || []
-    if (!currentPlaces.includes(placeId)) {
-      onUpdate(day.id, { places: [...currentPlaces, placeId] })
-    }
+  const [isExplorerOpen, setIsExplorerOpen] = useState(false)
+
+  const handleSavePlaces = (places: string[]) => {
+    onUpdate(day.id, { places })
   }
+
 
   const handleRemovePlace = (placeId: string) => {
     onUpdate(day.id, { places: (day.places || []).filter(id => id !== placeId) })
@@ -72,10 +73,15 @@ export function ItineraryDayCard({ day, onUpdate, onRemove }: ItineraryDayCardPr
               return (
                 <Badge key={placeId} variant="secondary" className="rounded-full pl-4 pr-1 py-1.5 flex items-center gap-2 bg-primary/5 hover:bg-primary/10 border-primary/10 text-primary transition-all font-bold">
                   {place?.name}
+                  {place?.category && (
+                    <span className="text-[9px] bg-primary/10 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
+                      {place.category}
+                    </span>
+                  )}
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-6 w-6 rounded-full hover:bg-primary/20 text-primary/60 hover:text-primary transition-colors"
+                    className="h-6 w-6 rounded-full hover:bg-primary/20 text-primary/60 hover:text-primary transition-colors ml-1"
                     onClick={() => handleRemovePlace(placeId)}
                   >
                     <X className="h-3.5 w-3.5" />
@@ -83,34 +89,22 @@ export function ItineraryDayCard({ day, onUpdate, onRemove }: ItineraryDayCardPr
                 </Badge>
               )
             })}
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant="outline" size="sm" className="rounded-full border-dashed h-10 px-6 text-xs font-bold gap-2 hover:bg-primary/5 hover:text-primary hover:border-primary/30 transition-all">
-                  <Plus className="h-4 w-4" /> Add Place
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-64 p-2 rounded-2xl shadow-xl border-border/40" align="start">
-                <div className="flex flex-col gap-1">
-                  <p className="px-3 py-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Available Places</p>
-                  <div className="max-h-60 overflow-y-auto pr-1">
-                    {MOCK_PLACES.filter(p => !day.places?.includes(p.id)).length > 0 ? (
-                      MOCK_PLACES.filter(p => !day.places?.includes(p.id)).map(place => (
-                        <Button
-                          key={place.id}
-                          variant="ghost"
-                          className="w-full justify-start text-sm font-medium rounded-xl hover:bg-primary/5 hover:text-primary py-5"
-                          onClick={() => handleAddPlace(place.id)}
-                        >
-                          {place.name}
-                        </Button>
-                      ))
-                    ) : (
-                      <p className="px-3 py-4 text-xs text-muted-foreground italic">No more places to add</p>
-                    )}
-                  </div>
-                </div>
-              </PopoverContent>
-            </Popover>
+            
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => setIsExplorerOpen(true)}
+              className="rounded-full border-dashed h-10 px-6 text-xs font-bold gap-2 hover:bg-primary/5 hover:text-primary hover:border-primary/30 transition-all"
+            >
+              <Plus className="h-4 w-4" /> Add Places
+            </Button>
+
+            <PlaceExplorerModal 
+              open={isExplorerOpen}
+              onOpenChange={setIsExplorerOpen}
+              day={day}
+              onSave={handleSavePlaces}
+            />
           </div>
         </div>
       </div>

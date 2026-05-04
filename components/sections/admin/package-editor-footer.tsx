@@ -35,7 +35,7 @@ export function PackageEditorFooter({
       </div>
 
       <Button
-        className="rounded-full bg-primary hover:brightness-90 gap-2 px-10 py-6 h-auto text-base font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
+        className="rounded-full bg-primary hover:brightness-90 gap-2 py-3 h-auto text-base font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
         onClick={onContinue}
       >
         {currentStep === totalSteps ? "Finish & Save" : (nextLabel || "Next Step")}

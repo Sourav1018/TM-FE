@@ -1,8 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Plus, Search } from "lucide-react"
+import { Plus } from "lucide-react"
 import { useState } from "react"
 import { CustomAlert } from "@/components/ui/custom-alert"
 import { ItineraryDayCard, type ItineraryDay } from "./itinerary-day-card"
@@ -51,17 +50,10 @@ export function ExperienceBuilder() {
       </CustomAlert>
 
       {/* Header Area */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="relative group max-w-xl w-full">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-          <Input 
-            placeholder="Search itinerary..." 
-            className="pl-11 rounded-full bg-muted/40 border-none shadow-none focus-visible:ring-1 focus-visible:ring-primary/20 transition-all h-12"
-          />
-        </div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-end gap-4">
         <Button
           onClick={addDay}
-          className="rounded-full bg-primary-container px-8 py-6 hover:bg-primary-container/90 text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
+          className="rounded-full bg-primary-container hover:bg-primary-container/90 text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
         >
           <Plus className="h-5 w-5" />
           Add Day

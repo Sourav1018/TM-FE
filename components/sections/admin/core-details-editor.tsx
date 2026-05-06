@@ -1,15 +1,15 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { TRAVEL_CATEGORIES } from "@/constants/package-editor"
-import { MapPin, X, Link as LinkIcon, Search, Check } from "lucide-react"
+import { Link as LinkIcon, Search, X } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
-import { CustomAlert } from "@/components/ui/custom-alert"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
+import { CustomAlert } from "@/components/ui/custom-alert"
 
 export function CoreDetailsEditor() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -27,12 +27,12 @@ export function CoreDetailsEditor() {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
-  const filteredCategories = TRAVEL_CATEGORIES.filter(c => 
+  const filteredCategories = TRAVEL_CATEGORIES.filter(c =>
     c.label.toLowerCase().includes(categorySearch.toLowerCase())
   )
 
   const toggleCategory = (value: string) => {
-    setSelectedCategories(prev => 
+    setSelectedCategories(prev =>
       prev.includes(value) ? prev.filter(c => c !== value) : [...prev, value]
     )
   }
@@ -43,14 +43,14 @@ export function CoreDetailsEditor() {
         <span className="font-bold">Tip:</span> Great titles usually mention the destination and the primary vibe (e.g. &quot;Serene Amalfi Coastal Retreat&quot;).
       </CustomAlert>
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-1">
           <Label className="text-sm font-bold text-foreground pl-1">Package Title</Label>
           <Input className="rounded-sm" placeholder="e.g. Majestic Swiss Alps Discovery" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          <div className="flex gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1 w-full">
               <Label className="text-sm font-bold text-foreground pl-1">Days</Label>
               <Input type="number" min="0" className="rounded-sm" placeholder="e.g. 5" />
@@ -64,7 +64,7 @@ export function CoreDetailsEditor() {
           <div className="flex flex-col gap-1">
             <Label className="text-sm font-bold text-foreground pl-1">Travel Category</Label>
             <div className="relative" ref={dropdownRef}>
-              <div 
+              <div
                 className="flex min-h-10 w-full flex-wrap items-center gap-2 rounded-sm border border-input bg-input/30 px-3 py-2 text-sm ring-offset-background cursor-pointer"
                 onClick={() => setIsCategoryDropdownOpen(true)}
               >
@@ -76,8 +76,8 @@ export function CoreDetailsEditor() {
                     return cat ? (
                       <Badge key={val} variant="secondary" className="flex items-center gap-1 hover:bg-secondary">
                         {cat.label}
-                        <X 
-                          className="h-3 w-3 cursor-pointer text-muted-foreground hover:text-foreground" 
+                        <X
+                          className="h-3 w-3 cursor-pointer text-muted-foreground hover:text-foreground"
                           onClick={(e) => {
                             e.stopPropagation()
                             toggleCategory(val)
@@ -111,13 +111,13 @@ export function CoreDetailsEditor() {
                             className="relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-2 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
                             onClick={() => toggleCategory(category.value)}
                           >
-                            <Checkbox 
+                            <Checkbox
                               checked={isSelected}
                               onCheckedChange={() => toggleCategory(category.value)}
                               className="mr-2"
                               id={`category-${category.value}`}
                             />
-                            <Label 
+                            <Label
                               htmlFor={`category-${category.value}`}
                               className="cursor-pointer font-normal flex-1"
                               onClick={(e) => e.preventDefault()}
@@ -133,20 +133,20 @@ export function CoreDetailsEditor() {
               )}
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-1">
-          <Label className="text-sm font-bold text-foreground pl-1">Route Link</Label>
-          <div className="relative">
-            <LinkIcon className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input type="url" className="pl-11 rounded-sm" placeholder="Enter route/map link" />
+          <div className="flex flex-col gap-1 md:col-span-2">
+            <Label className="text-sm font-bold text-foreground pl-1">Route Link</Label>
+            <div className="relative">
+              <LinkIcon className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input type="url" className="pl-11 rounded-sm" placeholder="Enter route/map link" />
+            </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-1">
           <Label className="text-sm font-bold text-foreground pl-1">Short Pitch</Label>
           <Textarea
-            className="min-h-40 resize-none rounded-sm"
+            className="min-h-32 resize-none rounded-sm"
             placeholder="Briefly describe what makes this trip unforgettable..."
           />
         </div>

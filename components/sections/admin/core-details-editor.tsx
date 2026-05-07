@@ -10,9 +10,10 @@ import { useEffect, useRef, useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { CustomAlert } from "@/components/ui/custom-alert"
+import { usePackageEditor } from "@/store/package-editor-store"
 
 export function CoreDetailsEditor() {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const { data, setData } = usePackageEditor()
   const [categorySearch, setCategorySearch] = useState("")
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -32,9 +33,11 @@ export function CoreDetailsEditor() {
   )
 
   const toggleCategory = (value: string) => {
-    setSelectedCategories(prev =>
-      prev.includes(value) ? prev.filter(c => c !== value) : [...prev, value]
-    )
+    const currentTags = data.tags || []
+    const newTags = currentTags.includes(value)
+      ? currentTags.filter(t => t !== value)
+      : [...currentTags, value]
+    setData({ tags: newTags })
   }
 
   return (
@@ -46,18 +49,35 @@ export function CoreDetailsEditor() {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-1">
           <Label className="text-sm font-bold text-foreground pl-1">Package Title</Label>
-          <Input className="rounded-sm" placeholder="e.g. Majestic Swiss Alps Discovery" />
+          <Input 
+            className="rounded-sm" 
+            placeholder="e.g. Majestic Swiss Alps Discovery" 
+            value={data.title}
+            onChange={(e) => setData({ title: e.target.value })}
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1 w-full">
               <Label className="text-sm font-bold text-foreground pl-1">Days</Label>
-              <Input type="number" min="0" className="rounded-sm" placeholder="e.g. 5" />
+              <Input 
+                type="number"
+                className="rounded-sm" 
+                placeholder="e.g. 5" 
+                value={data.days}
+                onChange={(e) => setData({ days: parseInt(e.target.value) || 0 })}
+              />
             </div>
             <div className="flex flex-col gap-1 w-full">
               <Label className="text-sm font-bold text-foreground pl-1">Nights</Label>
-              <Input type="number" min="0" className="rounded-sm" placeholder="e.g. 4" />
+              <Input 
+                type="number"
+                className="rounded-sm" 
+                placeholder="e.g. 4" 
+                value={data.nights}
+                onChange={(e) => setData({ nights: parseInt(e.target.value) || 0 })}
+              />
             </div>
           </div>
 
@@ -68,10 +88,10 @@ export function CoreDetailsEditor() {
                 className="flex min-h-10 w-full flex-wrap items-center gap-2 rounded-sm border border-input bg-input/30 px-3 py-2 text-sm ring-offset-background cursor-pointer"
                 onClick={() => setIsCategoryDropdownOpen(true)}
               >
-                {selectedCategories.length === 0 ? (
+                {(!data.tags || data.tags.length === 0) ? (
                   <span className="text-muted-foreground">Select Categories...</span>
                 ) : (
-                  selectedCategories.map(val => {
+                  data.tags.map(val => {
                     const cat = TRAVEL_CATEGORIES.find(c => c.value === val)
                     return cat ? (
                       <Badge key={val} variant="secondary" className="flex items-center gap-1 hover:bg-secondary">
@@ -104,7 +124,7 @@ export function CoreDetailsEditor() {
                       <div className="py-6 text-center text-sm text-muted-foreground">No categories found.</div>
                     ) : (
                       filteredCategories.map(category => {
-                        const isSelected = selectedCategories.includes(category.value)
+                        const isSelected = data.tags?.includes(category.value)
                         return (
                           <div
                             key={category.value}
@@ -135,22 +155,31 @@ export function CoreDetailsEditor() {
           </div>
 
           <div className="flex flex-col gap-1 md:col-span-2">
-            <Label className="text-sm font-bold text-foreground pl-1">Route Link</Label>
+            <Label className="text-sm font-bold text-foreground pl-1">Slug (URL identifier)</Label>
             <div className="relative">
               <LinkIcon className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input type="url" className="pl-11 rounded-sm" placeholder="Enter route/map link" />
+              <Input 
+                type="text" 
+                className="pl-11 rounded-sm" 
+                placeholder="e.g. majestic-swiss-alps" 
+                value={data.slug}
+                onChange={(e) => setData({ slug: e.target.value })}
+              />
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-1">
-          <Label className="text-sm font-bold text-foreground pl-1">Short Pitch</Label>
+          <Label className="text-sm font-bold text-foreground pl-1">Short Pitch / Description</Label>
           <Textarea
             className="min-h-32 resize-none rounded-sm"
             placeholder="Briefly describe what makes this trip unforgettable..."
+            value={data.description}
+            onChange={(e) => setData({ description: e.target.value })}
           />
         </div>
       </div>
     </>
   )
 }
+

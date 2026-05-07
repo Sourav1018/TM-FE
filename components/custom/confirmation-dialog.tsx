@@ -10,7 +10,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 export type ConfirmationDialogProps = {
   isOpen: boolean
@@ -87,3 +87,4 @@ export function ConfirmationDialog({
     </Dialog>
   )
 }
+

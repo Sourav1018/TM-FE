@@ -1,6 +1,6 @@
-﻿import { Compass, Heart, Ticket, UserCircle2 } from "lucide-react"
+import { Compass, Heart, Ticket, UserCircle2 } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 export function MobileBookingsNav() {
   const items = [
@@ -34,3 +34,4 @@ export function MobileBookingsNav() {
     </nav>
   )
 }
+

@@ -1,6 +1,6 @@
 import { CalendarDays, CircleX, History } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 import type { BookingCategory, BookingNavItem } from "@/types/bookings"
 
@@ -52,3 +52,4 @@ export function BookingsSidebar({
     </aside>
   )
 }
+

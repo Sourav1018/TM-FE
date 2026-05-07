@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 import type { BookingItem } from "@/types/bookings"
 import { BookingStatusBadge } from "./booking-status-badge"
@@ -113,3 +113,4 @@ export function BookingCard({ booking }: BookingCardProps) {
     </Card>
   )
 }
+

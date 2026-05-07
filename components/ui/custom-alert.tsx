@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Info, LucideIcon } from "lucide-react"
 
@@ -45,3 +45,4 @@ export function CustomAlert({
     </Alert>
   )
 }
+

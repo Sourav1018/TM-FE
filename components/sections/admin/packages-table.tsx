@@ -2,7 +2,7 @@
 
 import { ConfirmationDialog } from "@/components/custom/confirmation-dialog"
 import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import { Edit2, History, Trash2 } from "lucide-react"
 import { useMemo, useState } from "react"
 import Image from "next/image"
@@ -94,7 +94,7 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
                   </td>
                   <td className="px-8 py-6">
                     <Badge variant="secondary" className="rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-bold text-tertiary border-none">
-                      {pkg.duration}
+                      {pkg.days}D / {pkg.nights}N
                     </Badge>
                   </td>
                   <td className="px-8 py-6">
@@ -173,3 +173,4 @@ export function PackagesTable({ activeTab }: PackagesTableProps) {
   )
       
 }
+

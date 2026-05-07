@@ -5,8 +5,8 @@ import { PackageCard } from "@/components/custom/package-card/package-card"
 type Package = {
   id: string | number
   title: string
-  location?: string
-  duration: number
+  days: number
+  nights: number
   price: number
   image: string
   badge?: string
@@ -28,8 +28,8 @@ export function PackagesGrid({ packages, onAction }: PackagesGridProps) {
         <div key={pkg.id} className="h-full">
           <PackageCard
             title={pkg.title}
-            location={pkg.location}
-            duration={`${pkg.duration} Days`}
+            days={pkg.days}
+            nights={pkg.nights}
             price={`$${pkg.price.toLocaleString()}`}
             image={pkg.image}
             badge={pkg.badge}

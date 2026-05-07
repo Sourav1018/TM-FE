@@ -6,8 +6,11 @@ import { DollarSign, Info, Users, Users2 } from "lucide-react"
 
 import { Card } from "@/components/ui/card"
 import { CustomAlert } from "@/components/ui/custom-alert"
+import { usePackageEditor } from "@/store/package-editor-store"
 
 export function PricingEditor() {
+  const { data, setData } = usePackageEditor()
+
   return (
     <>
       <CustomAlert tone="emerald">
@@ -34,6 +37,8 @@ export function PricingEditor() {
                   type="number"
                   className="pl-16 h-16 text-2xl font-bold bg-muted/20 border-none rounded-[1.25rem] focus-visible:ring-emerald-500/20 focus-visible:bg-white transition-all shadow-none focus-visible:shadow-sm"
                   placeholder="0.00"
+                  value={data.pricePerPerson || ""}
+                  onChange={(e) => setData({ pricePerPerson: Number(e.target.value) })}
                 />
               </div>
             </div>
@@ -56,6 +61,8 @@ export function PricingEditor() {
                     type="number"
                     className="pl-12 h-14 bg-muted/20 border-none rounded-[1rem] focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-bold text-lg shadow-none focus-visible:shadow-sm"
                     placeholder="1"
+                    value={data.minGuests || ""}
+                    onChange={(e) => setData({ minGuests: Number(e.target.value) })}
                   />
                 </div>
               </div>
@@ -69,6 +76,8 @@ export function PricingEditor() {
                     type="number"
                     className="pl-12 h-14 bg-muted/20 border-none rounded-[1rem] focus-visible:ring-primary/20 focus-visible:bg-white transition-all font-bold text-lg shadow-none focus-visible:shadow-sm"
                     placeholder="10"
+                    value={data.maxGuests || ""}
+                    onChange={(e) => setData({ maxGuests: Number(e.target.value) })}
                   />
                 </div>
               </div>
@@ -89,7 +98,7 @@ export function PricingEditor() {
                 </div>
                 <div className="text-right">
                   <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Base Rate</p>
-                  <div className="text-3xl font-bold text-emerald-600">$0.00</div>
+                  <div className="text-3xl font-bold text-emerald-600">${data.pricePerPerson || "0.00"}</div>
                 </div>
               </div>
 
@@ -107,11 +116,11 @@ export function PricingEditor() {
                 <div className="grid grid-cols-2 gap-4 pt-2">
                   <div className="bg-muted/30 rounded-sm p-3 border border-border/20">
                     <p className="text-[8px] font-bold text-muted-foreground uppercase">Min Guests</p>
-                    <p className="text-sm font-bold text-foreground">1 Pers.</p>
+                    <p className="text-sm font-bold text-foreground">{data.minGuests || 1} Pers.</p>
                   </div>
                   <div className="bg-muted/30 rounded-sm p-3 border border-border/20">
                     <p className="text-[8px] font-bold text-muted-foreground uppercase">Max Guests</p>
-                    <p className="text-sm font-bold text-foreground">10 Pers.</p>
+                    <p className="text-sm font-bold text-foreground">{data.maxGuests || 10} Pers.</p>
                   </div>
                 </div>
               </div>
@@ -133,3 +142,4 @@ export function PricingEditor() {
     </>
   )
 }
+

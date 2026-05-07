@@ -9,8 +9,17 @@ type PackageDetailHeroProps = {
   data: PackageDetailData
 }
 
+const PLACEHOLDER_IMAGE = {
+  id: "placeholder",
+  src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=2070",
+  alt: "Package image placeholder",
+  title: "Adventure awaits",
+  featured: true,
+}
+
 export function PackageDetailHero({ data }: PackageDetailHeroProps) {
-  const [featuredImage, ...secondaryImages] = data.gallery
+  const gallery = data.gallery.length > 0 ? data.gallery : [PLACEHOLDER_IMAGE]
+  const [featuredImage, ...secondaryImages] = gallery
 
   return (
     <section className="mb-12">
@@ -30,13 +39,8 @@ export function PackageDetailHero({ data }: PackageDetailHeroProps) {
           </div>
 
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-            {data.title}
+            {data.title || "Package Title"}
           </h1>
-
-          <div className="mt-3 flex items-center gap-2 text-muted-foreground">
-            <MapPin className="h-5 w-5 text-primary" />
-            <span className="font-medium">{data.location}</span>
-          </div>
         </div>
 
         <div className="flex items-center gap-3">
@@ -77,7 +81,7 @@ export function PackageDetailHero({ data }: PackageDetailHeroProps) {
         ))}
 
         <PackageHeroGalleryCard
-          image={secondaryImages[2]}
+          image={secondaryImages[2] || (secondaryImages.length > 0 ? undefined : PLACEHOLDER_IMAGE)}
           className="min-h-55 md:col-span-2"
         >
           <Button

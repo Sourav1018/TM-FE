@@ -4,7 +4,7 @@ import { Mountain } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ADMIN_MENU, FOOTER_MENU } from "@/constants/navigation"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export function SidebarContent() {
@@ -86,3 +86,4 @@ export function SidebarContent() {
     </div>
   )
 }
+

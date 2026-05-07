@@ -4,7 +4,8 @@ export type Package = {
   category: string
   image: string
   price: string
-  duration: string
+  days: number
+  nights: number
   status: string
   previousStatus?: string
 }
@@ -26,10 +27,12 @@ export type PackageQuickFact = {
 }
 
 export type PackageItineraryDay = {
+  id: string
   day: number
   title: string
   description: string
   highlights: string[]
+  places: string[]
   isActive?: boolean
 }
 
@@ -63,13 +66,13 @@ export type PackageTrustBadge = {
 export type PackageDetailData = {
   slug: string
   title: string
-  location: string
   tags: string[]
   rating: number
   reviewCount: number
   badge: string
   description: string
-  duration: string
+  days: number
+  nights: number
   groupSize: string
   activityLevel: string
   language: string
@@ -87,16 +90,18 @@ export type PackageDetailData = {
   pricingLines: PackagePricingLine[]
   trustBadges: PackageTrustBadge[]
   category: string
+  minGuests?: number
+  maxGuests?: number
 }
 
 export type PackageCardData = {
   id: number
   slug: string
   title: string
-  location: string
   tags: string[]
   price: number
-  duration: number
+  days: number
+  nights: number
   image: string
   badge?: string
   rating?: number

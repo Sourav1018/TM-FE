@@ -2,45 +2,37 @@
 
 import { Button } from "@/components/ui/button"
 import { Plus } from "lucide-react"
-import { useState } from "react"
 import { CustomAlert } from "@/components/ui/custom-alert"
-import { ItineraryDayCard, type ItineraryDay } from "./itinerary-day-card"
+import { ItineraryDayCard } from "./itinerary-day-card"
+import { usePackageEditor } from "@/store/package-editor-store"
+import { PackageItineraryDay } from "@/types/packages"
 
 export function ExperienceBuilder() {
-  const [days, setDays] = useState<ItineraryDay[]>([
-    {
-      id: "1",
-      day: 1,
-      title: "Arrival & Welcome Dinner",
-      description: "Private transfer from Santorini Airport to Oia. Check-in to luxury suite followed by a 5-course welcome dinner at sunset.",
-      places: [],
-    },
-    {
-      id: "2",
-      day: 2,
-      title: "Private Yacht Cruise",
-      description: "Half-day cruise around the volcanic caldera with swimming stops at Red Beach and hot springs.",
-      places: [],
-    },
-  ])
+  const { data, setData } = usePackageEditor()
+  const days = data.itinerary || []
 
   const addDay = () => {
-    const newDay: ItineraryDay = {
+    const newDay: PackageItineraryDay = {
       id: Math.random().toString(36).substr(2, 9),
       day: days.length + 1,
       title: "",
       description: "",
+      highlights: [],
       places: [],
     }
-    setDays([...days, newDay])
+    setData({ itinerary: [...days, newDay] })
   }
 
   const removeDay = (id: string) => {
-    setDays(days.filter(day => day.id !== id).map((day, index) => ({ ...day, day: index + 1 })))
+    const newDays = days
+      .filter(day => day.id !== id)
+      .map((day, index) => ({ ...day, day: index + 1 }))
+    setData({ itinerary: newDays })
   }
 
-  const updateDay = (id: string, updates: Partial<ItineraryDay>) => {
-    setDays(days.map(day => day.id === id ? { ...day, ...updates } : day))
+  const updateDay = (id: string, updates: Partial<PackageItineraryDay>) => {
+    const newDays = days.map(day => day.id === id ? { ...day, ...updates } : day)
+    setData({ itinerary: newDays })
   }
 
   return (
@@ -74,13 +66,20 @@ export function ExperienceBuilder() {
 
             {/* Day Content Card */}
             <ItineraryDayCard
-              day={day}
+              day={day as any} // Cast because of slight type differences if any
               onUpdate={updateDay}
               onRemove={removeDay}
             />
           </div>
         ))}
+        
+        {days.length === 0 && (
+          <div className="py-20 text-center text-muted-foreground italic border-2 border-dashed border-border rounded-2xl">
+            No days added yet. Click &quot;Add Day&quot; to start building your itinerary.
+          </div>
+        )}
       </div>
     </div>
   )
 }
+

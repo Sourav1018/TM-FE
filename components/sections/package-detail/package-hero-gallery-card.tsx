@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 import type { PackageGalleryImage } from "@/types/packages"
 
@@ -17,6 +17,8 @@ export function PackageHeroGalleryCard({
   showOverlay = false,
   children,
 }: PackageHeroGalleryCardProps) {
+  if (!image) return null
+
   return (
     <div className={cn("group relative overflow-hidden rounded-xl", className)}>
       <Image
@@ -36,3 +38,4 @@ export function PackageHeroGalleryCard({
     </div>
   )
 }
+

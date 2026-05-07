@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 export function PackageCardSkeleton({ className }: { className?: string }) {
   return (
@@ -49,3 +49,4 @@ export function PackageCardSkeleton({ className }: { className?: string }) {
     </Card>
   )
 }
+

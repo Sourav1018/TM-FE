@@ -3,7 +3,7 @@
 import * as React from "react"
 import * as SwitchPrimitive from "@radix-ui/react-switch"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 const Switch = ({
   className,
@@ -28,3 +28,4 @@ const Switch = ({
 Switch.displayName = SwitchPrimitive.Root.displayName
 
 export { Switch }
+

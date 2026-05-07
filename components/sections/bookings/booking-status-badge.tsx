@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 import type { BookingStatus } from "@/types/bookings"
 
@@ -24,3 +24,4 @@ export function BookingStatusBadge({ status }: BookingStatusBadgeProps) {
     </span>
   )
 }
+

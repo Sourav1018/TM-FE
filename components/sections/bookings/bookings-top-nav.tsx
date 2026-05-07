@@ -1,8 +1,8 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 import { Bell, CircleUserRound } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 const navItems = [
   { href: "#", label: "Discover" },
@@ -51,3 +51,4 @@ export function BookingsTopNav() {
     </header>
   )
 }
+

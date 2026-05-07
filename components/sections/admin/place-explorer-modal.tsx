@@ -6,7 +6,7 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { MOCK_PLACES } from "@/constants/package-editor"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import { Check, GripVertical, MapPin, Plus, Search, Trash2 } from "lucide-react"
 import { useState } from "react"
 import { type ItineraryDay } from "./itinerary-day-card"
@@ -352,3 +352,4 @@ export function PlaceExplorerModal({ open, onOpenChange, day, onSave }: PlaceExp
     </Dialog>
   )
 }
+

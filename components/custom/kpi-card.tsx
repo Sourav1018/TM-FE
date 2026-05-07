@@ -1,7 +1,7 @@
 "use client"
 
 import { LucideIcon, TrendingUp } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 export type KPICardProps = {
   title: string
@@ -121,3 +121,4 @@ export function KPICard({
     </div>
   )
 }
+

@@ -2,7 +2,7 @@ import { Plus_Jakarta_Sans, Be_Vietnam_Pro } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 const fontSans = Be_Vietnam_Pro({
   weight: ["400", "500", "600", "700"],
@@ -38,3 +38,4 @@ export default function RootLayout({
     </html>
   )
 }
+

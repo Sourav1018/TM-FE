@@ -5,41 +5,59 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ImagePlus, Trash2 } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
 import { CustomAlert } from "@/components/ui/custom-alert"
-
-const GALLERY_IMAGES = [
-  { id: "1", src: "/images/gallery/amalfi.png", alt: "Amalfi Coast" },
-  { id: "2", src: "/images/gallery/venice.png", alt: "Venice Canal" },
-  { id: "3", src: "/images/gallery/alps.png", alt: "Swiss Alps" },
-]
+import { usePackageEditor } from "@/store/package-editor-store"
+import { PackageGalleryImage } from "@/types/packages"
 
 export function GalleryEditor() {
-  const [heroImage, setHeroImage] = useState<string | null>("/images/packages/hero.jpg")
-  const [galleryImages, setGalleryImages] = useState(GALLERY_IMAGES)
+  const { data, setData } = usePackageEditor()
+  const galleryImages = data.gallery || []
+
+  // We'll treat the first image as the hero image for this simplified editor logic
+  const heroImage = galleryImages[0]
 
   const handleHeroUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
       const url = URL.createObjectURL(file)
-      setHeroImage(url)
+      const newHero: PackageGalleryImage = {
+        id: "hero-" + Math.random().toString(36).substr(2, 9),
+        src: url,
+        alt: "Hero Image",
+        featured: true
+      }
+      
+      // Replace the first image if it was a hero, or prepend
+      const newGallery = [...galleryImages]
+      if (newGallery.length > 0 && newGallery[0].featured) {
+        newGallery[0] = newHero
+      } else {
+        newGallery.unshift(newHero)
+      }
+      setData({ gallery: newGallery })
     }
   }
 
   const handleGalleryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (files) {
-      const newImages = Array.from(files).map(file => ({
+      const newImages: PackageGalleryImage[] = Array.from(files).map(file => ({
         id: Math.random().toString(36).substr(2, 9),
         src: URL.createObjectURL(file),
         alt: file.name
       }))
-      setGalleryImages([...galleryImages, ...newImages])
+      setData({ gallery: [...galleryImages, ...newImages] })
     }
   }
 
   const removeGalleryImage = (id: string) => {
-    setGalleryImages(galleryImages.filter(img => img.id !== id))
+    setData({ gallery: galleryImages.filter(img => img.id !== id) })
+  }
+
+  const removeHeroImage = () => {
+    if (galleryImages.length > 0) {
+      setData({ gallery: galleryImages.slice(1) })
+    }
   }
 
   return (
@@ -47,6 +65,7 @@ export function GalleryEditor() {
       <CustomAlert tone="rose">
         <span className="font-bold">Gallery Tip:</span> High-quality, bright photos significantly increase booking rates. Try to include at least one wide-angle landscape shot.
       </CustomAlert>
+      
       {/* Hidden Inputs */}
       <Input 
         type="file" 
@@ -73,17 +92,17 @@ export function GalleryEditor() {
         {heroImage ? (
           <div className="relative aspect-video sm:aspect-[21/9] w-full overflow-hidden rounded-[1.25rem] border border-border bg-muted/20 group shadow-sm transition-all hover:shadow-md">
             <Image 
-              src={heroImage} 
-              alt="Hero" 
+              src={heroImage.src} 
+              alt={heroImage.alt || "Hero"} 
               fill 
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            {/* Overlay Actions - Only Delete */}
+            {/* Overlay Actions */}
             <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
               <Button 
                 variant="secondary"
                 size="icon"
-                onClick={() => setHeroImage(null)}
+                onClick={removeHeroImage}
                 className="h-14 w-14 rounded-[1.25rem] bg-background shadow-lg border border-border hover:scale-110 hover:text-destructive transition-all duration-300 group/btn"
               >
                 <Trash2 className="w-6 h-6 text-muted-foreground group-hover/btn:text-destructive" />
@@ -124,7 +143,7 @@ export function GalleryEditor() {
             >
               <Image 
                 src={img.src} 
-                alt={img.alt} 
+                alt={img.alt || "Gallery Image"} 
                 fill 
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -160,3 +179,4 @@ export function GalleryEditor() {
     </div>
   )
 }
+

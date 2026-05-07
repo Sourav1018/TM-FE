@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 type EditorStepCardProps = {
   children: React.ReactNode
@@ -26,3 +26,4 @@ export function EditorStepCard({
     </Card>
   )
 }
+

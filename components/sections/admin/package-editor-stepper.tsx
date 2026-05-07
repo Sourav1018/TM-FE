@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import { PACKAGE_EDITOR_STEPS } from "@/constants/package-editor"
 
 type PackageEditorStepperProps = {

@@ -2,7 +2,7 @@ import Image from "next/image"
 import { MapPin } from "lucide-react"
 
 import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 import type { PackageMapStop } from "@/types/packages"
 
@@ -62,3 +62,4 @@ export function PackageRouteMap({ image, stops }: PackageRouteMapProps) {
     </section>
   )
 }
+

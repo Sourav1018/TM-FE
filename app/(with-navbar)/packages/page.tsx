@@ -33,7 +33,7 @@ export default function Page() {
 
       if (duration) {
         const [low, high] = duration.split("-").map(Number)
-        if (pkg.duration < low || pkg.duration > high) return false
+        if (pkg.days < low || pkg.days > high) return false
       }
 
       return true

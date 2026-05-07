@@ -4,7 +4,7 @@ import * as React from "react"
 import Image from "next/image"
 import { Star, Clock, Plus } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import { getTagStyles } from "@/utils"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -12,8 +12,9 @@ import { Badge } from "@/components/ui/badge"
 import { FavoriteButton } from "./favorite-button"
 export type PackageCardProps = {
   title: string
-  location?: string
-  duration: string
+  days?: number
+  nights?: number
+  duration?: string
   price: string
   priceSuffix?: string
   priceLabel?: string
@@ -34,7 +35,8 @@ export type PackageCardProps = {
 
 export function PackageCard({
   title,
-  location,
+  days,
+  nights,
   duration,
   price,
   priceSuffix,
@@ -106,14 +108,9 @@ export function PackageCard({
               <h3 className="text-lg leading-tight font-bold tracking-tight text-foreground">
                 {title}
               </h3>
-              {location && (
-                <p className="mt-0.5 flex items-center gap-2 text-xs font-medium text-muted-foreground">
-                  {location}
-                </p>
-              )}
               {isSimple && (
                 <p className="mt-0.5 text-xs font-medium text-muted-foreground">
-                  {duration}
+                  {days ? `${days} Days / ${nights} Nights` : duration}
                 </p>
               )}
             </div>
@@ -132,7 +129,7 @@ export function PackageCard({
               {/* Duration Row */}
               <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
                 <Clock className="h-5 w-5 opacity-70" />
-                <span>{duration}</span>
+                <span>{days ? `${days} Days / ${nights} Nights` : duration}</span>
               </div>
 
               {/* Tags Row */}
@@ -208,3 +205,4 @@ export function PackageCard({
     </Card>
   )
 }
+

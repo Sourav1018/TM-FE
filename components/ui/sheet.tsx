@@ -5,7 +5,7 @@ import * as SheetPrimitive from "@radix-ui/react-dialog"
 import { cva, type VariantProps } from "class-variance-authority"
 import { XIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 
 const Sheet = SheetPrimitive.Root
 
@@ -50,9 +50,8 @@ const sheetVariants = cva(
   }
 )
 
-interface SheetContentProps
-  extends React.ComponentProps<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {}
+type SheetContentProps = React.ComponentProps<typeof SheetPrimitive.Content> &
+  VariantProps<typeof sheetVariants>
 
 const SheetContent = ({
   side = "right",

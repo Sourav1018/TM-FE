@@ -14,6 +14,8 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog"
+import { usePackageEditor } from "@/store/package-editor-store"
+
 const ALL_ITEMS = [
   "Luxury Suite Stay",
   "Daily Breakfast",
@@ -30,17 +32,10 @@ const ALL_ITEMS = [
 ]
 
 export function FacilitiesEditor() {
-  const [inclusions, setInclusions] = useState([
-    "Luxury Suite Stay",
-    "Daily Breakfast",
-    "Private Transfers",
-    "Yacht Tour"
-  ])
-  const [exclusions, setExclusions] = useState([
-    "Airfare",
-    "Visa Fees",
-    "Travel Insurance"
-  ])
+  const { data, updateInclusions, updateExclusions } = usePackageEditor()
+  
+  const inclusions = data.inclusions.map(i => i.label)
+  const exclusions = data.exclusions.map(e => e.label)
 
   // Drag and Drop state
   const [draggedItem, setDraggedItem] = useState<{ item: string, sourceList: 'inclusions' | 'exclusions' } | null>(null)
@@ -52,18 +47,17 @@ export function FacilitiesEditor() {
   const [selectedItems, setSelectedItems] = useState<string[]>([])
 
   const removeInclusion = (item: string) => {
-    setInclusions(inclusions.filter(i => i !== item))
+    updateInclusions(inclusions.filter(i => i !== item))
   }
 
   const removeExclusion = (item: string) => {
-    setExclusions(exclusions.filter(e => e !== item))
+    updateExclusions(exclusions.filter(e => e !== item))
   }
 
   // --- Drag and Drop Handlers ---
   const handleDragStart = (e: React.DragEvent, item: string, sourceList: 'inclusions' | 'exclusions') => {
     setDraggedItem({ item, sourceList })
     e.dataTransfer.effectAllowed = 'move'
-    // A small delay helps browser to capture the ghost image properly before any state changes
     setTimeout(() => {
       if (e.target instanceof HTMLElement) {
         e.target.style.opacity = '0.5'
@@ -92,7 +86,7 @@ export function FacilitiesEditor() {
     if (sourceList === targetList) {
       // Reordering within the same list
       const list = targetList === 'inclusions' ? inclusions : exclusions
-      const setList = targetList === 'inclusions' ? setInclusions : setExclusions
+      const updateList = targetList === 'inclusions' ? updateInclusions : updateExclusions
       
       const currentIndex = list.indexOf(item)
       if (currentIndex === -1) return
@@ -101,34 +95,30 @@ export function FacilitiesEditor() {
       newList.splice(currentIndex, 1)
       
       if (dropIndex !== undefined) {
-        // adjust drop index if item was moved from before the drop point
         const adjustedIndex = currentIndex < dropIndex ? dropIndex - 1 : dropIndex
         newList.splice(adjustedIndex, 0, item)
       } else {
         newList.push(item)
       }
       
-      setList(newList)
+      updateList(newList)
     } else {
       // Moving between lists
       const sourceState = sourceList === 'inclusions' ? inclusions : exclusions
-      const setSourceState = sourceList === 'inclusions' ? setInclusions : setExclusions
+      const updateSource = sourceList === 'inclusions' ? updateInclusions : updateExclusions
       
       const targetState = targetList === 'inclusions' ? inclusions : exclusions
-      const setTargetState = targetList === 'inclusions' ? setInclusions : setExclusions
+      const updateTarget = targetList === 'inclusions' ? updateInclusions : updateExclusions
 
       if (!targetState.includes(item)) {
-        // Remove from source
-        setSourceState(sourceState.filter(i => i !== item))
-
-        // Add to target
+        updateSource(sourceState.filter(i => i !== item))
         const newList = [...targetState]
         if (dropIndex !== undefined) {
           newList.splice(dropIndex, 0, item)
         } else {
           newList.push(item)
         }
-        setTargetState(newList)
+        updateTarget(newList)
       }
     }
   }
@@ -151,9 +141,8 @@ export function FacilitiesEditor() {
 
   const handleConfirmModal = () => {
     const listState = modalTargetList === 'inclusions' ? inclusions : exclusions
-    const setListState = modalTargetList === 'inclusions' ? setInclusions : setExclusions
+    const updateList = modalTargetList === 'inclusions' ? updateInclusions : updateExclusions
     
-    // Check if searchQuery is not empty and not in the selected items, maybe they want to add custom
     const itemsToAdd = [...selectedItems]
     if (searchQuery.trim() && !ALL_ITEMS.includes(searchQuery.trim()) && !itemsToAdd.includes(searchQuery.trim())) {
       itemsToAdd.push(searchQuery.trim())
@@ -161,13 +150,12 @@ export function FacilitiesEditor() {
 
     const newItems = itemsToAdd.filter(item => !listState.includes(item))
     if (newItems.length > 0) {
-      setListState([...listState, ...newItems])
+      updateList([...listState, ...newItems])
     }
     
     setIsModalOpen(false)
   }
 
-  // Derived state for modal
   const existingList = modalTargetList === 'inclusions' ? inclusions : exclusions
   const filteredItems = ALL_ITEMS.filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()))
   const showCustomAdd = searchQuery.trim() !== '' && !ALL_ITEMS.some(item => item.toLowerCase() === searchQuery.trim().toLowerCase())
@@ -386,3 +374,4 @@ export function FacilitiesEditor() {
     </div>
   )
 }
+
